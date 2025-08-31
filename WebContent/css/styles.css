@@ -1,0 +1,100 @@
+header{
+    height: 146px;
+}
+.header-up{
+    margin-bottom: -21px;
+}
+.logo img{
+    height: 110%;
+}
+.top-bar{
+    height: 64px;
+    background-color: black;
+    color: white;
+    line-height: 1;
+}
+.top-bar ul{
+    padding-top: 15px;
+}
+.top-bar li{
+    list-style: none;
+    float: left;
+    padding-right: 100px;
+    font-size: 24px
+}
+
+main{
+    clear: both;
+    padding-top: 20px;
+}
+
+.main-container{
+    float: left;
+    width: 70%;
+    margin-top: 23px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+h1{
+    margin-top: 0;
+    border-bottom: 3px solid gray;
+    border-left: 5px solid black;
+}
+.homepic img{
+    width: 100%;
+}
+h2{
+    padding-left: 10px;
+    font-size: 24px;
+}
+.description{
+    margin-top: 0;
+    font-size: 20px;
+    padding-left: 10px;
+}
+.images{
+    background-color: gainsboro;
+    padding: 20px 30px 20px 30px;    
+    text-align: center;
+}
+.images img{
+    width: 95%;
+}
+.pic-comment{
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+.images .up{
+    display: inline-flex;
+}
+.images .down{
+    display: inline-flex;
+
+}
+.aside-container{
+    float: left;
+    width: 27%;
+    padding: 18px 24px 1212px 11px;
+}
+.aside-title{
+    font-family: "ヒラギノ角ゴシック";
+    font-size: 20px;
+    border-bottom: 3px solid gainsboro;
+    font-weight: bold;
+}
+.aside-container li{
+    list-style: none;
+}
+.line-spacing{
+    letter-spacing:-3.5px;
+}
+footer{
+    clear: both;
+    height: 50px;
+    color: white;
+    background-color: black;
+    text-align: center;
+    padding-top: 10px;
+    letter-spacing: 3px;
+    
+}
