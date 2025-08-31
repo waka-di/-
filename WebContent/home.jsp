@@ -29,7 +29,7 @@
         <li>登録フォーム</li>
         <li>問い合わせ</li>
         <li>その他</li>
-        <li>アカウント登録</li>
+        <li><a href='<s:url action="registAction"/>'>アカウント登録</a></li>
         
       </ul>
     </div>
@@ -40,44 +40,44 @@
           <h1>プログラミングに役立つ書籍</h1>
           <p class="date">2017年1月15日</p>
           <div class="homepic">
-            <img src="../bookstore.jpg">
+            <img src="./data/bookstore.jpg">
           </div>
           <p class="description">D.I.BlogはD.I.worksが提供する演習課題です。</p>
           <h2>記事中身</h2>
           <div class="images">
             <div class="up">
               <div class="pic1">
-                <img src="../pic1.jpg">
+                <img src="./data/pic1.jpg">
                 <p class="pic-comment">ドメイン取得方法</p>
               </div>
               <div class="pic2">
-                <img src="../pic2.jpg">
+                <img src="./data/pic2.jpg">
                 <p class="pic-comment">快感な職場環境</p>
               </div>
               <div class="pic3">
-                <img src="../pic3.jpg">
+                <img src="./data/pic3.jpg">
                 <p class="pic-comment">Linuxの基礎</p>
               </div>
               <div class="pic4">
-                <img src="../pic4.jpg">
+                <img src="./data/pic4.jpg">
                 <p class="pic-comment">マーケティング入門</p>
               </div>
             </div>
             <div class="down">
               <div class="pic5">
-                <img src="../pic5.jpg">
+                <img src="./data/pic5.jpg">
                 <p class="pic-comment">アクティブラーニング</p>
               </div>
               <div class="pic6">
-                <img src="../pic6.jpg">
+                <img src="./data/pic6.jpg">
                 <p class="pic-comment">CSSの効率的な勉強方法</p>
               </div>
               <div class="pic7">
-                <img src="../pic7.jpg">
+                <img src="./data/pic7.jpg">
                 <p class="pic-comment">リーダブルコードとは</p>
               </div>
               <div class="pic8">
-                <img src="../pic8.jpg">
+                <img src="./data/pic8.jpg">
                 <p class="pic-comment">HTMLの可能性</p>
               </div>
             </div>

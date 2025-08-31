@@ -12,18 +12,19 @@
 		</action>	
 		
 <!-- registAction -->
-		<action name="UserCreateAction" class="com.diworksdev.account.action.registAction" method="execute">
+		<action name="registAction" class="com.diworksdev.account.action.registAction" method="execute">
 			<result name="success">regist.jsp</result>
 		</action>
 		
 <!-- regist_confirmAction -->
-		<action name="UserCreateConfirmAction" class="com.diworksdev.account.action.regist_confirmAction" method="execute">
+		<action name="regist_ConfirmAction" class="com.diworksdev.account.action.regist_confirmAction" method="execute">
 			<result name="success">regist_confirm.jsp</result>
 			<result name="error">regist_confirm.jsp</result>
+			<result name="input">regist_confirm.jsp</result>
 		</action>
 		
 <!-- regist_completeAction -->
-		<action name="UserCreateCompleteAction" class="com.diworksdev.account.action.regist_completeAction" method="execute">
+		<action name="regist_completeCompleteAction" class="com.diworksdev.account.action.regist_completeAction" method="execute">
 			<result name="success">regist_complete.jsp</result>
 		</action>
 		

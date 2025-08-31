@@ -37,6 +37,123 @@
 	    </div>
     </header>
     <main>
+    	<div>
+			<s:if test="errorMessage != ''">
+				<s:property value="errorMessage" escape="false"/>
+			</s:if>
+			
+			<table>
+				<s:form action="regist_CompleteAction">
+					<tr>
+						<td>
+							<label>名前（姓）</label>
+						</td>
+						<td>
+							<s:property value="familyName" escape="false"/>
+						</td>
+					</tr>
+					<tr id="box">
+						<td>
+							<label>名前（名）</label>	
+						</td>
+						<td>
+							<s:property value="lastName" escape="false"/>
+						</td>
+					</tr>
+					<tr id="box">
+						<td>
+							<label>カナ（姓）</label>
+						</td>
+						<td>
+							<s:property value="familyNameKana" escape="false"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>名カナ（名）</label>
+						</td>
+						<td>
+							<s:property value="lastNameKana" escape="false"/>
+						</td>
+					</tr>
+					<tr id="box">
+						<td>
+							<label>メールアドレス</label>	
+						</td>
+						<td>
+							<s:property value="mail" escape="false"/>
+						</td>
+					</tr>
+					<tr id="box">
+						<td>
+							<label>パスワード</label>
+						</td>
+						<td>
+							<s:password name="password"/>
+						</td>
+					</tr>
+					<tr>
+					<tr>
+						<td>
+							<label>性別</label>
+						</td>
+						<td>
+							<s:if test="gender == 0">男</s:if>
+        　　　　　　　　　　<s:if test="gender == 1">女</s:if>
+						</td>
+					</tr>
+					<tr id="box">
+						<td>
+							<label>郵便番号</label>	
+						</td>
+						<td>
+							<s:property value="postalCode" escape="false"/>
+						</td>
+					</tr>
+					<tr id="box">
+						<td>
+							<label>住所（都道府県）</label>
+						</td>
+						<td>
+							<s:property value="prefecture" escape="false"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>住所（市区町村）</label>
+						</td>
+						<td>
+							<s:property value="address_1" escape="false"/>
+						</td>
+					</tr>
+					<tr id="box">
+						<td>
+							<label>住所（番地）</label>	
+						</td>
+						<td>
+							<s:property value="address_2" escape="false"/>
+						</td>
+					</tr>
+					<tr id="box">
+						<td>
+							<label>アカウント権限</label>
+						</td>
+						<td>
+							<s:property value="authority" escape="false"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<s:submit value="完了"/>
+						</td>
+					</tr>
+				</s:form>
+			</table>
+			<div>
+				<span><a href='<s:url action="HomeAction"/>'>前に戻る</a></span>
+				<span><a href='<s:url action="HomeAction"/>'>登録する</a></span>
+			</div>
+		</div>
 	</main>
     <footer>
       Copyright D.I.works|D.I.blog is the one which provides A to Z about programming

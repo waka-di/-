@@ -13,12 +13,12 @@ public class regist_completeAction extends ActionSupport implements SessionAware
 	private String lastNameKana;
 	private String mail;
 	private String password;
-	private String gender;
-	private String postalCode;
+	private int gender;
+	private int postalCode;
 	private String prefecture;
 	private String address_1;
 	private String address_2;
-	private String authority;
+	private int authority;
 	private Map<String,Object>session;
 	
 	public String execute() throws SQLException {
@@ -29,12 +29,12 @@ public class regist_completeAction extends ActionSupport implements SessionAware
 			    session.get("lastName").toString(),
 			    session.get("mail").toString(),
 			    session.get("password").toString(),
-			    session.get("gender").toString(),
-			    session.get("postalCode").toString(),
+			    (int) session.get("gender"),          
+			    (int) session.get("postalCode"),
 			    session.get("prefecture").toString(),
 			    session.get("address_1").toString(),
 			    session.get("address_2").toString(),
-			    session.get("authority").toString());
+			    (int) session.get("authority"));
 		String result = SUCCESS;
 		return result;
 	}
@@ -81,17 +81,17 @@ public class regist_completeAction extends ActionSupport implements SessionAware
 		this.password = password;
 	}
 	
-	public String getgender() {
+	public int getgender() {
 		return gender;
 	}
-	public void setgender(String gender) {
+	public void setgender(int gender) {
 		this.gender = gender;
 	}
 	
-	public String getpostalCode() {
+	public int getpostalCode() {
 		return postalCode;
 	}
-	public void setpostalCode(String postalCode)	{
+	public void setpostalCode(int postalCode)	{
 		this.postalCode = postalCode;
 	}
 	
@@ -116,10 +116,10 @@ public class regist_completeAction extends ActionSupport implements SessionAware
 		this.address_2 = address_2;
 	}
 	
-	public String getauthority() {
+	public int getauthority() {
 		return authority;
 	}
-	public void setauthority(String authority) {
+	public void setauthority(int authority) {
 		this.authority = authority;
 	}
 	

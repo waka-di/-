@@ -18,12 +18,12 @@ public class regist_completeDAO {
             String lastName,
             String mail,
             String password,
-            String gender,
-            String postalCode,
+            int gender,
+            int postalCode,
             String prefecture,
             String address_1,
             String address_2,
-            String authority
+            int authority
     ) throws SQLException {
 
         DBConnector dbConnector = new DBConnector();
@@ -35,12 +35,12 @@ public class regist_completeDAO {
             ps.setString(2, lastName);
             ps.setString(3, mail);
             ps.setString(4, password);
-            ps.setString(5, gender);
-            ps.setString(6, postalCode);
+            ps.setInt(5, gender);
+            ps.setInt(6, postalCode);
             ps.setString(7, prefecture);
             ps.setString(8, address_1);
             ps.setString(9, address_2);
-            ps.setString(10, authority);
+            ps.setInt(10, authority);
             ps.setInt(11, 0); // delete_flag 初期値0
             ps.setString(12, dateUtil.getDate()); // 登録日時
             ps.setString(13, dateUtil.getDate()); // 更新日時
