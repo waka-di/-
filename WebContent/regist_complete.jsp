@@ -40,10 +40,10 @@
     	<div id="complete">
 			<p>アカウント登録完了画面</p>
 		</div>
-		<div>
+		<div class="regist_container">
 			<h3>登録完了しました</h3>
 			<div>
-				<a href='<s:url action="HomeAction"/>'>TOPページへ戻る</a>
+				<s:submit value="TOPページへ戻る" action="HomeAction"/>
 			</div>
 		</div>
 	</main>

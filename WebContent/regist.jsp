@@ -40,7 +40,7 @@
     	<div id="regist">
 			<p>アカウント登録画面</p>
 		</div>
-		<div>
+		<div class="regist_container">
 			<s:if test="errorMessage != ''">
 				<s:property value="errorMessage" escape="false"/>
 			</s:if>
@@ -53,7 +53,6 @@
 						</td>
 						<td>
 							<input type="text" name="familyName" value="" maxlength="10"/>
-							<s:fielderror fieldName="familyName"/>
 						</td>
 					</tr>
 					<tr>
@@ -62,7 +61,6 @@
 						</td>
 						<td>
 							<input type="text" name="lastName" value ="" maxlength="10"/>
-							<s:fielderror fieldName="lastName"/>
 						</td>
 					</tr>
 					<tr>
@@ -71,7 +69,6 @@
 						</td>
 						<td>
 							<input type="text" name="familyNameKana" value="" maxlength="10"/>
-							<s:fielderror fieldName="familyNameKana"/>
 						</td>
 					</tr>
 					<tr>
@@ -80,7 +77,6 @@
 						</td>
 						<td>
 							<input type="text" name="lastNameKana" value="" maxlength="10"/>
-							<s:fielderror fieldName="lastNameKana"/>
 						</td>
 					</tr>
 					<tr>
@@ -89,7 +85,6 @@
 						</td>
 						<td>
 							<input type="text" name="mail" value ="" maxlength="100"/>
-							<s:fielderror fieldName="mail"/>
 						</td>
 					</tr>
 					<tr>
@@ -98,7 +93,6 @@
 						</td>
 						<td>
 							<input type="text" name="password" value="" maxlength="10"/>
-							<s:fielderror fieldName="password"/>
 						</td>
 					</tr>
 					<tr>
@@ -107,7 +101,6 @@
 						</td>
 						<td>
 							<s:radio name="gender" list="#{'0':'男','1':'女'}"/>
-							<s:fielderror fieldName="gender"/>
 						</td>
 					</tr>
 					<tr>
@@ -116,7 +109,6 @@
 						</td>
 						<td>
 							<input type="text" name="postalCode" value="" maxlength="7"/>
-							<s:fielderror fieldName="postalCode"/>
 						</td>
 					</tr>
 					<tr>
@@ -174,7 +166,6 @@
 								<option value="鹿児島県">鹿児島県</option>
 								<option value="沖縄県">沖縄県</option>
 							</select>
-							<s:fielderror fieldName="prefecture"/>
 						</td>
 					</tr>
 					<tr>
@@ -183,7 +174,6 @@
 						</td>
 						<td>
 							<input type="text" name="address_1" value ="" maxlength="10"/>
-							<s:fielderror fieldName="address_1"/>
 						</td>
 					</tr>
 					<tr>
@@ -192,7 +182,6 @@
 						</td>
 						<td>
 							<input type="text" name="address_2" value="" maxlength="100"/>
-							<s:fielderror fieldName="address_2"/>
 						</td>
 					</tr>
 					<tr>
@@ -204,7 +193,6 @@
 								<option value="一般" selected>一般</option>
 								<option value="管理者">管理者</option>
 							</select>
-							<s:fielderror fieldName="authority"/>
 						</td>
 					</tr>
 					<s:submit value ="確認する"/>

@@ -37,10 +37,10 @@
 	    </div>
     </header>
     <main>
-    	<div>
-			<s:if test="errorMessage != ''">
-				<s:property value="errorMessage" escape="false"/>
-			</s:if>
+    	<div class="regist_container">
+			<div id="regist">
+				<p>アカウント登録画面</p>
+			</div>
 			
 			<table>
 				<s:form action="regist_CompleteAction">
@@ -52,7 +52,7 @@
 							<s:property value="familyName" escape="false"/>
 						</td>
 					</tr>
-					<tr id="box">
+					<tr>
 						<td>
 							<label>名前（名）</label>	
 						</td>
@@ -60,7 +60,7 @@
 							<s:property value="lastName" escape="false"/>
 						</td>
 					</tr>
-					<tr id="box">
+					<tr>
 						<td>
 							<label>カナ（姓）</label>
 						</td>
@@ -76,7 +76,7 @@
 							<s:property value="lastNameKana" escape="false"/>
 						</td>
 					</tr>
-					<tr id="box">
+					<tr>
 						<td>
 							<label>メールアドレス</label>	
 						</td>
@@ -93,16 +93,15 @@
 						</td>
 					</tr>
 					<tr>
-					<tr>
 						<td>
 							<label>性別</label>
 						</td>
 						<td>
 							<s:if test="gender == 0">男</s:if>
-        　　　　　　　　　　<s:if test="gender == 1">女</s:if>
+							<s:if test="gender == 1">女</s:if>
 						</td>
 					</tr>
-					<tr id="box">
+					<tr>
 						<td>
 							<label>郵便番号</label>	
 						</td>
@@ -110,7 +109,7 @@
 							<s:property value="postalCode" escape="false"/>
 						</td>
 					</tr>
-					<tr id="box">
+					<tr>
 						<td>
 							<label>住所（都道府県）</label>
 						</td>
@@ -126,7 +125,7 @@
 							<s:property value="address_1" escape="false"/>
 						</td>
 					</tr>
-					<tr id="box">
+					<tr>
 						<td>
 							<label>住所（番地）</label>	
 						</td>
@@ -134,7 +133,7 @@
 							<s:property value="address_2" escape="false"/>
 						</td>
 					</tr>
-					<tr id="box">
+					<tr>
 						<td>
 							<label>アカウント権限</label>
 						</td>
@@ -144,15 +143,15 @@
 					</tr>
 					<tr>
 						<td>
-							<s:submit value="完了"/>
+							<s:submit value="前に戻る" action="registAction"/>
+						</td>
+						<td>
+							<s:submit value="登録する"/>
 						</td>
 					</tr>
 				</s:form>
 			</table>
-			<div>
-				<span><a href='<s:url action="HomeAction"/>'>前に戻る</a></span>
-				<span><a href='<s:url action="HomeAction"/>'>登録する</a></span>
-			</div>
+
 		</div>
 	</main>
     <footer>
