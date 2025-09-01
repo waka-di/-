@@ -41,10 +41,7 @@
 			<p>アカウント登録画面</p>
 		</div>
 		<div class="regist_container">
-			<s:if test="errorMessage != ''">
-				<s:property value="errorMessage" escape="false"/>
-			</s:if>
-			
+			<s:fielderror/>			
 			<table>
 				<s:form action= "regist_ConfirmAction">
 					<tr>
@@ -190,8 +187,8 @@
 						</td>
 						<td>
 							 <select name="authority">
-								<option value="一般" selected>一般</option>
-								<option value="管理者">管理者</option>
+								<option value="0" selected>一般</option>
+    							<option value="1">管理者</option>
 							</select>
 						</td>
 					</tr>

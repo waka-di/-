@@ -141,17 +141,14 @@
 							<s:property value="authority" escape="false"/>
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<s:submit value="前に戻る" action="registAction"/>
-						</td>
-						<td>
-							<s:submit value="登録する"/>
-						</td>
-					</tr>
+				</s:form>
+				<s:form action="registAction">
+    				<s:submit value="前に戻る"/>
+				</s:form>
+				<s:form action="regist_CompleteAction">
+    				<s:submit value="登録する"/>
 				</s:form>
 			</table>
-
 		</div>
 	</main>
     <footer>

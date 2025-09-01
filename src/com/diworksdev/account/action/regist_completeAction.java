@@ -39,87 +39,87 @@ public class regist_completeAction extends ActionSupport implements SessionAware
 		return result;
 	}
 	
-	public String getfamilyName() {
+	public String getFamilyName() {
 		return familyName;
 	}
-	public void setfamilyName(String familyName) {
+	public void setFamilyName(String familyName) {
 		this.familyName = familyName;
 	}
 	
-	public String getlastName() {
+	public String getLastName() {
 		return lastName;
 	}
-	public void setlastName(String lastName)	{
+	public void setLastName(String lastName)	{
 		this.lastName = lastName;
 	}
 	
-	public String getfamilyNameKana() {
+	public String getFamilyNameKana() {
 		return familyNameKana;
 	}
 	public void setfamilyNameKana(String familyNameKana) {
 		this.familyNameKana = familyNameKana;
 	}
 	
-	public String getlastNameKana() {
+	public String getLastNameKana() {
 		return lastNameKana;
 	}
-	public void setlastNameKana(String lastNameKana) {
+	public void setLastNameKana(String lastNameKana) {
 		this.lastNameKana = lastNameKana;
 	}
 	
-	public String getmail() {
+	public String getMail() {
 		return mail;
 	}
-	public void setmail(String mail)	{
+	public void setMail(String mail)	{
 		this.mail = mail;
 	}
 	
-	public String getpassword() {
+	public String getPassword() {
 		return password;
 	}
-	public void setpassword(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 	
-	public int getgender() {
+	public int getGender() {
 		return gender;
 	}
-	public void setgender(int gender) {
+	public void setGender(int gender) {
 		this.gender = gender;
 	}
 	
-	public int getpostalCode() {
+	public int getPostalCode() {
 		return postalCode;
 	}
-	public void setpostalCode(int postalCode)	{
+	public void setPostalCode(int postalCode)	{
 		this.postalCode = postalCode;
 	}
 	
-	public String getprefecture() {
+	public String getPrefecture() {
 		return prefecture;
 	}
-	public void setprefecture(String prefecture) {
+	public void setPrefecture(String prefecture) {
 		this.prefecture = prefecture;
 	}
 
-	public String getaddress_1() {
+	public String getAddress_1() {
 		return address_1;
 	}
-	public void setaddress_1(String address_1) {
+	public void setAddress_1(String address_1) {
 		this.address_1 = address_1;
 	}
 	
-	public String address_2() {
+	public String getAddress_2() {
 		return address_2;
 	}
-	public void setaddress_2(String address_2)	{
+	public void setAddress_2(String address_2)	{
 		this.address_2 = address_2;
 	}
 	
-	public int getauthority() {
+	public int getAuthority() {
 		return authority;
 	}
-	public void setauthority(int authority) {
+	public void setAuthority(int authority) {
 		this.authority = authority;
 	}
 	
