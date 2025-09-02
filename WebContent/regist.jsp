@@ -64,7 +64,7 @@
 							<label>名前（姓）</label>
 						</td>
 						<td>
-							<input type="text" name="familyName" value="familyName" maxlength="10"/>
+							<input type="text" name="familyName" value="" maxlength="10"/>
 							<s:fielderror fieldName="familyName" style="color:red;"/>
 						</td>
 					</tr>
@@ -73,7 +73,7 @@
 							<label>名前（名）</label>
 						</td>
 						<td>
-							<input type="text" name="lastName" value ="lastName" maxlength="10"/>
+							<input type="text" name="lastName" value ="" maxlength="10"/>
 							<s:fielderror fieldName="lastName" style="color:red;"/>
 						</td>
 					</tr>
@@ -82,7 +82,7 @@
 							<label>カナ（姓）</label>
 						</td>
 						<td>
-							<input type="text" name="familyNameKana" value="familyNameKana" maxlength="10"/>
+							<input type="text" name="familyNameKana" value="" maxlength="10"/>
 							<s:fielderror fieldName="familyNameKana" style="color:red;"/>
 						</td>
 					</tr>
@@ -91,7 +91,7 @@
 							<label>名カナ（名）</label>
 						</td>
 						<td>
-							<input type="text" name="lastNameKana" value="lastNameKana" maxlength="10"/>
+							<input type="text" name="lastNameKana" value="" maxlength="10"/>
 							<s:fielderror fieldName="lastNameKana" style="color:red;"/>
 						</td>
 					</tr>
@@ -100,7 +100,7 @@
 							<label>メールアドレス</label>
 						</td>
 						<td>
-							<input type="text" name="mail" value="mail" maxlength="100"/>
+							<input type="text" name="mail" value="" maxlength="100"/>
 							<s:fielderror fieldName="mail" style="color:red;"/>
 						</td>
 					</tr>
@@ -109,7 +109,7 @@
 							<label>パスワード</label>
 						</td>
 						<td>
-							<input type="text" name="password" value="password" maxlength="10"/>
+							<input type="text" name="password" value="" maxlength="10"/>
 							<s:fielderror fieldName="password" style="color:red;"/>
 						</td>
 					</tr>
@@ -118,7 +118,8 @@
 							<label>性別</label>
 						</td>
 						<td>
-							 <s:radio name="gender" list="#{'0':'男','1':'女'}" value="gender"/>
+							 <input type="radio" name="gender" value="0" checked>男 
+							 <input type="radio" name="gender" value="1">女 
 						</td>
 					</tr>
 					<tr>
@@ -126,7 +127,7 @@
 							<label>郵便番号</label>
 						</td>
 						<td>
-							<input type="text" name="postalCode" value="postalCode" maxlength="7"/>
+							<input type="text" name="postalCode" value="" maxlength="7"/>
 							<s:fielderror fieldName="postalCode" style="color:red;"/>
 						</td>
 					</tr>
@@ -135,7 +136,7 @@
 							<label>住所（都道府県）</label>
 						</td>
 						<td>
-							<select name="prefecture" value="prefecture">
+							<select name="prefecture">
 								<option value=""></option>
 								<option value="北海道">北海道</option>
 								<option value="青森県">青森県</option>
@@ -193,7 +194,7 @@
 							<label>住所（市区町村）</label>
 						</td>
 						<td>
-							<input type="text" name="address_1" value ="address_1" maxlength="10"/>
+							<input type="text" name="address_1" value ="" maxlength="10"/>
 							<s:fielderror fieldName="address_1" style="color:red;"/>
 						</td>
 					</tr>
@@ -202,7 +203,7 @@
 							<label>住所（番地）</label>
 						</td>
 						<td>
-							<input type="text" name="address_2" value="address_2" maxlength="100"/>
+							<input type="text" name="address_2" value="" maxlength="100"/>
 							<s:fielderror fieldName="address_2" style="color:red;"/>
 						</td>
 					</tr>
@@ -211,7 +212,7 @@
 							<label>アカウント権限</label>
 						</td>
 						<td>
-							 <select name="authority" value="authority">
+							 <select name="authority">
 								<option value="0" selected>一般</option>
     							<option value="1">管理者</option>
 							</select>

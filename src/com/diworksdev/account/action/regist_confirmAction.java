@@ -36,6 +36,7 @@ public class regist_confirmAction extends ActionSupport implements SessionAware{
 	
 	@Override
     public String execute() {
+		 // 「前に戻る」ボタンが押された場合
 		if (back != null) {
             session.put("familyName", familyName);
             session.put("lastName", lastName);
@@ -52,7 +53,23 @@ public class regist_confirmAction extends ActionSupport implements SessionAware{
 
             return "back";
         }
-		
+		// 初回アクセス時はフォームを空欄にする
+
+		if (!session.containsKey("familyName")) {
+	        familyName = null;
+	        lastName = null;
+	        familyNameKana = null;
+	        lastNameKana = null;
+	        mail = null;
+	        password = null;
+	        gender = null;
+	        postalCode = null;
+	        prefecture = null;
+	        address_1 = null;
+	        address_2 = null;
+	        authority = null;
+	    }
+	
 		if (familyName == null || familyName.trim().isEmpty()) {
             addFieldError("familyName", "名前（姓）が未入力です。");
         } else if (!familyName.matches("[\\p{IsHan}\\p{IsHiragana}]+")) {
@@ -119,7 +136,7 @@ public class regist_confirmAction extends ActionSupport implements SessionAware{
             return ERROR;
         }
 
-
+     // 正常処理
         session.put("familyName", familyName);
         session.put("lastName", lastName);
         session.put("familyNameKana", familyNameKana);
