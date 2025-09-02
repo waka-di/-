@@ -14,6 +14,19 @@
 	
 	<title>アカウント登録完了画面</title>
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
+	<style type="text/css">
+		#regist{
+	    	margin-top:82px
+	    }
+		.regist-container {
+   			padding-top:100px;
+			height: 600px;
+			text-align: center;
+		}
+		.center-form{
+		margin:0 50% 0 50%;
+		}
+	</style>
 </head>
 
 <body>
@@ -37,13 +50,16 @@
 	    </div>
     </header>
     <main>
-    	<div id="complete">
+    	<div id="regist">
 			<p>アカウント登録完了画面</p>
 		</div>
-		<div class="regist_container">
+		<div class="regist-container">
 			<h3>登録完了しました</h3>
-			<div>
-				<s:submit value="TOPページへ戻る" action="HomeAction"/>
+			<s:actionerror cssStyle="color:red;" />
+			<div class="center-form">
+				<s:form action="HomeAction">
+    				<s:submit value="TOPページへ戻る"/>
+				</s:form>
 			</div>
 		</div>
 	</main>

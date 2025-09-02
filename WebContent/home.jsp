@@ -34,7 +34,7 @@
       </ul>
     </div>
     </header>
-        <main>
+        <main class="home_main">
             <div class="container">
           <div class="main-container">
           <h1>プログラミングに役立つ書籍</h1>

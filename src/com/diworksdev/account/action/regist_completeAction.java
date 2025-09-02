@@ -23,20 +23,28 @@ public class regist_completeAction extends ActionSupport implements SessionAware
 	
 	public String execute() throws SQLException {
 		regist_completeDAO regist_completeDAO = new regist_completeDAO();
-		
-		regist_completeDAO.createUser(
-				session.get("familyName").toString(),
-			    session.get("lastName").toString(),
-			    session.get("mail").toString(),
-			    session.get("password").toString(),
-			    (int) session.get("gender"),          
-			    (int) session.get("postalCode"),
-			    session.get("prefecture").toString(),
-			    session.get("address_1").toString(),
-			    session.get("address_2").toString(),
-			    (int) session.get("authority"));
-		String result = SUCCESS;
-		return result;
+		String result = ERROR;
+
+	    try {
+	        regist_completeDAO.createUser(
+	            session.get("familyName").toString(),
+	            session.get("lastName").toString(),
+	            session.get("mail").toString(),
+	            session.get("password").toString(),
+	            (int) session.get("gender"),
+	            (int) session.get("postalCode"),
+	            session.get("prefecture").toString(),
+	            session.get("address_1").toString(),
+	            session.get("address_2").toString(),
+	            (int) session.get("authority")
+	        );
+	        result = SUCCESS;
+	    }
+	    catch (Exception e) {
+	        addActionError("エラーが発生したためアカウント登録できません。");
+	    }
+
+	    return result;
 	}
 	
 	public String getFamilyName() {

@@ -19,15 +19,40 @@ public class regist_confirmAction extends ActionSupport implements SessionAware{
 	private String address_2;
 	private String authority;
 	
+	private String back;
+	
 	public Map<String,Object> session;
 	
 	@Override
     public void setSession(Map<String, Object> session) {
         this.session = session;
     }
+	public String getBack() { 
+		return back; 
+	}
+    public void setBack(String back) { 
+    	this.back = back; 
+    }
 	
 	@Override
     public String execute() {
+		if (back != null) {
+            session.put("familyName", familyName);
+            session.put("lastName", lastName);
+            session.put("familyNameKana", familyNameKana);
+            session.put("lastNameKana", lastNameKana);
+            session.put("mail", mail);
+            session.put("password", password);
+            session.put("gender", gender);
+            session.put("postalCode", postalCode);
+            session.put("prefecture", prefecture);
+            session.put("address_1", address_1);
+            session.put("address_2", address_2);
+            session.put("authority", authority);
+
+            return "back";
+        }
+		
 		if (familyName == null || familyName.trim().isEmpty()) {
             addFieldError("familyName", "名前（姓）が未入力です。");
         } else if (!familyName.matches("[\\p{IsHan}\\p{IsHiragana}]+")) {
@@ -64,10 +89,6 @@ public class regist_confirmAction extends ActionSupport implements SessionAware{
             addFieldError("password", "パスワードは半角英数字のみ入力可能です。");
         }
 
-        if (gender == null || gender.trim().isEmpty()) {
-            addFieldError("gender", "性別が未選択です。");
-        }
-
         if (postalCode == null || postalCode.trim().isEmpty()) {
             addFieldError("postalCode", "郵便番号が未入力です。");
         } else if (!postalCode.matches("\\d+")) {
@@ -81,7 +102,7 @@ public class regist_confirmAction extends ActionSupport implements SessionAware{
         if (address_1 == null || address_1.trim().isEmpty()) {
             addFieldError("address_1", "住所（市区町村）が未入力です。");
         } else if (!address_1.matches("[\\p{IsHan}\\p{IsHiragana}\\p{IsKatakana}\\d\\-\\s]+")) {
-            addFieldError("address_1", "住所（市区町村）は許可文字のみ入力可能です。");
+            addFieldError("address_1", "住所（市区町村）はひらがな、漢字、数字、カタカナ、記号（ハイフンとスペース）のみ入力可能です。");
         }
 
         if (address_2 == null || address_2.trim().isEmpty()) {
@@ -150,6 +171,14 @@ public class regist_confirmAction extends ActionSupport implements SessionAware{
 	}
 	 public void setPassword(String password) { 
 		 this.password = password; 
+	}
+	 public String getPasswordMasked() {
+		    if (password == null) return "";
+		    StringBuilder sb = new StringBuilder();
+		    for(int i=0; i<password.length(); i++){
+		        sb.append("●");
+		    }
+		    return sb.toString();
 	}
     public String getGender() { 
     	return gender; 

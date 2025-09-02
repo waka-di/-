@@ -23,18 +23,19 @@ header{
     font-size: 24px
 }
 
-main{
+.home_main{
     clear: both;
     padding-top: 20px;
 }
 
 .main-container{
     float: left;
-    width: 70%;
+    width: 71%;
     margin-top: 23px;
     padding-bottom: 20px;
     padding-top: 20px;
 }
+
 h1{
     margin-top: 0;
     border-bottom: 3px solid gray;
@@ -73,12 +74,13 @@ h2{
 }
 .aside-container{
     float: left;
-    width: 27%;
-    padding: 18px 24px 1212px 11px;
+	width: 25%;
+	margin-top: 23px;
+	padding: 50px 24px 1342px 11px;
 }
 .aside-title{
     font-family: "ヒラギノ角ゴシック";
-    font-size: 20px;
+    font-size: 30px;
     border-bottom: 3px solid gainsboro;
     font-weight: bold;
 }

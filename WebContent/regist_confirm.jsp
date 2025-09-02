@@ -14,6 +14,25 @@
 	
 	<title>アカウント登録確認画面</title>
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
+	<style type="text/css">
+		#regist{
+	    	margin-top:82px
+	    }
+		.regist-container {
+   			align-items: center;  
+			height: 1000px;
+			text-align: center;
+		}
+
+		.regist-container table{
+			margin: 0 auto;
+			text-align:left;
+		}
+		.inline-form {
+   			 display: inline-block; 
+   			 margin: 0 10px;       
+		}
+	</style>
 </head>
 
 <body>
@@ -37,11 +56,10 @@
 	    </div>
     </header>
     <main>
-    	<div class="regist_container">
 			<div id="regist">
 				<p>アカウント登録画面</p>
 			</div>
-			
+			<div class="regist-container">
 			<table>
 				<s:form action="regist_CompleteAction">
 					<tr>
@@ -84,12 +102,12 @@
 							<s:property value="mail" escape="false"/>
 						</td>
 					</tr>
-					<tr id="box">
+					<tr>
 						<td>
 							<label>パスワード</label>
 						</td>
 						<td>
-							<s:password name="password"/>
+							<s:property value="passwordMasked"/>
 						</td>
 					</tr>
 					<tr>
@@ -142,10 +160,10 @@
 						</td>
 					</tr>
 				</s:form>
-				<s:form action="registAction">
+				<s:form action="registAction" cssClass="inline-form">
     				<s:submit value="前に戻る"/>
 				</s:form>
-				<s:form action="regist_CompleteAction">
+				<s:form action="regist_CompleteAction" cssClass="inline-form">
     				<s:submit value="登録する"/>
 				</s:form>
 			</table>

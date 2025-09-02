@@ -14,6 +14,22 @@
 	
 	<title>アカウント登録画面</title>
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
+	<style type="text/css">
+	    #regist{
+	    	margin-top:82px
+	    }
+		.regist-container {
+   			align-items: center;  
+			height: 1000px;
+			text-align: center;
+		}
+
+		.regist-container table{
+			margin: 0 auto;
+			text-align:left;
+		}
+
+	</style>
 </head>
 
 <body>
@@ -40,16 +56,16 @@
     	<div id="regist">
 			<p>アカウント登録画面</p>
 		</div>
-		<div class="regist_container">
-			<s:fielderror/>			
+		<div class="regist-container">		
 			<table>
-				<s:form action= "regist_ConfirmAction">
+				<s:form action= "regist_confirmAction">
 					<tr>
 						<td>
 							<label>名前（姓）</label>
 						</td>
 						<td>
-							<input type="text" name="familyName" value="" maxlength="10"/>
+							<input type="text" name="familyName" value="familyName" maxlength="10"/>
+							<s:fielderror fieldName="familyName" style="color:red;"/>
 						</td>
 					</tr>
 					<tr>
@@ -57,7 +73,8 @@
 							<label>名前（名）</label>
 						</td>
 						<td>
-							<input type="text" name="lastName" value ="" maxlength="10"/>
+							<input type="text" name="lastName" value ="lastName" maxlength="10"/>
+							<s:fielderror fieldName="lastName" style="color:red;"/>
 						</td>
 					</tr>
 					<tr>
@@ -65,7 +82,8 @@
 							<label>カナ（姓）</label>
 						</td>
 						<td>
-							<input type="text" name="familyNameKana" value="" maxlength="10"/>
+							<input type="text" name="familyNameKana" value="familyNameKana" maxlength="10"/>
+							<s:fielderror fieldName="familyNameKana" style="color:red;"/>
 						</td>
 					</tr>
 					<tr>
@@ -73,7 +91,8 @@
 							<label>名カナ（名）</label>
 						</td>
 						<td>
-							<input type="text" name="lastNameKana" value="" maxlength="10"/>
+							<input type="text" name="lastNameKana" value="lastNameKana" maxlength="10"/>
+							<s:fielderror fieldName="lastNameKana" style="color:red;"/>
 						</td>
 					</tr>
 					<tr>
@@ -81,7 +100,8 @@
 							<label>メールアドレス</label>
 						</td>
 						<td>
-							<input type="text" name="mail" value ="" maxlength="100"/>
+							<input type="text" name="mail" value="mail" maxlength="100"/>
+							<s:fielderror fieldName="mail" style="color:red;"/>
 						</td>
 					</tr>
 					<tr>
@@ -89,7 +109,8 @@
 							<label>パスワード</label>
 						</td>
 						<td>
-							<input type="text" name="password" value="" maxlength="10"/>
+							<input type="text" name="password" value="password" maxlength="10"/>
+							<s:fielderror fieldName="password" style="color:red;"/>
 						</td>
 					</tr>
 					<tr>
@@ -97,7 +118,7 @@
 							<label>性別</label>
 						</td>
 						<td>
-							<s:radio name="gender" list="#{'0':'男','1':'女'}"/>
+							 <s:radio name="gender" list="#{'0':'男','1':'女'}" value="gender"/>
 						</td>
 					</tr>
 					<tr>
@@ -105,7 +126,8 @@
 							<label>郵便番号</label>
 						</td>
 						<td>
-							<input type="text" name="postalCode" value="" maxlength="7"/>
+							<input type="text" name="postalCode" value="postalCode" maxlength="7"/>
+							<s:fielderror fieldName="postalCode" style="color:red;"/>
 						</td>
 					</tr>
 					<tr>
@@ -113,7 +135,7 @@
 							<label>住所（都道府県）</label>
 						</td>
 						<td>
-							<select name="prefecture">
+							<select name="prefecture" value="prefecture">
 								<option value=""></option>
 								<option value="北海道">北海道</option>
 								<option value="青森県">青森県</option>
@@ -163,6 +185,7 @@
 								<option value="鹿児島県">鹿児島県</option>
 								<option value="沖縄県">沖縄県</option>
 							</select>
+							<s:fielderror fieldName="prefecture" style="color:red;"/>
 						</td>
 					</tr>
 					<tr>
@@ -170,7 +193,8 @@
 							<label>住所（市区町村）</label>
 						</td>
 						<td>
-							<input type="text" name="address_1" value ="" maxlength="10"/>
+							<input type="text" name="address_1" value ="address_1" maxlength="10"/>
+							<s:fielderror fieldName="address_1" style="color:red;"/>
 						</td>
 					</tr>
 					<tr>
@@ -178,7 +202,8 @@
 							<label>住所（番地）</label>
 						</td>
 						<td>
-							<input type="text" name="address_2" value="" maxlength="100"/>
+							<input type="text" name="address_2" value="address_2" maxlength="100"/>
+							<s:fielderror fieldName="address_2" style="color:red;"/>
 						</td>
 					</tr>
 					<tr>
@@ -186,13 +211,17 @@
 							<label>アカウント権限</label>
 						</td>
 						<td>
-							 <select name="authority">
+							 <select name="authority" value="authority">
 								<option value="0" selected>一般</option>
     							<option value="1">管理者</option>
 							</select>
 						</td>
 					</tr>
-					<s:submit value ="確認する"/>
+					<tr>
+                    <td colspan="2">
+                        <s:submit value="確認する" style="margin-right:100px;"/>
+                    </td>
+            	    </tr>
 				</s:form>
 			</table>
 		</div>
