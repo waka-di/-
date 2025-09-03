@@ -10,30 +10,39 @@ public class regist_completeDAO {
 	private DBConnector dbConnector = new DBConnector();
 	private Connection connection = dbConnector.getConnection();
 	private DateUtil dateUtil = new DateUtil();
-    private String sql = "INSERT INTO account_data(family_name, last_name, mail, password, gender, postal_code, prefecture, address_1, address_2, authority, delete_flag, registered_time, update_time) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	
+    private String sql = "INSERT INTO account_data(family_name, last_name, family_name_kana, last_name_kana, mail, password, gender, postal_code, prefecture, address_1, address_2, authority, delete_flag, registered_time, update_time) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-    public void createUser(String familyName,String lastName,String mail,String password,int gender,int postalCode,String prefecture,String address_1,String address_2,int authority) throws SQLException {
-        try {
+    public int createUser(String familyName,String lastName,String familyNameKana, String lastNameKana, String mail,String password,int gender,int postalCode,String prefecture,String address_1,String address_2,int authority) throws SQLException {
+    	int result = 0;
+    	try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, familyName);
             preparedStatement.setString(2, lastName);
-            preparedStatement.setString(3, mail);
-            preparedStatement.setString(4, password);
-            preparedStatement.setInt(5, gender);
-            preparedStatement.setInt(6, postalCode);
-            preparedStatement.setString(7, prefecture);
-            preparedStatement.setString(8, address_1);
-            preparedStatement.setString(9, address_2);
-            preparedStatement.setInt(10, authority);
-            preparedStatement.setInt(11, 0); // delete_flag 初期値0
-            preparedStatement.setString(12, dateUtil.getDate()); // 登録日時
-            preparedStatement.setString(13, dateUtil.getDate()); // 更新日時
-            preparedStatement.executeUpdate();
-        } catch (Exception e) {
+            preparedStatement.setString(3, familyNameKana); 
+            preparedStatement.setString(4, lastNameKana);   
+            preparedStatement.setString(5, mail);
+            preparedStatement.setString(6, password);
+            preparedStatement.setInt(7, gender);
+            preparedStatement.setInt(8, postalCode);
+            preparedStatement.setString(9, prefecture);
+            preparedStatement.setString(10, address_1);
+            preparedStatement.setString(11, address_2);
+            preparedStatement.setInt(12, authority);
+            preparedStatement.setInt(13, 0); // delete_flag
+            preparedStatement.setString(14, dateUtil.getDate()); // registered_time
+            preparedStatement.setString(15, dateUtil.getDate()); // update_time
+
+            
+            result = preparedStatement.executeUpdate();
+        } 
+    	catch (Exception e) {
             e.printStackTrace();
         } 
         finally {
             connection.close();
         }
+    	return result;
     }
-}
+    }
+    

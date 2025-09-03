@@ -21,6 +21,7 @@
 			<result name="success">regist_confirm.jsp</result>
 			<result name="error">regist.jsp</result>
 			<result name="input">regist_confirm.jsp</result>
+			 <result name="back">regist.jsp</result> 
 		</action>
 		
 <!-- regist_completeAction -->

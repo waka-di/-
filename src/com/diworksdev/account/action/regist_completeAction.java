@@ -5,6 +5,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.diworksdev.account.dao.regist_completeDAO;
+import com.diworksdev.account.util.PasswordUtil;
 import com.opensymphony.xwork2.ActionSupport;
 public class regist_completeAction extends ActionSupport implements SessionAware{
 	private String familyName;
@@ -19,32 +20,29 @@ public class regist_completeAction extends ActionSupport implements SessionAware
 	private String address_1;
 	private String address_2;
 	private int authority;
+	
 	private Map<String,Object>session;
 	
-	public String execute() throws SQLException {
-		regist_completeDAO regist_completeDAO = new regist_completeDAO();
-		String result = ERROR;
+	 public String execute() {
+	    // パスワードをハッシュ化
+	    String hashedPassword = PasswordUtil.hash(password);
+		regist_completeDAO dao = new regist_completeDAO();
 
-	    try {
-	        regist_completeDAO.createUser(
-	            session.get("familyName").toString(),
-	            session.get("lastName").toString(),
-	            session.get("mail").toString(),
-	            session.get("password").toString(),
-	            (int) session.get("gender"),
-	            (int) session.get("postalCode"),
-	            session.get("prefecture").toString(),
-	            session.get("address_1").toString(),
-	            session.get("address_2").toString(),
-	            (int) session.get("authority")
-	        );
-	        result = SUCCESS;
-	    }
-	    catch (Exception e) {
-	        addActionError("エラーが発生したためアカウント登録できません。");
-	    }
+		try {
+		    int result = dao.createUser(familyName, lastName, familyNameKana,lastNameKana, mail, hashedPassword,gender, postalCode, prefecture, address_1, address_2, authority);
 
-	    return result;
+		    if (result > 0) {
+		        return SUCCESS; // 登録完了画面へ
+		    } 
+		    else {
+		        addActionError("エラーが発生したためアカウント登録できません。");
+		        return ERROR; // 確認画面へ
+		    }
+		} 
+		catch (SQLException e) {
+		    addActionError("エラーが発生したためアカウント登録できません。");
+		    return ERROR;
+		}
 	}
 	
 	public String getFamilyName() {
@@ -64,7 +62,7 @@ public class regist_completeAction extends ActionSupport implements SessionAware
 	public String getFamilyNameKana() {
 		return familyNameKana;
 	}
-	public void setfamilyNameKana(String familyNameKana) {
+	public void setFamilyNameKana(String familyNameKana) {
 		this.familyNameKana = familyNameKana;
 	}
 	

@@ -36,40 +36,39 @@ public class regist_confirmAction extends ActionSupport implements SessionAware{
 	
 	@Override
     public String execute() {
-		 // 「前に戻る」ボタンが押された場合
-		if (back != null) {
-            session.put("familyName", familyName);
-            session.put("lastName", lastName);
-            session.put("familyNameKana", familyNameKana);
-            session.put("lastNameKana", lastNameKana);
-            session.put("mail", mail);
-            session.put("password", password);
-            session.put("gender", gender);
-            session.put("postalCode", postalCode);
-            session.put("prefecture", prefecture);
-            session.put("address_1", address_1);
-            session.put("address_2", address_2);
-            session.put("authority", authority);
+		
+		// セッションに値があればフォームにセット
+        if (session.get("familyName") != null) familyName = (String) session.get("familyName");
+        if (session.get("lastName") != null) lastName = (String) session.get("lastName");
+        if (session.get("familyNameKana") != null) familyNameKana = (String) session.get("familyNameKana");
+        if (session.get("lastNameKana") != null) lastNameKana = (String) session.get("lastNameKana");
+        if (session.get("mail") != null) mail = (String) session.get("mail");
+        if (session.get("password") != null) password = (String) session.get("password");
+        if (session.get("gender") != null) gender = String.valueOf(session.get("gender"));
+        if (session.get("postalCode") != null) postalCode = String.valueOf(session.get("postalCode"));
+        if (session.get("prefecture") != null) prefecture = (String) session.get("prefecture");
+        if (session.get("address_1") != null) address_1 = (String) session.get("address_1");
+        if (session.get("address_2") != null) address_2 = (String) session.get("address_2");
+        if (session.get("authority") != null) authority = String.valueOf(session.get("authority"));
 
-            return "back";
-        }
-		// 初回アクセス時はフォームを空欄にする
+		// 「前に戻る」ボタンが押された場合
+		if (back != null) { 
+			session.put("familyName", familyName); 
+			session.put("lastName", lastName); 
+			session.put("familyNameKana", familyNameKana); 
+			session.put("lastNameKana", lastNameKana); 
+			session.put("mail", mail); 
+			session.put("password", password); 
+			session.put("gender", gender); 
+			session.put("postalCode", postalCode); 
+			session.put("prefecture", prefecture); 
+			session.put("address_1", address_1); 
+			session.put("address_2", address_2); 
+			session.put("authority", authority);
+			return "back"; 
+			}
+		
 
-		if (!session.containsKey("familyName")) {
-	        familyName = null;
-	        lastName = null;
-	        familyNameKana = null;
-	        lastNameKana = null;
-	        mail = null;
-	        password = null;
-	        gender = null;
-	        postalCode = null;
-	        prefecture = null;
-	        address_1 = null;
-	        address_2 = null;
-	        authority = null;
-	    }
-	
 		if (familyName == null || familyName.trim().isEmpty()) {
             addFieldError("familyName", "名前（姓）が未入力です。");
         } else if (!familyName.matches("[\\p{IsHan}\\p{IsHiragana}]+")) {
@@ -131,12 +130,11 @@ public class regist_confirmAction extends ActionSupport implements SessionAware{
         if (authority == null || authority.trim().isEmpty()) {
             addFieldError("authority", "権限が未選択です。");
         }
-
         if (hasFieldErrors()) {
-            return ERROR;
+        	return ERROR;
         }
-
-     // 正常処理
+	
+        // 正常処理
         session.put("familyName", familyName);
         session.put("lastName", lastName);
         session.put("familyNameKana", familyNameKana);
@@ -149,9 +147,8 @@ public class regist_confirmAction extends ActionSupport implements SessionAware{
         session.put("address_1", address_1);
         session.put("address_2", address_2);
         session.put("authority", Integer.parseInt(authority));
-
-        return SUCCESS;
-    }
+        return SUCCESS; 
+        }
 	
 	 public String getFamilyName() { 
 		 return familyName; 
