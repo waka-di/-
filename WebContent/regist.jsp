@@ -216,7 +216,7 @@
                         </td> 
                     </tr> 
                     <tr> 
-                        <td colspan="2"> 
+                        <td colspan="2"style="text-align:center;"> 
                             <s:submit value="確認する" style="margin-right:100px;"/> 
                         </td> 
                     </tr> 
