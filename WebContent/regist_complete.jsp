@@ -57,7 +57,7 @@
 			<h3>登録完了しました</h3>
 			<s:actionerror cssStyle="color:red;" />
 			<div class="center-form">
-				<s:form action="HomeAction">
+				<s:form action="Home">
     				<s:submit value="TOPページへ戻る"/>
 				</s:form>
 			</div>

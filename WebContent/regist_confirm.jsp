@@ -163,7 +163,7 @@
 					</tr>
 				</s:form>
 			</table>
-				<s:form action="registAction" cssClass="inline-form">
+				<s:form action="regist" cssClass="inline-form">
     					<s:submit value="前に戻る"/>
 					</s:form>	
 				  <s:form action="regist_CompleteAction" cssClass="inline-form">

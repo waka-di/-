@@ -55,7 +55,7 @@
     </div> 
     <div class="regist-container">
         <table> 
-            <s:form action= "regist_confirmAction" theme="simple"> 
+            <s:form action= "regist_confirm" theme="simple"> 
                 <tr> 
                     <td> 
                         <label>名前（姓）</label> 
