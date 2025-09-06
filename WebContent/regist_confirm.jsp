@@ -157,7 +157,8 @@
 							<label>アカウント権限</label>
 						</td>
 						<td>
-							<s:property value="authority"/>
+							<s:if test="authority == 0">一般</s:if>
+       						 <s:elseif test="authority == 1">管理者</s:elseif>
 						</td>
 					</tr>
 				</s:form>
