@@ -11,7 +11,7 @@ public class regist_completeDAO {
 	private Connection connection = dbConnector.getConnection();
 	private DateUtil dateUtil = new DateUtil();
 	
-    private String sql = "INSERT INTO account_data(family_name, last_name, family_name_kana, last_name_kana, mail, password, gender, postal_code, prefecture, address_1, address_2, authority, delete_flag, registered_time, update_time) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private String sql = "INSERT INTO account_data(family_name, last_name, family_name_kana, last_name_kana, mail, password, gender, postal_code, prefecture, address_1, address_2, authority, delete_flag, registered_time, update_time) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
     public int createUser(String familyName,String lastName,String familyNameKana, String lastNameKana, String mail,String password,int gender,int postalCode,String prefecture,String address_1,String address_2,int authority) throws SQLException {
     	int result = 0;
