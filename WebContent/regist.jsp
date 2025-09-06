@@ -88,7 +88,7 @@
 					</tr>
 					<tr>
 						<td>
-							<label>名カナ（名）</label>
+							<label>カナ（名）</label>
 						</td>
 						<td>
 							<s:textfield name="lastNameKana" value="%{#session.lastNameKana}" maxlength="10"/>

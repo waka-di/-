@@ -89,7 +89,7 @@
 					</tr>
 					<tr>
 						<td>
-							<label>名カナ（名）</label>
+							<label>カナ（名）</label>
 						</td>
 						<td>
 							<s:property value="lastNameKana"/>
