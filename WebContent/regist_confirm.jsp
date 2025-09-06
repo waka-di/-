@@ -57,7 +57,7 @@
     </header>
     <main>
 			<div id="regist">
-				<p>アカウント登録画面</p>
+				<p>アカウント登録確認画面</p>
 			</div>
 			<div class="regist-container">
 			<table>
