@@ -15,11 +15,11 @@
 	<title>アカウント登録画面</title>
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
 	<style type="text/css">
-	    #regist{
-	    	margin-top:82px
-	    }
+		#regist{
+			margin-top:82px
+		}
 		.regist-container {
-   			align-items: center;  
+			align-items: center;  
 			height: 1000px;
 			text-align: center;
 		}
@@ -34,26 +34,25 @@
 
 <body>
 	<header>
-	    <div class="header-up">
-	      <div class="logo">
-	        <img src="./data/diblog_logo.jpg">
-	      </div>
-	    </div>
-	    <div class="top-bar">
-	      <ul>
-	        <li>トップ</li>
-	        <li>プロフィール</li>
-	        <li>D.I.Blogについて</li>
-	        <li>登録フォーム</li>
-	        <li>問い合わせ</li>
-	        <li>その他</li>
-	        <li>アカウント登録</li>
-	        
-	      </ul>
-	    </div>
+		<div class="header-up">
+			<div class="logo">
+				<img src="./data/diblog_logo.jpg">
+			</div>
+		</div>
+		<div class="top-bar">
+			<ul>
+				<li>トップ</li>
+				<li>プロフィール</li>
+				<li>D.I.Blogについて</li>
+				<li>登録フォーム</li>
+				<li>問い合わせ</li>
+				<li>その他</li>
+				<li>アカウント登録</li>
+			</ul>
+		</div>
     </header>
     <main>
-    	<div id="regist">
+		<div id="regist">
 			<p>アカウント登録画面</p>
 		</div>
 		<div class="regist-container">		
@@ -118,7 +117,7 @@
 							<label>性別</label>
 						</td>
 						<td>
-							 <s:radio name="gender" list="#{'0':'男','1':'女'}" value="%{#session.gender != null ? #session.gender : '0'}"/>
+							<s:radio name="gender" list="#{'0':'男','1':'女'}" value="%{#session.gender != null ? #session.gender : '0'}"/>
 						</td>
 					</tr>
 					<tr>
@@ -136,7 +135,7 @@
 						</td>
 						<td>
 							<s:select name="prefecture" list="#{
-							    '':'',
+								'':'',
 								'北海道':'北海道',
 								'青森県':'青森県',
 								'岩手県':'岩手県',
@@ -211,9 +210,9 @@
 							<label>アカウント権限</label>
 						</td>
 						<td>
-							 <select name="authority">
+							<select name="authority">
 								<option value="0" selected>一般</option>
-    							<option value="1">管理者</option>
+								<option value="1">管理者</option>
 							</select>
 						</td>
 					</tr>
@@ -221,13 +220,13 @@
                     <td colspan="2">
                         <s:submit value="確認する" style="margin-right:100px;"/>
                     </td>
-            	    </tr>
+					</tr>
 				</s:form>
 			</table>
 		</div>
 	</main>
     <footer>
-      Copyright D.I.works|D.I.blog is the one which provides A to Z about programming
+		Copyright D.I.works|D.I.blog is the one which provides A to Z about programming
     </footer>
 </body>
 </html>

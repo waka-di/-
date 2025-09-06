@@ -131,7 +131,7 @@ public class regist_confirmAction extends ActionSupport implements SessionAware{
             addFieldError("authority", "権限が未選択です。");
         }
         if (hasFieldErrors()) {
-        	return ERROR;
+        	return INPUT;
         }
 	
         // 正常処理
