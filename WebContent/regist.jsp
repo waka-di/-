@@ -56,85 +56,32 @@
 			<p>アカウント登録画面</p>
 		</div>
 		<div class="regist-container">		
-			<table>
+
 				<s:form action= "regist_confirmAction">
-					<tr>
-						<td>
-							<label>名前（姓）</label>
-						</td>
-						<td>
-							<s:textfield name="familyName" value="%{#session.familyName}" maxlength="10"/>
-							<s:fielderror fieldName="familyName" style="color:red;"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>名前（名）</label>
-						</td>
-						<td>
-							<s:textfield name="lastName" value="%{#session.lastName}" maxlength="10"/>
-							<s:fielderror fieldName="lastName" style="color:red;"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>カナ（姓）</label>
-						</td>
-						<td>
-							<s:textfield name="familyNameKana" value="%{#session.familyNameKana}" maxlength="10"/>
-							<s:fielderror fieldName="familyNameKana" style="color:red;"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>カナ（名）</label>
-						</td>
-						<td>
-							<s:textfield name="lastNameKana" value="%{#session.lastNameKana}" maxlength="10"/>
-							<s:fielderror fieldName="lastNameKana" style="color:red;"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>メールアドレス</label>
-						</td>
-						<td>
-							<s:textfield name="mail" value="%{#session.mail}" maxlength="100"/>
-							<s:fielderror fieldName="mail" style="color:red;"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>パスワード</label>
-						</td>
-						<td>
-							<s:textfield name="password" value="%{#session.password}" maxlength="10"/>
-							<s:fielderror fieldName="password" style="color:red;"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>性別</label>
-						</td>
-						<td>
-							<s:radio name="gender" list="#{'0':'男','1':'女'}" value="%{#session.gender != null ? #session.gender : '0'}"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>郵便番号</label>
-						</td>
-						<td>
-							<s:textfield name="postalCode" value="%{#session.postalCode}" maxlength="7"/>
-							<s:fielderror fieldName="postalCode" style="color:red;"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>住所（都道府県）</label>
-						</td>
-						<td>
-							<s:select name="prefecture" list="#{
+					<s:textfield label="名前（姓）" name="familyName" value="%{#session.familyName}" maxlength="10"/>
+					<s:fielderror fieldName="familyName" style="color:red;"/>
+					
+					<s:textfield label="名前（名）" name="lastName" value="%{#session.lastName}" maxlength="10"/>
+					<s:fielderror fieldName="lastName" style="color:red;"/>
+
+					<s:textfield label="カナ（姓）" name="familyNameKana" value="%{#session.familyNameKana}" maxlength="10"/>
+					<s:fielderror fieldName="familyNameKana" style="color:red;"/>
+
+					<s:textfield label="カナ（名）" name="lastNameKana" value="%{#session.lastNameKana}" maxlength="10"/>
+					<s:fielderror fieldName="lastNameKana" style="color:red;"/>
+
+					<s:textfield label="メールアドレス" name="mail" value="%{#session.mail}" maxlength="100"/>
+					<s:fielderror fieldName="mail" style="color:red;"/>
+
+					<s:textfield label="パスワード" name="password" value="%{#session.password}" maxlength="10"/>
+					<s:fielderror fieldName="password" style="color:red;"/>
+
+					<s:radio label="性別" name="gender" list="#{'0':'男','1':'女'}" value="%{#session.gender != null ? #session.gender : '0'}"/>
+							
+					<s:textfield label="郵便番号" name="postalCode" value="%{#session.postalCode}" maxlength="7"/>
+					<s:fielderror fieldName="postalCode" style="color:red;"/>
+
+					<s:select label="住所（都道府県）" name="prefecture" list="#{
 								'':'',
 								'北海道':'北海道',
 								'青森県':'青森県',
@@ -183,34 +130,21 @@
 								'宮崎県':'宮崎県',
 								'鹿児島県':'鹿児島県',
 								'沖縄県':'沖縄県'
-							}" value="%{#session.prefecture}"/>
-							<s:fielderror fieldName="prefecture" style="color:red;"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>住所（市区町村）</label>
-						</td>
-						<td>
-							<s:textfield name="address_1" value="%{#session.address_1}" maxlength="10"/>
-							<s:fielderror fieldName="address_1" style="color:red;"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>住所（番地）</label>
-						</td>
-						<td>
-							<s:textfield name="address_2" value="%{#session.address_2}" maxlength="100"/>
-							<s:fielderror fieldName="address_2" style="color:red;"/>
-						</td>
-					</tr>
+							}" value="%{#session.prefecture}"/>					
+					<s:fielderror fieldName="prefecture" style="color:red;"/>
+				
+					<s:textfield label="住所（市区町村）" name="address_1" value="%{#session.address_1}" maxlength="10"/>
+					<s:fielderror fieldName="address_1" style="color:red;"/>
+						
+					<s:textfield label="住所（番地）" name=" address_2" value="%{#session.address_2}" maxlength="100"/>
+					<s:fielderror fieldName="address_2" style="color:red;"/>
+
 					<tr>
 						<td>
 							<label>アカウント権限</label>
 						</td>
 						<td>
-							<select name="authority">
+							<select label="name="authority">
 								<option value="0" selected>一般</option>
 								<option value="1">管理者</option>
 							</select>
@@ -222,7 +156,6 @@
                     </td>
 					</tr>
 				</s:form>
-			</table>
 		</div>
 	</main>
     <footer>
