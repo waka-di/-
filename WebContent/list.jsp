@@ -55,10 +55,60 @@
 			<p>アカウント一覧画面</p>
 		</div>
 		<div class="list-container">
-			
+ <table>
+        <tr>
+            <th>ID</th>
+            <th>名前（姓）</th>
+            <th>名前（名）</th>
+            <th>カナ（姓）</th>
+            <th>カナ（名）</th>
+            <th>メールアドレス</th>
+            <th>性別</th>
+            <th>アカウント権限</th>
+            <th>削除フラグ</th>
+            <th>登録日時</th>
+            <th>更新日時</th>
+            <th>操作</th>
+        </tr>
+
+        <s:iterator value="accountList" var="acc">
+            <tr>
+                <td><s:property value="#acc.id"/></td>
+                <td><s:property value="#acc.familyName"/></td>
+                <td><s:property value="#acc.lastName"/></td>
+                <td><s:property value="#acc.familyNameKana"/></td>
+                <td><s:property value="#acc.lastNameKana"/></td>
+                <td><s:property value="#acc.mail"/></td>
+                <td>
+                    <s:if test="#acc.gender == 0">男</s:if>
+                    <s:elseif test="#acc.gender == 1">女</s:elseif>
+                </td>
+                <td>
+                    <s:if test="#acc.authority == 0">一般</s:if>
+                    <s:elseif test="#acc.authority == 1">管理者</s:elseif>
+                </td>
+                <td>
+                    <s:if test="#acc.deleteFlg == 0">有効</s:if>
+                    <s:elseif test="#acc.deleteFlg == 1">無効</s:elseif>
+                </td>
+                <td><s:date name="#acc.insertDate" format="yyyy/MM/dd"/></td>
+                <td><s:date name="#acc.updateDate" format="yyyy/MM/dd"/></td>
+                <td>
+                    <s:form action="update" method="post" cssClass="action-btn" theme="simple">
+                        <s:hidden name="id" value="%{#acc.id}"/>
+                        <s:submit value="更新"/>
+                    </s:form>
+                    <s:form action="delete" method="post" cssClass="action-btn" theme="simple">
+                        <s:hidden name="id" value="%{#acc.id}"/>
+                        <s:submit value="削除"/>
+                    </s:form>
+                </td>
+            </tr>
+        </s:iterator>
+    </table>
 			
 				
-			</div>
+			
 		</div>
 	</main>
     <footer>

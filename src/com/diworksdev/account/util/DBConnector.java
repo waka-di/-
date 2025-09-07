@@ -8,7 +8,7 @@ public class DBConnector {
 	private static String url = "jdbc:mysql://localhost/account";
 	private static String user = "root";
 	private static String password = "disql";
-	public Connection getConnection() {
+	public static Connection getConnection() {
 		Connection con = null;
 		try {
 			Class.forName(driverName);
