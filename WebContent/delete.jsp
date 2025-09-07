@@ -12,19 +12,25 @@
 	<meta name="description" content=""/>
 	<meta name="keywords" content=""/>
 	
-	<title>アカウントdelete画面</title>
+	<title>アカウント削除画面</title>
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
 	<style type="text/css">
-		#regist{
+		#delete{
 	    	margin-top:82px
 	    }
-		.regist-container {
-   			padding-top:100px;
-			height: 600px;
+		.delete-container {
+   			align-items: center;  
+			height: 1000px;
 			text-align: center;
 		}
-		.center-form{
-		margin:0 50% 0 50%;
+
+		.delete-container table{
+			margin: 0 auto;
+			text-align:left;
+		}
+		.inline-form {
+   			 display: inline-block; 
+   			 margin: 0 10px;       
 		}
 	</style>
 </head>
@@ -45,25 +51,137 @@
 	        <li>問い合わせ</li>
 	        <li>その他</li>
 	        <li>アカウント登録</li>
-	        <li>アカウント一覧</li>
 	        
 	      </ul>
 	    </div>
     </header>
     <main>
-    	<div id="regist">
-			<p>アカウントdelete画面</p>
-		</div>
-		<div class="regist-container">
-			<h3>登録完了しました</h3>
-			<s:actionerror cssStyle="color:red;" />
-			<div class="center-form">
-				<s:form action="Home">
-    				<s:submit value="TOPページへ戻る"/>
-				</s:form>
+			<div id="delete">
+				<p>アカウント削除画面</p>
 			</div>
+			<div class="delete-container">
+			<table>
+				<s:form action="delete_confirm">
+					<tr>
+						<td>
+							<label>名前（姓）</label>
+						</td>
+						<td>
+							<s:property value="familyName"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>名前（名）</label>	
+						</td>
+						<td>
+							<s:property value="lastName"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>カナ（姓）</label>
+						</td>
+						<td>
+							<s:property value="familyNameKana"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>カナ（名）</label>
+						</td>
+						<td>
+							<s:property value="lastNameKana"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>メールアドレス</label>	
+						</td>
+						<td>
+							<s:property value="mail"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>パスワード</label>
+						</td>
+						<td>
+							<s:property value="passwordMasked"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>性別</label>
+						</td>
+						<td>
+							<s:if test="gender == 0">男</s:if>
+							<s:if test="gender == 1">女</s:if>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>郵便番号</label>	
+						</td>
+						<td>
+							<s:property value="postalCode"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>住所（都道府県）</label>
+						</td>
+						<td>
+							<s:property value="prefecture"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>住所（市区町村）</label>
+						</td>
+						<td>
+							<s:property value="address_1"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>住所（番地）</label>	
+						</td>
+						<td>
+							<s:property value="address_2"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>アカウント権限</label>
+						</td>
+						<td>
+							<s:if test="authority == 0">一般</s:if>
+       						 <s:elseif test="authority == 1">管理者</s:elseif>
+						</td>
+					</tr>
+				</s:form>
+			</table>
+
+				  <s:form action="delete_complete" cssClass="inline-form">
+			            <s:hidden name="familyName" value="%{familyName}"/>
+			            <s:hidden name="lastName" value="%{lastName}"/>
+			            <s:hidden name="familyNameKana" value="%{#session.familyNameKana}"/>
+			            <s:hidden name="lastNameKana" value="%{#session.lastNameKana}"/>
+			            <s:hidden name="mail" value="%{mail}"/>
+			            <s:hidden name="password" value="%{password}"/>
+			            <s:hidden name="gender" value="%{gender}"/>
+			            <s:hidden name="postalCode" value="%{postalCode}"/>
+			            <s:hidden name="prefecture" value="%{prefecture}"/>
+			            <s:hidden name="address_1" value="%{address_1}"/>
+			            <s:hidden name="address_2" value="%{address_2}"/>
+			            <s:hidden name="authority" value="%{authority}"/>
+			            <s:submit value="確認する"/>
+			        </s:form>			        
 		</div>
 	</main>
     <footer>
       Copyright D.I.works|D.I.blog is the one which provides A to Z about programming
     </footer>
+</body>
+</html>
