@@ -13,11 +13,11 @@ import com.diworksdev.account.util.DBConnector;
 	public class listDAO {
 	    public List<listDTO> getAccountList() {
 	        List<listDTO> accountList = new ArrayList<>();
-	        String sql = "SELECT * FROM account_data";
+	        String sql = "SELECT * FROM account_data ORDER BY id DESC"; // ID降順
 
 	        try (Connection con = DBConnector.getConnection();
-	             PreparedStatement ps = con.prepareStatement(sql);
-	             ResultSet rs = ps.executeQuery()) {
+	                PreparedStatement ps = con.prepareStatement(sql);
+	                ResultSet rs = ps.executeQuery()) {
 
 	            while (rs.next()) {
 	                listDTO dto = new listDTO();

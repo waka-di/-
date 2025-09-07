@@ -15,17 +15,32 @@
 	<title>アカウント一覧画面</title>
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
 	<style type="text/css">
-		#regist{
-	    	margin-top:82px
-	    }
-		.regist-container {
-   			padding-top:100px;
-			height: 600px;
-			text-align: center;
+		#list{
+			margin-top:90px;
 		}
-		.center-form{
-		margin:0 50% 0 50%;
+		#list p{
+			padding-left:230px;
+			font-size:25px;
 		}
+		.list-container{
+			margin-top:50px;		
+		}
+		
+		 table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            width: 80%;
+        }
+        th, td {
+            border: 1px solid #999;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        .action-btn {
+            margin: 10px;
+        }
+
 	</style>
 </head>
 
@@ -51,7 +66,7 @@
 	    </div>
     </header>
     <main>
-    	<div id=list">
+    	<div id=list>
 			<p>アカウント一覧画面</p>
 		</div>
 		<div class="list-container">
