@@ -40,7 +40,13 @@
         .action-btn {
             margin: 10px;
         }
-
+		 .action-button {
+	        display: flex;
+	        justify-content: space-between;
+	        width: 100px; 
+	        margin: 0 auto;
+   		 }
+		
 	</style>
 </head>
 
@@ -109,14 +115,16 @@
                 <td><s:date name="#acc.insertDate" format="yyyy/MM/dd"/></td>
                 <td><s:date name="#acc.updateDate" format="yyyy/MM/dd"/></td>
                 <td>
-                    <s:form action="update" method="post" cssClass="action-btn" theme="simple">
-                        <s:hidden name="id" value="%{#acc.id}"/>
-                        <s:submit value="更新"/>
-                    </s:form>
-                    <s:form action="delete" method="post" cssClass="action-btn" theme="simple">
-                        <s:hidden name="id" value="%{#acc.id}"/>
-                        <s:submit value="削除"/>
-                    </s:form>
+                    <div class="action-button">
+				        <s:form action="update" method="post" theme="simple">
+				            <s:hidden name="id" value="%{#acc.id}"/>
+				            <s:submit value="更新"/>
+				        </s:form>
+				        <s:form action="delete" method="post" theme="simple">
+				            <s:hidden name="id" value="%{#acc.id}"/>
+				            <s:submit value="削除"/>
+				        </s:form>
+				    </div>
                 </td>
             </tr>
         </s:iterator>
