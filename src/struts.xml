@@ -30,5 +30,10 @@
 			<result name="error">regist_confirm.jsp</result>
 		</action>
 		
+<!-- ListAction -->
+		<action name="list" class="com.diworksdev.account.action.ListAction" method="execute"> 
+			<result name="success">list.jsp</result> 
+		</action>	
+		
 	</package>
 </struts> 
