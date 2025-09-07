@@ -4,7 +4,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
-public class regist_confirmAction extends ActionSupport implements SessionAware{
+public class Regist_confirmAction extends ActionSupport implements SessionAware{
 	
 	private String familyName;
 	private String lastName;

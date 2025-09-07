@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.diworksdev.account.dto.listDTO;
+import com.diworksdev.account.dto.ListDTO;
 import com.diworksdev.account.util.DBConnector;
 	
-	public class listDAO {
-	    public List<listDTO> getAccountList() {
-	        List<listDTO> accountList = new ArrayList<>();
+	public class ListDAO {
+	    public List<ListDTO> getAccountList() {
+	        List<ListDTO> accountList = new ArrayList<>();
 	        String sql = "SELECT * FROM account_data ORDER BY id DESC"; // ID降順
 
 	        try (Connection con = DBConnector.getConnection();
@@ -20,7 +20,7 @@ import com.diworksdev.account.util.DBConnector;
 	                ResultSet rs = ps.executeQuery()) {
 
 	            while (rs.next()) {
-	                listDTO dto = new listDTO();
+	                ListDTO dto = new ListDTO();
 	                dto.setId(rs.getInt("id"));
 	                dto.setFamilyName(rs.getString("family_name"));
 	                dto.setLastName(rs.getString("last_name"));

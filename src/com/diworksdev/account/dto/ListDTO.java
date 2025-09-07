@@ -2,7 +2,7 @@ package com.diworksdev.account.dto;
 
 import java.util.Date;
 
-public class listDTO {
+public class ListDTO {
     private int id;
     private String familyName;
     private String lastName;

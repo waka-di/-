@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import com.diworksdev.account.util.DBConnector;
 import com.diworksdev.account.util.DateUtil;
 
-public class regist_completeDAO {
+public class Regist_completeDAO {
 
     private DateUtil dateUtil = new DateUtil();
 

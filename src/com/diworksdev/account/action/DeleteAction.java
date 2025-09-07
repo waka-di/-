@@ -1,5 +1,5 @@
 package com.diworksdev.account.action;
 
-public class updateAction {
+public class DeleteAction {
 
 }
