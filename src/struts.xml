@@ -35,5 +35,15 @@
 			<result name="success">list.jsp</result> 
 		</action>	
 		
+<!-- DeleteAction -->
+		<action name="delete" class="com.diworksdev.account.action.deleteAction" method="execute"> 
+			<result name="success">delete.jsp</result> 
+		</action>
+		
+<!-- UpdateAction -->
+		<action name="update" class="com.diworksdev.account.action.updateAction" method="execute"> 
+			<result name="success">update.jsp</result> 
+		</action>
+		
 	</package>
 </struts> 

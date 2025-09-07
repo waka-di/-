@@ -12,7 +12,7 @@
 	<meta name="description" content=""/>
 	<meta name="keywords" content=""/>
 	
-	<title>アカウント登録完了画面</title>
+	<title>アカウントupdate画面</title>
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
 	<style type="text/css">
 		#regist{
@@ -52,7 +52,7 @@
     </header>
     <main>
     	<div id="regist">
-			<p>アカウント登録完了画面</p>
+			<p>アカウントupdate画面</p>
 		</div>
 		<div class="regist-container">
 			<h3>登録完了しました</h3>
