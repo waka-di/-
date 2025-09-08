@@ -46,6 +46,7 @@
             <li>問い合わせ</li> 
             <li>その他</li> 
             <li>アカウント登録</li> 
+            <li>アカウント一覧</li> 
         </ul> 
     </div> 
 </header> 
@@ -55,7 +56,7 @@
     </div> 
     <div class="update-container">
         <table> 
-            <s:form action= "update_confirm" theme="simple"> 
+            <s:form action= "Update_confirmAction" theme="simple"> 
                 <tr> 
                     <td> 
                         <label>名前（姓）</label> 

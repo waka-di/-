@@ -58,10 +58,10 @@
 			<h3>本当に削除してよろしいですか？</h3>
 			<s:actionerror cssStyle="color:red;" />
 			<div class="center-form">
-				<s:form action="delete" cssClass="inline-form">
+				<s:form action="DeleteAction" cssClass="inline-form">
     					<s:submit value="前に戻る"/>
 				</s:form>	
-				<s:form action="delete_complete" cssClass="inline-form">
+				<s:form action="Delete_completeAction" cssClass="inline-form">
 					<s:hidden name="id" value="%{account.id}"/>
     				<s:submit value="削除する"/>
 				</s:form>	
@@ -72,3 +72,5 @@
     <footer>
       Copyright D.I.works|D.I.blog is the one which provides A to Z about programming
     </footer>
+   </body>
+   </html>

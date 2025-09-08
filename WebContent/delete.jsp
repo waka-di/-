@@ -61,7 +61,7 @@
 			</div>
 			<div class="delete-container">
 			<table>
-				<s:form action="delete_confirm">
+				<s:form action="Delete_confirmAction">
 					<tr>
 						<td>
 							<label>名前（姓）</label>
@@ -163,7 +163,7 @@
 				</s:form>
 			</table>
 
-				  <s:form action="delete_complete" cssClass="inline-form">
+				  <s:form action="Delete_completeAction" cssClass="inline-form">
 			            <s:hidden name="familyName" value="%{familyName}"/>
 			            <s:hidden name="lastName" value="%{lastName}"/>
 			            <s:hidden name="familyNameKana" value="%{#session.familyNameKana}"/>

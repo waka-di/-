@@ -15,7 +15,7 @@
 	<title>アカウント一覧画面</title>
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
 	<style type="text/css">
- HEAD
+
 		#list{
 			margin-top:90px;
 		}
@@ -60,7 +60,6 @@
 		.center-form{
 		margin:0 50% 0 50%;
 		}
- 5f1147880a05c18556ec13f6d6bdb25765b5cb7b
 	</style>
 </head>
 
@@ -86,7 +85,6 @@
 	    </div>
     </header>
     <main>
-HEAD
     	<div id=list>
 			<p>アカウント一覧画面</p>
 		</div>
@@ -131,11 +129,11 @@ HEAD
                 <td><s:date name="#acc.updateDate" format="yyyy/MM/dd"/></td>
                 <td>
                     <div class="action-button">
-				        <s:form action="update" method="post" theme="simple">
+				        <s:form action="UpdateAction" method="post" theme="simple">
 				            <s:hidden name="id" value="%{#acc.id}"/>
 				            <s:submit value="更新"/>
 				        </s:form>
-				        <s:form action="delete" method="post" theme="simple">
+				        <s:form action="DeleteAction" method="post" theme="simple">
 				            <s:hidden name="id" value="%{#acc.id}"/>
 				            <s:submit value="削除"/>
 				        </s:form>
@@ -144,21 +142,17 @@ HEAD
             </tr>
         </s:iterator>
     </table>
-			
-				
-			
 
-    	<div id=list">
+    	<div id="list">
 			<p>アカウント一覧画面</p>
 		</div>
 		<div class="list-container">
-			
-			
-				
+							
 			</div>
-5f1147880a05c18556ec13f6d6bdb25765b5cb7b
 		</div>
 	</main>
     <footer>
       Copyright D.I.works|D.I.blog is the one which provides A to Z about programming
     </footer>
+    </body>
+  </html>

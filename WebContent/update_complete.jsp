@@ -58,7 +58,7 @@
 			<h3>更新完了しました</h3>
 			<s:actionerror cssStyle="color:red;" />
 			<div class="center-form">
-				<s:form action="Home">
+				<s:form action="HomeAction">
     				<s:submit value="TOPページへ戻る"/>
 				</s:form>
 			</div>
@@ -67,3 +67,5 @@
     <footer>
       Copyright D.I.works|D.I.blog is the one which provides A to Z about programming
     </footer>
+   </body>
+   </html>

@@ -51,6 +51,7 @@
 	        <li>問い合わせ</li>
 	        <li>その他</li>
 	        <li>アカウント登録</li>
+	        <li>アカウント一覧</li>
 	        
 	      </ul>
 	    </div>
@@ -61,7 +62,7 @@
 			</div>
 			<div class="update-confirm-container">
 			<table>
-				<s:form action="update_complete">
+				<s:form action="Update_completeAction">
 				<s:actionerror cssStyle="color:red;"/>
 					<tr>
 						<td>
@@ -163,10 +164,10 @@
 					</tr>
 				</s:form>
 			</table>
-				<s:form action="update" cssClass="inline-form">
+				<s:form action="UpdateAction" cssClass="inline-form">
     					<s:submit value="前に戻る"/>
 					</s:form>	
-				  <s:form action="update_complete" cssClass="inline-form">
+				  <s:form action="Update_completeAction" cssClass="inline-form">
 			            <s:hidden name="familyName" value="%{familyName}"/>
 			            <s:hidden name="lastName" value="%{lastName}"/>
 			            <s:hidden name="familyNameKana" value="%{#session.familyNameKana}"/>
