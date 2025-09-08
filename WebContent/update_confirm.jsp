@@ -108,7 +108,7 @@
 							<label>パスワード</label>
 						</td>
 						<td>
-							<s:property value="passwordMasked"/>
+							<s:hidden name="id" value="%{id}"/>
 						</td>
 					</tr>
 					<tr>
@@ -166,7 +166,7 @@
 				<s:form action="update" cssClass="inline-form">
     					<s:submit value="前に戻る"/>
 					</s:form>	
-				  <s:form action="updatet_complete" cssClass="inline-form">
+				  <s:form action="update_complete" cssClass="inline-form">
 			            <s:hidden name="familyName" value="%{familyName}"/>
 			            <s:hidden name="lastName" value="%{lastName}"/>
 			            <s:hidden name="familyNameKana" value="%{#session.familyNameKana}"/>

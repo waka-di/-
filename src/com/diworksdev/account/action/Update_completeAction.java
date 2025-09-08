@@ -13,20 +13,20 @@ public class Update_completeAction extends ActionSupport implements SessionAware
     public String execute() {
         UpdateDAO dao = new UpdateDAO();
         try {
-            int result = dao.updateAccount(
-                (String)session.get("familyName"),
-                (String)session.get("lastName"),
-                (String)session.get("familyNameKana"),
-                (String)session.get("lastNameKana"),
-                (String)session.get("mail"),
-                (String)session.get("password"),
-                Integer.parseInt(session.get("gender").toString()),
-                session.get("postalCode").toString(),
-                (String)session.get("prefecture"),
-                (String)session.get("address_1"),
-                (String)session.get("address_2"),
-                Integer.parseInt(session.get("authority").toString()),
-                (Integer)session.get("id")   // 更新対象のID
+        	int result = dao.updateAccount(
+        		    (Integer) session.get("id"), // 最初にID
+        		    (String) session.get("familyName"),
+        		    (String) session.get("lastName"),
+        		    (String) session.get("familyNameKana"),
+        		    (String) session.get("lastNameKana"),
+        		    (String) session.get("mail"),
+        		    (String) session.get("password"),
+        		    Integer.parseInt(session.get("gender").toString()),
+        		    session.get("postalCode").toString(),
+        		    (String) session.get("prefecture"),
+        		    (String) session.get("address_1"),
+        		    (String) session.get("address_2"),
+        		    Integer.parseInt(session.get("authority").toString())
             );
             if (result > 0) {
                 return SUCCESS;
