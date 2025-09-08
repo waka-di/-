@@ -107,7 +107,7 @@
 							<label>パスワード</label>
 						</td>
 						<td>
-							<s:property value="passwordMasked"/>
+							<s:hidden name="id" value="%{id}"/>
 						</td>
 					</tr>
 					<tr>

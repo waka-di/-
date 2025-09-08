@@ -1,5 +1,7 @@
 package com.diworksdev.account.action;
-
-public class UpdateAction {
-
+import com.opensymphony.xwork2.ActionSupport;
+public class UpdateAction extends ActionSupport{
+	public String execute() {
+		return SUCCESS;
+	}
 }

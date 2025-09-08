@@ -55,7 +55,7 @@
 			<p>アカウント削除完了画面</p>
 		</div>
 		<div class="delete-complete-container">
-			<h3>削除完了しました</h3>
+			<h2>削除完了しました</h2>
 			<s:actionerror cssStyle="color:red;" />
 			<div class="center-form">
 				<s:form action="Home">

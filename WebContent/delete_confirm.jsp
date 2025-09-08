@@ -62,7 +62,8 @@
     					<s:submit value="前に戻る"/>
 				</s:form>	
 				<s:form action="delete_complete" cssClass="inline-form">
-    					<s:submit value="削除する"/>
+					<s:hidden name="id" value="%{account.id}"/>
+    				<s:submit value="削除する"/>
 				</s:form>	
 				
 			</div>

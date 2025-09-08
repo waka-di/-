@@ -1,5 +1,7 @@
 package com.diworksdev.account.action;
-
-public class DeleteAction {
-
+import com.opensymphony.xwork2.ActionSupport;
+public class DeleteAction extends ActionSupport{
+	public String execute() {
+		return SUCCESS;
+	}
 }
