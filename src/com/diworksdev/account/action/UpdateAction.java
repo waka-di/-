@@ -7,6 +7,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.diworksdev.account.dao.UpdateDAO;
 import com.diworksdev.account.dto.ListDTO;
+import com.diworksdev.account.util.PasswordUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UpdateAction extends ActionSupport implements SessionAware {
@@ -28,42 +29,47 @@ public class UpdateAction extends ActionSupport implements SessionAware {
     // 表示用
     public String execute() throws SQLException {
     	 UpdateDAO dao = new UpdateDAO();
-         ListDTO dto = dao.getAccountById(id);
+    	 ListDTO dto = dao.getAccountById(id);
 
-        this.familyName = dto.getFamilyName();
-        this.lastName = dto.getLastName();
-        this.familyNameKana = dto.getFamilyNameKana();
-        this.lastNameKana = dto.getLastNameKana();
-        this.mail = dto.getMail();
-        this.password = dto.getPassword();
-        this.gender = dto.getGender();
-        this.postalCode = dto.getPostalCode();
-        this.prefecture = dto.getPrefecture();
-        this.address_1 = dto.getAddress_1();
-        this.address_2 = dto.getAddress_2();
-        this.authority = dto.getAuthority();
+    	if (dto != null) {
 
+	        this.familyName = dto.getFamilyName();
+	        this.lastName = dto.getLastName();
+	        this.familyNameKana = dto.getFamilyNameKana();
+	        this.lastNameKana = dto.getLastNameKana();
+	        this.mail = dto.getMail();
+	        this.password = dto.getPassword();
+	        this.gender = dto.getGender();
+	        this.postalCode = dto.getPostalCode();
+	        this.prefecture = dto.getPrefecture();
+	        this.address_1 = dto.getAddress_1();
+	        this.address_2 = dto.getAddress_2();
+	        this.authority = dto.getAuthority();
+    	}
         return SUCCESS;
     }
 
     // 更新用
     public String update() throws SQLException {
         UpdateDAO dao = new UpdateDAO();
+        
+        // パスワードをハッシュ化（nullチェック）
+        String hashedPassword = null;
+        if (password != null && !password.isEmpty()) {
+            hashedPassword = PasswordUtil.hash(password);
+        }
+        
         int count = dao.updateAccount(
             id, familyName, lastName,
             familyNameKana, lastNameKana,
-            mail, password, gender,
+            mail, hashedPassword, gender,
             postalCode, prefecture, address_1, address_2,
             authority
         );
 
-        if (count > 0) {
-            return SUCCESS;
+        return count > 0 ? SUCCESS : ERROR;
         }
-        else {
-        	return ERROR;
-        }
-    }
+    
     // --- getter/setter ---
     public int getId() { 
     	return id; 

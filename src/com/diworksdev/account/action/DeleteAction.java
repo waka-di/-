@@ -5,36 +5,118 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.diworksdev.account.dao.DeleteDAO;
+import com.diworksdev.account.dao.UpdateDAO;
 import com.diworksdev.account.dto.ListDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class DeleteAction extends ActionSupport implements SessionAware {
 
-    private int id; // 削除対象のID
+    private  Integer id; // 削除対象のID
     private Map<String, Object> session;
+    private String familyName;
+    private String lastName;
+    private String familyNameKana;
+    private String lastNameKana;
+    private String mail;
+    private String password;
+    private int gender;
+    private String postalCode;
+    private String prefecture;
+    private String address_1;
+    private String address_2;
+    private int authority;
 
-    @Override
-    public String execute() {
-        DeleteDAO dao = new DeleteDAO();
-        try {
-            ListDTO account = dao.getAccountById(id);
-            if (account != null) {
-                session.put("account", account);
-                return SUCCESS;
-            } else {
-                addActionError("対象アカウントが存在しません。");
-                return ERROR;
+    // 表示用
+    public String execute() throws SQLException {
+    	 // セッションからフォーム復元
+        if (session != null && session.get("deleteForm") != null) {
+            Map<String, Object> form = (Map<String, Object>) session.get("deleteForm");
+            this.id = (Integer) form.get("id");
+            this.familyName = (String) form.get("familyName");
+            this.lastName = (String) form.get("lastName");
+            this.familyNameKana = (String) form.get("familyNameKana");
+            this.lastNameKana = (String) form.get("lastNameKana");
+            this.mail = (String) form.get("mail");
+            this.password = (String) form.get("password");
+            this.gender = (Integer) form.get("gender");
+            this.postalCode = (String) form.get("postalCode");
+            this.prefecture = (String) form.get("prefecture");
+            this.address_1 = (String) form.get("address_1");
+            this.address_2 = (String) form.get("address_2");
+            this.authority = (Integer) form.get("authority");
+
+            // 一回だけ使うので削除
+            session.remove("deleteForm");
+        } 
+        // DAOから取得（id が null でない場合のみ）
+        else if (id != null) {
+            UpdateDAO dao = new UpdateDAO();
+            ListDTO dto = dao.getAccountById(id);
+
+            if (dto != null) {
+                this.familyName = dto.getFamilyName();
+                this.lastName = dto.getLastName();
+                this.familyNameKana = dto.getFamilyNameKana();
+                this.lastNameKana = dto.getLastNameKana();
+                this.mail = dto.getMail();
+                this.password = dto.getPassword();
+                this.gender = dto.getGender();
+                this.postalCode = String.valueOf(dto.getPostalCode());
+                this.prefecture = dto.getPrefecture();
+                this.address_1 = dto.getAddress_1();
+                this.address_2 = dto.getAddress_2();
+                this.authority = dto.getAuthority();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            addActionError("エラーが発生しました。");
+        } 
+        // id が null の場合はエラー扱い
+        else {
             return ERROR;
         }
+        return SUCCESS;
     }
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    // --- getter/setter ---
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+
+    public String getFamilyName() { return familyName; }
+    public void setFamilyName(String familyName) { this.familyName = familyName; }
+
+    public String getLastName() { return lastName; }
+    public void setLastName(String lastName) { this.lastName = lastName; }
+
+    public String getFamilyNameKana() { return familyNameKana; }
+    public void setFamilyNameKana(String familyNameKana) { this.familyNameKana = familyNameKana; }
+
+    public String getLastNameKana() { return lastNameKana; }
+    public void setLastNameKana(String lastNameKana) { this.lastNameKana = lastNameKana; }
+
+    public String getMail() { return mail; }
+    public void setMail(String mail) { this.mail = mail; }
+
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+
+    public Integer getGender() { return gender; }
+    public void setGender(Integer gender) { this.gender = gender; }
+
+    public String getPostalCode() { return postalCode; }
+    public void setPostalCode(String postalCode) { this.postalCode = postalCode; }
+
+    public String getPrefecture() { return prefecture; }
+    public void setPrefecture(String prefecture) { this.prefecture = prefecture; }
+
+    public String getAddress_1() { return address_1; }
+    public void setAddress_1(String address_1) { this.address_1 = address_1; }
+
+    public String getAddress_2() { return address_2; }
+    public void setAddress_2(String address_2) { this.address_2 = address_2; }
+
+    public Integer getAuthority() { return authority; }
+    public void setAuthority(Integer authority) { this.authority = authority; }
+
     @Override
-    public void setSession(Map<String, Object> session) { this.session = session; }
+    public void setSession(Map<String, Object> session) {
+        this.session = session;
+    }
 }

@@ -165,8 +165,22 @@
 				</s:form>
 			</table>
 				<s:form action="update" cssClass="inline-form">
-    					<s:submit value="前に戻る"/>
-					</s:form>	
+				    <s:hidden name="back" value="true"/>
+				    <s:hidden name="id" value="%{id}"/>
+				    <s:hidden name="familyName" value="%{familyName}"/>
+				    <s:hidden name="lastName" value="%{lastName}"/>
+				    <s:hidden name="familyNameKana" value="%{familyNameKana}"/>
+				    <s:hidden name="lastNameKana" value="%{lastNameKana}"/>
+				    <s:hidden name="mail" value="%{mail}"/>
+				    <s:hidden name="password" value="%{password}"/>
+				    <s:hidden name="gender" value="%{gender}"/>
+				    <s:hidden name="postalCode" value="%{postalCode}"/>
+				    <s:hidden name="prefecture" value="%{prefecture}"/>
+				    <s:hidden name="address_1" value="%{address_1}"/>
+				    <s:hidden name="address_2" value="%{address_2}"/>
+				    <s:hidden name="authority" value="%{authority}"/>
+				    <s:submit value="前に戻る"/>
+				</s:form>
 				  <s:form action="update_complete" cssClass="inline-form">
 				  		<s:hidden name="id" value="%{id}"/>
 			            <s:hidden name="familyName" value="%{familyName}"/>

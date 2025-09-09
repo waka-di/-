@@ -27,48 +27,128 @@ public class Update_confirmAction extends ActionSupport implements SessionAware{
     public void setSession(Map<String, Object> session) {
         this.session = session;
     }
-	public String getBack() { 
-		return back; 
-	}
-    public void setBack(String back) { 
-    	this.back = back; 
-    }
-	
+		
 	@Override
     public String execute() {
 		
-		// セッションに値があればフォームにセット
-        if (session.get("familyName") != null) familyName = (String) session.get("familyName");
-        if (session.get("lastName") != null) lastName = (String) session.get("lastName");
-        if (session.get("familyNameKana") != null) familyNameKana = (String) session.get("familyNameKana");
-        if (session.get("lastNameKana") != null) lastNameKana = (String) session.get("lastNameKana");
-        if (session.get("mail") != null) mail = (String) session.get("mail");
-        if (session.get("password") != null) password = (String) session.get("password");
-        if (session.get("gender") != null) gender = String.valueOf(session.get("gender"));
-        if (session.get("postalCode") != null) postalCode = String.valueOf(session.get("postalCode"));
-        if (session.get("prefecture") != null) prefecture = (String) session.get("prefecture");
-        if (session.get("address_1") != null) address_1 = (String) session.get("address_1");
-        if (session.get("address_2") != null) address_2 = (String) session.get("address_2");
-        if (session.get("authority") != null) authority = String.valueOf(session.get("authority"));
-
+		if ((familyName == null || familyName.trim().isEmpty()) && session.get("familyName") != null) {
+            familyName = (String) session.get("familyName");
+        }
+        if ((lastName == null || lastName.trim().isEmpty()) && session.get("lastName") != null) {
+            lastName = (String) session.get("lastName");
+        }
+        if ((familyNameKana == null || familyNameKana.trim().isEmpty()) && session.get("familyNameKana") != null) {
+            familyNameKana = (String) session.get("familyNameKana");
+        }
+        if ((lastNameKana == null || lastNameKana.trim().isEmpty()) && session.get("lastNameKana") != null) {
+            lastNameKana = (String) session.get("lastNameKana");
+        }
+        if ((mail == null || mail.trim().isEmpty()) && session.get("mail") != null) {
+            mail = (String) session.get("mail");
+        }
+        if ((password == null || password.trim().isEmpty()) && session.get("password") != null) {
+            password = (String) session.get("password");
+        }
+        if ((gender == null || gender.trim().isEmpty()) && session.get("gender") != null) {
+            gender = String.valueOf(session.get("gender"));
+        }
+        if ((postalCode == null || postalCode.trim().isEmpty()) && session.get("postalCode") != null) {
+            postalCode = String.valueOf(session.get("postalCode"));
+        }
+        if ((prefecture == null || prefecture.trim().isEmpty()) && session.get("prefecture") != null) {
+            prefecture = (String) session.get("prefecture");
+        }
+        if ((address_1 == null || address_1.trim().isEmpty()) && session.get("address_1") != null) {
+            address_1 = (String) session.get("address_1");
+        }
+        if ((address_2 == null || address_2.trim().isEmpty()) && session.get("address_2") != null) {
+            address_2 = (String) session.get("address_2");
+        }
+        if ((authority == null || authority.trim().isEmpty()) && session.get("authority") != null) {
+            authority = String.valueOf(session.get("authority"));
+        }
+        
 		// 「前に戻る」ボタンが押された場合
-		if (back != null) { 
-			session.put("familyName", familyName); 
-			session.put("lastName", lastName); 
-			session.put("familyNameKana", familyNameKana); 
-			session.put("lastNameKana", lastNameKana); 
-			session.put("mail", mail); 
-			session.put("password", password); 
-			session.put("gender", gender); 
-			session.put("postalCode", postalCode); 
-			session.put("prefecture", prefecture); 
-			session.put("address_1", address_1); 
-			session.put("address_2", address_2); 
-			session.put("authority", authority);
-			return "back"; 
-			}
+		if ("true".equals(back)) {
+            session.put("familyName", familyName);
+            session.put("lastName", lastName);
+            session.put("familyNameKana", familyNameKana);
+            session.put("lastNameKana", lastNameKana);
+            session.put("mail", mail);
+            session.put("password", password);
+            session.put("gender", gender);
+            session.put("postalCode", postalCode);
+            session.put("prefecture", prefecture);
+            session.put("address_1", address_1);
+            session.put("address_2", address_2);
+            session.put("authority", authority);
+            return "back";
+        }
 		
+		if (familyName == null || familyName.trim().isEmpty()) {
+            addFieldError("familyName", "名前（姓）が未入力です。");
+        } else if (!familyName.matches("[\\p{IsHan}\\p{IsHiragana}]+")) {
+            addFieldError("familyName", "名前（姓）はひらがな、漢字のみ入力可能です。");
+        }
 
+        if (lastName == null || lastName.trim().isEmpty()) {
+            addFieldError("lastName", "名前（名）が未入力です。");
+        } else if (!lastName.matches("[\\p{IsHan}\\p{IsHiragana}]+")) {
+            addFieldError("lastName", "名前（名）はひらがな、漢字のみ入力可能です。");
+        }
+
+        if (familyNameKana == null || familyNameKana.trim().isEmpty()) {
+            addFieldError("familyNameKana", "カナ（姓）が未入力です。");
+        } else if (!familyNameKana.matches("[\\p{IsKatakana}]+")) {
+            addFieldError("familyNameKana", "カナ（姓）はカタカナのみ入力可能です。");
+        }
+
+        if (lastNameKana == null || lastNameKana.trim().isEmpty()) {
+            addFieldError("lastNameKana", "カナ（名）が未入力です。");
+        } else if (!lastNameKana.matches("[\\p{IsKatakana}]+")) {
+            addFieldError("lastNameKana", "カナ（名）はカタカナのみ入力可能です。");
+        }
+
+        if (mail == null || mail.trim().isEmpty()) {
+            addFieldError("mail", "メールアドレスが未入力です。");
+        } else if (!mail.matches("[a-zA-Z0-9@\\-\\.]+")) {
+            addFieldError("mail", "メールアドレスは半角英数字、@、-のみ入力可能です。");
+        }
+
+        if (password == null || password.trim().isEmpty()) {
+            addFieldError("password", "パスワードが未入力です。");
+        } else if (!password.matches("[a-zA-Z0-9]+")) {
+            addFieldError("password", "パスワードは半角英数字のみ入力可能です。");
+        }
+
+        if (postalCode == null || postalCode.trim().isEmpty()) {
+            addFieldError("postalCode", "郵便番号が未入力です。");
+        } else if (!postalCode.matches("\\d+")) {
+            addFieldError("postalCode", "郵便番号は半角数字のみ入力してください。");
+        }
+
+        if (prefecture == null || prefecture.trim().isEmpty()) {
+            addFieldError("prefecture", "都道府県が未入力です。");
+        }
+
+        if (address_1 == null || address_1.trim().isEmpty()) {
+            addFieldError("address_1", "住所（市区町村）が未入力です。");
+        } else if (!address_1.matches("[\\p{IsHan}\\p{IsHiragana}\\p{IsKatakana}\\d\\-\\s]+")) {
+            addFieldError("address_1", "住所（市区町村）はひらがな、漢字、数字、カタカナ、記号（ハイフンとスペース）のみ入力可能です。");
+        }
+
+        if (address_2 == null || address_2.trim().isEmpty()) {
+            addFieldError("address_2", "住所（番地）が未入力です。");
+        } else if (!address_2.matches("[\\p{IsHan}\\p{IsHiragana}\\p{IsKatakana}\\d\\-\\s]+")) {
+            addFieldError("address_2", "住所（番地）は許可文字のみ入力可能です。");
+        }
+
+        if (authority == null || authority.trim().isEmpty()) {
+            addFieldError("authority", "権限が未選択です。");
+        }
+        if (hasFieldErrors()) {
+        	return ERROR;
+        }
 		
         // 正常処理
         session.put("familyName", familyName);
@@ -85,7 +165,7 @@ public class Update_confirmAction extends ActionSupport implements SessionAware{
         session.put("authority", authority);
         return SUCCESS; 
         }
-	
+
 	public Integer getId() { 
 		return id; 
 	}

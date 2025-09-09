@@ -2,6 +2,7 @@ package com.diworksdev.account.action;
 import java.sql.SQLException;
 
 import com.diworksdev.account.dao.UpdateDAO;
+import com.diworksdev.account.util.PasswordUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class Update_completeAction extends ActionSupport{		
@@ -20,10 +21,11 @@ public class Update_completeAction extends ActionSupport{
 	    private int authority;
 
 	    public String execute() {
+	    	String hashedPassword = PasswordUtil.hash(password);// パスワードをハッシュ化 
 	        UpdateDAO dao = new UpdateDAO();
 	        try {
 	            int result = dao.updateAccount(id, familyName, lastName, familyNameKana,
-	                    lastNameKana, mail, password, gender, postalCode, prefecture,
+	                    lastNameKana, mail, hashedPassword, gender, postalCode, prefecture,
 	                    address_1, address_2, authority);
 	            return result > 0 ? SUCCESS : ERROR;
 	        } catch (SQLException e) {

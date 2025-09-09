@@ -15,16 +15,25 @@
 	<title>アカウント削除確認画面</title>
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
 	<style type="text/css">
-		#delete-complete{
+		#delete-cocfirm{
 	    	margin-top:82px
 	    }
-		.delete-complete-container {
+		.delete-confirm-container {
    			padding-top:100px;
 			height: 600px;
 			text-align: center;
+			font-size:50px;
 		}
-		.center-form{
-		margin:0 50% 0 50%;
+		.inline-form {
+		    display: inline-block;  /* 横並びにする */
+		    margin: 0 10px;         /* ボタン間の余白 */
+		}
+		footer {
+		    position: fixed;
+		    bottom: 0;
+		    left: 0;
+		    width: 100%;
+		    text-align: center;
 		}
 	</style>
 </head>

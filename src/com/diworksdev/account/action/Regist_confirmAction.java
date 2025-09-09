@@ -124,7 +124,7 @@ public class Regist_confirmAction extends ActionSupport implements SessionAware{
         if (address_2 == null || address_2.trim().isEmpty()) {
             addFieldError("address_2", "住所（番地）が未入力です。");
         } else if (!address_2.matches("[\\p{IsHan}\\p{IsHiragana}\\p{IsKatakana}\\d\\-\\s]+")) {
-            addFieldError("address_2", "住所（番地）は許可文字のみ入力可能です。");
+            addFieldError("address_2", "住所（番地）はひらがな、漢字、数字、カタカナ、記号（ハイフンとスペース）のみ入力可能です。");
         }
 
         if (authority == null || authority.trim().isEmpty()) {
