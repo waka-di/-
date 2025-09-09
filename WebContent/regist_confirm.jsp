@@ -62,7 +62,7 @@
 			</div>
 			<div class="regist-container">
 			<table>
-				<s:form action="Regist_CompleteAction">
+				<s:form action="regist_complete">
 				<s:actionerror cssStyle="color:red;"/>
 					<tr>
 						<td>
@@ -164,10 +164,10 @@
 					</tr>
 				</s:form>
 			</table>
-				<s:form action="RegistAction" cssClass="inline-form">
+				<s:form action="regist" cssClass="inline-form">
     					<s:submit value="前に戻る"/>
 					</s:form>	
-				  <s:form action="Regist_CompleteAction" cssClass="inline-form">
+				  <s:form action="regist_complete" cssClass="inline-form">
 			            <s:hidden name="familyName" value="%{familyName}"/>
 			            <s:hidden name="lastName" value="%{lastName}"/>
 			            <s:hidden name="familyNameKana" value="%{#session.familyNameKana}"/>

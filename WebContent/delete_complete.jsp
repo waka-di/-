@@ -67,5 +67,5 @@
     <footer>
       Copyright D.I.works|D.I.blog is the one which provides A to Z about programming
     </footer>
-  </body>
+ </body>
 </html>

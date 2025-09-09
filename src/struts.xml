@@ -12,12 +12,12 @@
 		</action>
 		
 <!-- registAction -->
-		<action name="RegistAction" class="com.diworksdev.account.action.RegistAction" method="execute">
+		<action name="regist" class="com.diworksdev.account.action.RegistAction" method="execute">
 			<result name="success">regist.jsp</result>
 		</action>
 		
 <!-- regist_confirmAction -->
-		<action name="Regist_ConfirmAction" class="com.diworksdev.account.action.Regist_confirmAction" method="execute">
+		<action name="regist_confirm" class="com.diworksdev.account.action.Regist_confirmAction" method="execute">
 			<result name="success">regist_confirm.jsp</result>
 			<result name="error">regist.jsp</result>
 			<result name="input">regist_confirm.jsp</result>
@@ -25,48 +25,48 @@
 		</action>
 		
 <!-- regist_completeAction -->
-		<action name="Regist_CompleteAction" class="com.diworksdev.account.action.Regist_completeAction" method="execute">
+		<action name="regist_complete" class="com.diworksdev.account.action.Regist_completeAction" method="execute">
 			<result name="success">regist_complete.jsp</result>
 			<result name="error">regist_confirm.jsp</result>
 		</action>
 		
 <!-- ListAction -->
-		<action name="ListAction" class="com.diworksdev.account.action.ListAction" method="execute"> 
+		<action name="list" class="com.diworksdev.account.action.ListAction" method="execute"> 
 			<result name="success">list.jsp</result> 
 		</action>	
 		
 <!-- DeleteAction -->
-		<action name="DeleteAction" class="com.diworksdev.account.action.DeleteAction" method="execute"> 
+		<action name="delete" class="com.diworksdev.account.action.DeleteAction" method="execute"> 
 			<result name="success">delete.jsp</result> 
 		</action>
 		
 <!-- Delete_confirmAction -->
-		<action name="Delete_confirmAction" class="com.diworksdev.account.action.Delete_confirmAction" method="execute"> 
+		<action name="delete_confirm" class="com.diworksdev.account.action.Delete_confirmAction" method="execute"> 
 			<result name="success">delete_confirm.jsp</result>
 			<result name="back">/delete.jsp</result>
    			<result name="error">/delete.jsp</result> 
 		</action>
 		
 <!-- Delete_completeAction -->
-		<action name="Delete_completeAction" class="com.diworksdev.account.action.Delete_completeAction" method="execute"> 
+		<action name="delete_complete" class="com.diworksdev.account.action.Delete_completeAction" method="execute"> 
 			<result name="success">/delete_complete.jsp</result>
    			<result name="error">/delete_confirm.jsp</result> 
 		</action>
 		
 <!-- UpdateAction -->
-		<action name="UpdateAction" class="com.diworksdev.account.action.UpdateAction" method="execute"> 
+		<action name="update" class="com.diworksdev.account.action.UpdateAction" method="execute"> 
 			<result name="success">update.jsp</result> 
 		</action>
 		
 <!-- Update_confirmAction -->
-		<action name="Update_confirmAction" class="com.diworksdev.account.action.Update_confirmAction" method="execute"> 
+		<action name="update_confirm" class="com.diworksdev.account.action.Update_confirmAction" method="execute"> 
 			<result name="success">update_confirm.jsp</result> 
 			<result name="back">update.jsp</result> 
     		<result name="error">update.jsp</result> 
 		</action>
 		
 <!-- Update_completeAction -->
-		<action name="Update_completeAction" class="com.diworksdev.account.action.Update_completeAction" method="execute"> 
+		<action name="update_complete" class="com.diworksdev.account.action.Update_completeAction" method="execute"> 
 			<result name="success">update_complete.jsp</result> 
 			<result name="error">update_confirm.jsp</result> 
 		</action>

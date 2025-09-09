@@ -13,15 +13,16 @@ public class Delete_completeAction extends ActionSupport implements SessionAware
 
     private Map<String,Object> session;
 
+    @Override
     public String execute() {
         Delete_completeDAO dao = new Delete_completeDAO();
         try {
             int result = dao.deleteAccount(id);
-            if (result > 0) {
-                return SUCCESS; // 削除完了画面へ
+            if(result > 0) {
+                return SUCCESS;
             } else {
                 addActionError("エラーが発生したためアカウント削除できません。");
-                return ERROR; // 確認画面へ
+                return ERROR;
             }
         } catch (SQLException e) {
             addActionError("エラーが発生したためアカウント削除できません。");
@@ -29,12 +30,14 @@ public class Delete_completeAction extends ActionSupport implements SessionAware
         }
     }
 
-    // getter/setter
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-
-    @Override
-    public void setSession(Map<String, Object> session) {
-        this.session = session;
+    public int getId() { 
+    	return id; 
     }
+    public void setId(int id) { 
+    	this.id = id; 
+    }
+    @Override
+    public void setSession(Map<String, Object> session) { 
+    	this.session = session; 
+    	}
 }

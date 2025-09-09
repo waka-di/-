@@ -51,26 +51,21 @@
 	    </div>
     </header>
     <main>
-    	<div id="delete-complete">
-			<p>アカウント削除確認画面</p>
-		</div>
-		<div class="delete-complete-container">
-			<h3>本当に削除してよろしいですか？</h3>
-			<s:actionerror cssStyle="color:red;" />
-			<div class="center-form">
-				<s:form action="DeleteAction" cssClass="inline-form">
-    					<s:submit value="前に戻る"/>
-				</s:form>	
-				<s:form action="Delete_completeAction" cssClass="inline-form">
-					<s:hidden name="id" value="%{account.id}"/>
-    				<s:submit value="削除する"/>
-				</s:form>	
-				
-			</div>
-		</div>
+    	<div class="delete-confirm-container">
+        	<h3>本当に削除してよろしいですか？</h3>
+	        <s:actionerror cssStyle="color:red;"/>
+	        <s:form action="delete" cssClass="inline-form">
+	            <s:hidden name="id" value="%{account.id}"/>
+	            <s:submit value="前に戻る" name="back"/>
+	        </s:form>
+	       		<s:form action="delete_complete" cssClass="inline-form">
+	            <s:hidden name="id" value="%{account.id}"/>
+	            <s:submit value="削除する"/>
+       		 </s:form>
+   		 </div>
 	</main>
     <footer>
       Copyright D.I.works|D.I.blog is the one which provides A to Z about programming
     </footer>
-   </body>
-   </html>
+</body>
+</html>

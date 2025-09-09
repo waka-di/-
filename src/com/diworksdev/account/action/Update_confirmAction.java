@@ -5,6 +5,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 public class Update_confirmAction extends ActionSupport implements SessionAware{
+	private Integer id;
 	private String familyName;
 	private String lastName;
 	private String familyNameKana;
@@ -76,15 +77,21 @@ public class Update_confirmAction extends ActionSupport implements SessionAware{
         session.put("lastNameKana", lastNameKana);
         session.put("mail", mail);
         session.put("password", password);
-        session.put("gender", Integer.parseInt(gender));
-        session.put("postalCode", Integer.parseInt(postalCode));
+        session.put("gender", gender);
+        session.put("postalCode", postalCode);
         session.put("prefecture", prefecture);
         session.put("address_1", address_1);
         session.put("address_2", address_2);
-        session.put("authority", Integer.parseInt(authority));
+        session.put("authority", authority);
         return SUCCESS; 
         }
 	
+	public Integer getId() { 
+		return id; 
+	}
+	public void setId(Integer id) { 
+		this.id = id; 
+	}
 	 public String getFamilyName() { 
 		 return familyName; 
 	}

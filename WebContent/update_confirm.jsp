@@ -62,7 +62,7 @@
 			</div>
 			<div class="update-confirm-container">
 			<table>
-				<s:form action="Update_completeAction">
+				<s:form action="update_complete">
 				<s:actionerror cssStyle="color:red;"/>
 					<tr>
 						<td>
@@ -109,7 +109,7 @@
 							<label>パスワード</label>
 						</td>
 						<td>
-							<s:hidden name="id" value="%{id}"/>
+							<s:property value="passwordMasked"/>
 						</td>
 					</tr>
 					<tr>
@@ -164,10 +164,11 @@
 					</tr>
 				</s:form>
 			</table>
-				<s:form action="UpdateAction" cssClass="inline-form">
+				<s:form action="update" cssClass="inline-form">
     					<s:submit value="前に戻る"/>
 					</s:form>	
-				  <s:form action="Update_completeAction" cssClass="inline-form">
+				  <s:form action="update_complete" cssClass="inline-form">
+				  		<s:hidden name="id" value="%{id}"/>
 			            <s:hidden name="familyName" value="%{familyName}"/>
 			            <s:hidden name="lastName" value="%{lastName}"/>
 			            <s:hidden name="familyNameKana" value="%{#session.familyNameKana}"/>

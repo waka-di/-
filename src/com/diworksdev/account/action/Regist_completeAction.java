@@ -5,7 +5,6 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.diworksdev.account.dao.Regist_completeDAO;
-import com.diworksdev.account.util.PasswordUtil;
 import com.opensymphony.xwork2.ActionSupport;
 public class Regist_completeAction extends ActionSupport implements SessionAware{
 	private String familyName;
@@ -24,12 +23,11 @@ public class Regist_completeAction extends ActionSupport implements SessionAware
 	private Map<String,Object>session;
 	
 	 public String execute() {
-	    // パスワードをハッシュ化
-	    String hashedPassword = PasswordUtil.hash(password);
+
 		Regist_completeDAO dao = new Regist_completeDAO();
 
 		try {
-		    int result = dao.createUser(familyName, lastName, familyNameKana,lastNameKana, mail, hashedPassword,gender, postalCode, prefecture, address_1, address_2, authority);
+		    int result = dao.createUser(familyName, lastName, familyNameKana,lastNameKana, mail, password,gender, postalCode, prefecture, address_1, address_2, authority);
 
 		    if (result > 0) {
 		        return SUCCESS; // 登録完了画面へ

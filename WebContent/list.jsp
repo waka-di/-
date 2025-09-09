@@ -129,11 +129,11 @@
                 <td><s:date name="#acc.updateDate" format="yyyy/MM/dd"/></td>
                 <td>
                     <div class="action-button">
-				        <s:form action="UpdateAction" method="post" theme="simple">
+				        <s:form action="update" method="post" theme="simple">
 				            <s:hidden name="id" value="%{#acc.id}"/>
 				            <s:submit value="更新"/>
 				        </s:form>
-				        <s:form action="DeleteAction" method="post" theme="simple">
+				        <s:form action="delete" method="post" theme="simple">
 				            <s:hidden name="id" value="%{#acc.id}"/>
 				            <s:submit value="削除"/>
 				        </s:form>
