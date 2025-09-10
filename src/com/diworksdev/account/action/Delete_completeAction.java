@@ -9,12 +9,16 @@ import com.diworksdev.account.dao.Delete_completeDAO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class Delete_completeAction extends ActionSupport implements SessionAware {
-    private int id;  // 削除対象のID
-
+	private Integer id;  // int → Integer
     private Map<String,Object> session;
 
     @Override
     public String execute() {
+        if (id == null) {
+            addActionError("エラーが発生したためアカウント削除できません。");
+            return ERROR;
+        }
+
         Delete_completeDAO dao = new Delete_completeDAO();
         try {
             int result = dao.deleteAccount(id);
@@ -30,14 +34,11 @@ public class Delete_completeAction extends ActionSupport implements SessionAware
         }
     }
 
-    public int getId() { 
-    	return id; 
-    }
-    public void setId(int id) { 
-    	this.id = id; 
-    }
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+
     @Override
     public void setSession(Map<String, Object> session) { 
-    	this.session = session; 
-    	}
+        this.session = session; 
+    }
 }

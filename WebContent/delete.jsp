@@ -69,109 +69,82 @@
 			</div>
 			<div class="delete-container">
 			<table>
-				  <s:form action="delete_confirm" theme="simple">
+<s:form action="delete_confirm" theme="simple">
     <s:hidden name="id" value="%{id}"/>
+    <s:hidden name="familyName" value="%{familyName}"/>
+    <s:hidden name="lastName" value="%{lastName}"/>
+    <s:hidden name="familyNameKana" value="%{familyNameKana}"/>
+    <s:hidden name="lastNameKana" value="%{lastNameKana}"/>
+    <s:hidden name="mail" value="%{mail}"/>
+    <s:hidden name="password" value="%{password}"/>
+    <s:hidden name="gender" value="%{gender}"/>
+    <s:hidden name="postalCode" value="%{postalCode}"/>
+    <s:hidden name="prefecture" value="%{prefecture}"/>
+    <s:hidden name="address_1" value="%{address_1}"/>
+    <s:hidden name="address_2" value="%{address_2}"/>
+    <s:hidden name="authority" value="%{authority}"/>
 
     <tr>
-						<td>
-							<label>名前（姓）</label>
-						</td>
-						<td>
-							<s:property value="familyName"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>名前（名）</label>	
-						</td>
-						<td>
-							<s:property value="lastName"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>カナ（姓）</label>
-						</td>
-						<td>
-							<s:property value="familyNameKana"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>カナ（名）</label>
-						</td>
-						<td>
-							<s:property value="lastNameKana"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>メールアドレス</label>	
-						</td>
-						<td>
-							<s:property value="mail"/>
-						</td>
-					</tr>
-					<tr>
-						 <td>パスワード</td>
-						 <td>●●●●●●</td>
-					</tr>
-					<tr>
-						<td>
-							<label>性別</label>
-						</td>
-						<td>
-							<s:if test="gender == 0">男</s:if>
-							<s:if test="gender == 1">女</s:if>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>郵便番号</label>	
-						</td>
-						<td>
-							<s:property value="postalCode"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>住所（都道府県）</label>
-						</td>
-						<td>
-							<s:property value="prefecture"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>住所（市区町村）</label>
-						</td>
-						<td>
-							<s:property value="address_1"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>住所（番地）</label>	
-						</td>
-						<td>
-							<s:property value="address_2"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>アカウント権限</label>
-						</td>
-						<td>
-							<s:if test="authority == 0">一般</s:if>
-       						 <s:elseif test="authority == 1">管理者</s:elseif>
-						</td>
-					</tr>
-		<tr>
+        <td><label>名前（姓）</label></td>
+        <td><s:property value="familyName"/></td>
+    </tr>
+    <tr>
+        <td><label>名前（名）</label></td>
+        <td><s:property value="lastName"/></td>
+    </tr>
+    <tr>
+        <td><label>カナ（姓）</label></td>
+        <td><s:property value="familyNameKana"/></td>
+    </tr>
+    <tr>
+        <td><label>カナ（名）</label></td>
+        <td><s:property value="lastNameKana"/></td>
+    </tr>
+    <tr>
+        <td><label>メールアドレス</label></td>
+        <td><s:property value="mail"/></td>
+    </tr>
+    <tr>
+        <td><label>パスワード</label></td>
+        <td>●●●●●●</td>
+    </tr>
+    <tr>
+        <td><label>性別</label></td>
+        <td>
+            <s:if test="gender == 0">男</s:if>
+            <s:if test="gender == 1">女</s:if>
+        </td>
+    </tr>
+    <tr>
+        <td><label>郵便番号</label></td>
+        <td><s:property value="postalCode"/></td>
+    </tr>
+    <tr>
+        <td><label>住所（都道府県）</label></td>
+        <td><s:property value="prefecture"/></td>
+    </tr>
+    <tr>
+        <td><label>住所（市区町村）</label></td>
+        <td><s:property value="address_1"/></td>
+    </tr>
+    <tr>
+        <td><label>住所（番地）</label></td>
+        <td><s:property value="address_2"/></td>
+    </tr>
+    <tr>
+        <td><label>アカウント権限</label></td>
+        <td>
+            <s:if test="authority == 0">一般</s:if>
+            <s:if test="authority == 1">管理者</s:if>
+        </td>
+    </tr>
+
+    <tr>
         <td colspan="2" style="text-align:center;">
             <s:submit value="確認する"/>
         </td>
     </tr>
-    </s:form>
+</s:form>
     </div>
 	</main>
     <footer>

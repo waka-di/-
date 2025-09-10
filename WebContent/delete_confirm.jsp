@@ -15,7 +15,7 @@
 	<title>アカウント削除確認画面</title>
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
 	<style type="text/css">
-		#delete-cocfirm{
+		#delete-confirm{
 	    	margin-top:82px
 	    }
 		.delete-confirm-container {
@@ -25,8 +25,9 @@
 			font-size:50px;
 		}
 		.inline-form {
-		    display: inline-block;  /* 横並びにする */
-		    margin: 0 10px;         /* ボタン間の余白 */
+		    display: inline-block;  
+		    margin: 0 10px;  
+		     vertical-align: middle;      
 		}
 		footer {
 		    position: fixed;
@@ -60,16 +61,33 @@
 	    </div>
     </header>
     <main>
+    	<div id="delete-confirm">
+				<p>アカウント削除確認画面</p>
+		</div>
+		
     	<div class="delete-confirm-container">
         	<h3>本当に削除してよろしいですか？</h3>
 	        <s:actionerror cssStyle="color:red;"/>
-	        <s:form action="delete" cssClass="inline-form">
-	            <s:hidden name="id" value="%{account.id}"/>
-	            <s:submit value="前に戻る" name="back"/>
-	        </s:form>
-	       		<s:form action="delete_complete" cssClass="inline-form">
-	            <s:hidden name="id" value="%{account.id}"/>
-	            <s:submit value="削除する"/>
+	        <s:form action="delete" method="post"  cssClass="inline-form">
+			    <s:hidden name="id" value="%{id}"/>
+			    <s:hidden name="familyName" value="%{familyName}"/>
+			    <s:hidden name="lastName" value="%{lastName}"/>
+			    <s:hidden name="familyNameKana" value="%{familyNameKana}"/>
+			    <s:hidden name="lastNameKana" value="%{lastNameKana}"/>
+			    <s:hidden name="mail" value="%{mail}"/>
+			    <s:hidden name="password" value="%{password}"/>
+			    <s:hidden name="gender" value="%{gender}"/>
+			    <s:hidden name="postalCode" value="%{postalCode}"/>
+			    <s:hidden name="prefecture" value="%{prefecture}"/>
+			    <s:hidden name="address_1" value="%{address_1}"/>
+			    <s:hidden name="address_2" value="%{address_2}"/>
+			    <s:hidden name="authority" value="%{authority}"/>
+	
+	   			 <s:submit value="前へ戻る" action="delete_confirm"/>
+			</s:form>
+       		<s:form action="delete_complete" cssClass="inline-form">
+            	<s:hidden name="id" value="%{id}"/>
+            <s:submit value="削除する"/>
        		 </s:form>
    		 </div>
 	</main>

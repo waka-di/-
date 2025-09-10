@@ -11,8 +11,9 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class DeleteAction extends ActionSupport implements SessionAware {
 
-    private  Integer id; // 削除対象のID
+    private Integer id; // 削除対象のID
     private Map<String, Object> session;
+    
     private String familyName;
     private String lastName;
     private String familyNameKana;
@@ -26,9 +27,13 @@ public class DeleteAction extends ActionSupport implements SessionAware {
     private String address_2;
     private int authority;
 
-    // 表示用
+    // 戻るボタン用
+    private String back;
+
+    // --- execute ---
+    @SuppressWarnings("unchecked")
     public String execute() throws SQLException {
-    	 // セッションからフォーム復元
+        // セッションにdeleteFormがある場合（前へ戻った場合）
         if (session != null && session.get("deleteForm") != null) {
             Map<String, Object> form = (Map<String, Object>) session.get("deleteForm");
             this.id = (Integer) form.get("id");
@@ -45,10 +50,10 @@ public class DeleteAction extends ActionSupport implements SessionAware {
             this.address_2 = (String) form.get("address_2");
             this.authority = (Integer) form.get("authority");
 
-            // 一回だけ使うので削除
+            // 一度取り出したらセッションから削除
             session.remove("deleteForm");
         } 
-        // DAOから取得（id が null でない場合のみ）
+        // セッションがなければDBから取得
         else if (id != null) {
             UpdateDAO dao = new UpdateDAO();
             ListDTO dto = dao.getAccountById(id);
@@ -59,18 +64,14 @@ public class DeleteAction extends ActionSupport implements SessionAware {
                 this.familyNameKana = dto.getFamilyNameKana();
                 this.lastNameKana = dto.getLastNameKana();
                 this.mail = dto.getMail();
-                this.password = dto.getPassword();
+                this.password = dto.getPassword(); // パスワードはそのまま
                 this.gender = dto.getGender();
-                this.postalCode = String.valueOf(dto.getPostalCode());
+                this.postalCode = String.valueOf(dto.getPostalCode()); // int → String
                 this.prefecture = dto.getPrefecture();
                 this.address_1 = dto.getAddress_1();
                 this.address_2 = dto.getAddress_2();
                 this.authority = dto.getAuthority();
             }
-        } 
-        // id が null の場合はエラー扱い
-        else {
-            return ERROR;
         }
         return SUCCESS;
     }
@@ -97,8 +98,8 @@ public class DeleteAction extends ActionSupport implements SessionAware {
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
 
-    public Integer getGender() { return gender; }
-    public void setGender(Integer gender) { this.gender = gender; }
+    public int getGender() { return gender; }
+    public void setGender(int gender) { this.gender = gender; }
 
     public String getPostalCode() { return postalCode; }
     public void setPostalCode(String postalCode) { this.postalCode = postalCode; }
@@ -112,11 +113,12 @@ public class DeleteAction extends ActionSupport implements SessionAware {
     public String getAddress_2() { return address_2; }
     public void setAddress_2(String address_2) { this.address_2 = address_2; }
 
-    public Integer getAuthority() { return authority; }
-    public void setAuthority(Integer authority) { this.authority = authority; }
+    public int getAuthority() { return authority; }
+    public void setAuthority(int authority) { this.authority = authority; }
+
+    public String getBack() { return back; }
+    public void setBack(String back) { this.back = back; }
 
     @Override
-    public void setSession(Map<String, Object> session) {
-        this.session = session;
-    }
+    public void setSession(Map<String, Object> session) { this.session = session; }
 }
