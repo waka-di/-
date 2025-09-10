@@ -31,23 +31,36 @@ public class UpdateAction extends ActionSupport implements SessionAware {
     	 UpdateDAO dao = new UpdateDAO();
     	 ListDTO dto = dao.getAccountById(id);
 
-    	if (dto != null) {
+    	 if(session.get("familyName") != null) {
+    	        this.familyName = (String) session.get("familyName");
+    	        this.lastName = (String) session.get("lastName");
+    	        this.familyNameKana = (String) session.get("familyNameKana");
+    	        this.lastNameKana = (String) session.get("lastNameKana");
+    	        this.mail = (String) session.get("mail");
+    	        this.password = (String) session.get("password");
+    	        this.gender = Integer.parseInt((String) session.get("gender"));
+    	        this.postalCode = Integer.parseInt((String) session.get("postalCode"));
+    	        this.prefecture = (String) session.get("prefecture");
+    	        this.address_1 = (String) session.get("address_1");
+    	        this.address_2 = (String) session.get("address_2");
+    	        this.authority = Integer.parseInt((String) session.get("authority"));
+    	    } else if(dto != null) {
+    	        this.familyName = dto.getFamilyName();
+    	        this.lastName = dto.getLastName();
+    	        this.familyNameKana = dto.getFamilyNameKana();
+    	        this.lastNameKana = dto.getLastNameKana();
+    	        this.mail = dto.getMail();
+    	        this.password = dto.getPassword();
+    	        this.gender = dto.getGender();
+    	        this.postalCode = dto.getPostalCode();
+    	        this.prefecture = dto.getPrefecture();
+    	        this.address_1 = dto.getAddress_1();
+    	        this.address_2 = dto.getAddress_2();
+    	        this.authority = dto.getAuthority();
+    	    }
 
-	        this.familyName = dto.getFamilyName();
-	        this.lastName = dto.getLastName();
-	        this.familyNameKana = dto.getFamilyNameKana();
-	        this.lastNameKana = dto.getLastNameKana();
-	        this.mail = dto.getMail();
-	        this.password = dto.getPassword();
-	        this.gender = dto.getGender();
-	        this.postalCode = dto.getPostalCode();
-	        this.prefecture = dto.getPrefecture();
-	        this.address_1 = dto.getAddress_1();
-	        this.address_2 = dto.getAddress_2();
-	        this.authority = dto.getAuthority();
+    	    return SUCCESS;
     	}
-        return SUCCESS;
-    }
 
     // 更新用
     public String update() throws SQLException {

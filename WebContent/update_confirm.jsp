@@ -61,142 +61,63 @@
 				<p>アカウント更新確認画面</p>
 			</div>
 			<div class="update-confirm-container">
-			<table>
-				<s:form action="update_complete">
-				<s:actionerror cssStyle="color:red;"/>
-					<tr>
-						<td>
-							<label>名前（姓）</label>
-						</td>
-						<td>
-							<s:property value="familyName"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>名前（名）</label>	
-						</td>
-						<td>
-							<s:property value="lastName"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>カナ（姓）</label>
-						</td>
-						<td>
-							<s:property value="familyNameKana"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>カナ（名）</label>
-						</td>
-						<td>
-							<s:property value="lastNameKana"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>メールアドレス</label>	
-						</td>
-						<td>
-							<s:property value="mail"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>パスワード</label>
-						</td>
-						<td>
-							<s:property value="passwordMasked"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>性別</label>
-						</td>
-						<td>
-							<s:if test="gender == 0">男</s:if>
-							<s:if test="gender == 1">女</s:if>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>郵便番号</label>	
-						</td>
-						<td>
-							<s:property value="postalCode"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>住所（都道府県）</label>
-						</td>
-						<td>
-							<s:property value="prefecture"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>住所（市区町村）</label>
-						</td>
-						<td>
-							<s:property value="address_1"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>住所（番地）</label>	
-						</td>
-						<td>
-							<s:property value="address_2"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>アカウント権限</label>
-						</td>
-						<td>
-							<s:if test="authority == 0">一般</s:if>
-       						 <s:elseif test="authority == 1">管理者</s:elseif>
-						</td>
-					</tr>
-				</s:form>
-			</table>
-				<s:form action="update" cssClass="inline-form">
-				    <s:hidden name="back" value="true"/>
-				    <s:hidden name="id" value="%{id}"/>
-				    <s:hidden name="familyName" value="%{familyName}"/>
-				    <s:hidden name="lastName" value="%{lastName}"/>
-				    <s:hidden name="familyNameKana" value="%{familyNameKana}"/>
-				    <s:hidden name="lastNameKana" value="%{lastNameKana}"/>
-				    <s:hidden name="mail" value="%{mail}"/>
-				    <s:hidden name="password" value="%{password}"/>
-				    <s:hidden name="gender" value="%{gender}"/>
-				    <s:hidden name="postalCode" value="%{postalCode}"/>
-				    <s:hidden name="prefecture" value="%{prefecture}"/>
-				    <s:hidden name="address_1" value="%{address_1}"/>
-				    <s:hidden name="address_2" value="%{address_2}"/>
-				    <s:hidden name="authority" value="%{authority}"/>
-				    <s:submit value="前に戻る"/>
-				</s:form>
-				  <s:form action="update_complete" cssClass="inline-form">
-				  		<s:hidden name="id" value="%{id}"/>
-			            <s:hidden name="familyName" value="%{familyName}"/>
-			            <s:hidden name="lastName" value="%{lastName}"/>
-			            <s:hidden name="familyNameKana" value="%{#session.familyNameKana}"/>
-			            <s:hidden name="lastNameKana" value="%{#session.lastNameKana}"/>
-			            <s:hidden name="mail" value="%{mail}"/>
-			            <s:hidden name="password" value="%{password}"/>
-			            <s:hidden name="gender" value="%{gender}"/>
-			            <s:hidden name="postalCode" value="%{postalCode}"/>
-			            <s:hidden name="prefecture" value="%{prefecture}"/>
-			            <s:hidden name="address_1" value="%{address_1}"/>
-			            <s:hidden name="address_2" value="%{address_2}"/>
-			            <s:hidden name="authority" value="%{authority}"/>
-			            <s:submit value="更新する"/>
-			        </s:form>			        
+			 <table>
+            <tr><td>名前（姓）</td><td><s:property value="familyName"/></td></tr>
+            <tr><td>名前（名）</td><td><s:property value="lastName"/></td></tr>
+            <tr><td>カナ（姓）</td><td><s:property value="familyNameKana"/></td></tr>
+            <tr><td>カナ（名）</td><td><s:property value="lastNameKana"/></td></tr>
+            <tr><td>メールアドレス</td><td><s:property value="mail"/></td></tr>
+            <tr><td>パスワード</td><td><s:property value="passwordMasked"/></td></tr>
+            <tr><td>性別</td><td>
+                <s:if test="gender == 0">男</s:if>
+                <s:if test="gender == 1">女</s:if>
+            </td></tr>
+            <tr><td>郵便番号</td><td><s:property value="postalCode"/></td></tr>
+            <tr><td>住所（都道府県）</td><td><s:property value="prefecture"/></td></tr>
+            <tr><td>住所（市区町村）</td><td><s:property value="address_1"/></td></tr>
+            <tr><td>住所（番地）</td><td><s:property value="address_2"/></td></tr>
+            <tr><td>アカウント権限</td><td>
+                <s:if test="authority == 0">一般</s:if>
+                <s:if test="authority == 1">管理者</s:if>
+            </td></tr>
+        </table>
+
+        <!-- 前に戻るフォーム -->
+        <s:form action="update" cssClass="inline-form">
+            <s:hidden name="back" value="true"/>
+            <s:hidden name="id" value="%{id}"/>
+            <s:hidden name="familyName" value="%{familyName}"/>
+            <s:hidden name="lastName" value="%{lastName}"/>
+            <s:hidden name="familyNameKana" value="%{familyNameKana}"/>
+            <s:hidden name="lastNameKana" value="%{lastNameKana}"/>
+            <s:hidden name="mail" value="%{mail}"/>
+            <s:hidden name="password" value="%{password}"/>
+            <s:hidden name="gender" value="%{gender}"/>
+            <s:hidden name="postalCode" value="%{postalCode}"/>
+            <s:hidden name="prefecture" value="%{prefecture}"/>
+            <s:hidden name="address_1" value="%{address_1}"/>
+            <s:hidden name="address_2" value="%{address_2}"/>
+            <s:hidden name="authority" value="%{authority}"/>
+            <s:submit value="前に戻る"/>
+        </s:form>
+
+        <!-- 更新するフォーム -->
+        <s:form action="update_complete" cssClass="inline-form">
+            <s:hidden name="id" value="%{id}"/>
+            <s:hidden name="familyName" value="%{familyName}"/>
+            <s:hidden name="lastName" value="%{lastName}"/>
+            <s:hidden name="familyNameKana" value="%{familyNameKana}"/>
+            <s:hidden name="lastNameKana" value="%{lastNameKana}"/>
+            <s:hidden name="mail" value="%{mail}"/>
+            <s:hidden name="password" value="%{password}"/>
+            <s:hidden name="gender" value="%{gender}"/>
+            <s:hidden name="postalCode" value="%{postalCode}"/>
+            <s:hidden name="prefecture" value="%{prefecture}"/>
+            <s:hidden name="address_1" value="%{address_1}"/>
+            <s:hidden name="address_2" value="%{address_2}"/>
+            <s:hidden name="authority" value="%{authority}"/>
+            <s:submit value="更新する"/>
+        </s:form>        
 		</div>
 	</main>
     <footer>
