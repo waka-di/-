@@ -4,10 +4,7 @@
 	 <display-name>account</display-name>
 	  <welcome-file-list>
 
-	    <welcome-file>home.jsp</welcome-file>
-
-		<welcome-file>home.jsp</welcome-file>
-
+	    <welcome-file>login.jsp</welcome-file>
 	  </welcome-file-list>
 	
 	<filter>

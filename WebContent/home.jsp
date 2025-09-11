@@ -30,8 +30,10 @@
         <li>問い合わせ</li>
         <li>その他</li>
 
+	<s:if test="#session.loginUser.authority == 1"> 
         <li><a href='<s:url action="regist"/>'>アカウント登録</a></li>
         <li><a href='<s:url action="list"/>'>アカウント一覧</a></li>
+     </s:if>
       </ul>
     </div>
     </header>

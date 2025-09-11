@@ -57,7 +57,7 @@
     <div class="update-container">
         <table> 
             <s:form action="update_confirm" theme="simple">
-    <s:hidden name="id" value="%{id}"/>
+  			  <s:hidden name="id" value="%{id}"/>
 
     <tr>
         <td><label>名前（姓）</label></td>
