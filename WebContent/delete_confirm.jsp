@@ -83,7 +83,7 @@
 			    <s:hidden name="address_2" value="%{address_2}"/>
 			    <s:hidden name="authority" value="%{authority}"/>
 	
-	   			 <s:submit value="前へ戻る" action="delete_confirm"/>
+	   			 <s:submit value="前に戻る" action="delete_confirm"/>
 			</s:form>
        		<s:form action="delete_complete" cssClass="inline-form">
             	<s:hidden name="id" value="%{id}"/>
