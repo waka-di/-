@@ -21,13 +21,37 @@
         
         .login-container { 
             align-items: center; 
-            height: 1000px; 
+            height: min-height; 
             text-align: center; 
+            width: 500px;
+		  	margin: 0 auto;
+		  	padding-bottom:100px;
         } 
-        .login-container table{ 
-            margin: 0 auto; 
-            text-align:left; 
-        } 
+       
+
+        .form-display {
+		  display: flex;
+		  align-items: center;
+		  margin-bottom: 15px;
+		}
+
+		.form-display label {
+		  width: 160px;
+		  font-weight: bold;
+		  font-size: 18px;
+		}
+
+		.form-input input {
+		  font-size: 18px;
+		  padding: 8px; 
+		  height: 40px; 
+		  width: 100%;    
+		  box-sizing: border-box;
+		}
+		
+		.login-container .form-submit {
+		  margin-top: 20px;
+		}
         
     </style> 
 </head> 
@@ -54,24 +78,29 @@
 	<div id="login"> 
         <p>ログイン画面</p> 
     </div> 
+    
     <div class="login-container">
 			<s:form action = "login"> 
-			<s:actionerror cssStyle="color:red;" /> 
-			<table> 
-			 <tr>
-       			 <td><label>メールアドレス</label></td>
-      			  <td>
-						<s:textfield name = "mail"/>
-				  </td>
-			</tr>
-			<tr>
-				<td><label>パスワード</label></td>
-				<td>
-					<s:password name="password"/>
-				</td>
-				<s:submit value="ログイン"/>
+				<s:actionerror cssStyle="color:red;" /> 
+				
+				<div class="form-display">
+       				<label>メールアドレス</label>
+	      			<div class="form-input">
+							<s:textfield name = "mail" theme="simple"/>
+					</div>
+				</div>
+				<div class="form-display">
+					<label>パスワード</label>
+					<div class="form-input">
+						<s:password name="password" theme="simple"/>
+					</div>
+				</div>
+				<div class="form-submit">
+					<s:submit value="ログイン" theme="simple"/>
+				</div>
 			</s:form> 
-</main> 
+	</div>
+</main>
 <footer> 
     Copyright D.I.works|D.I.blog is the one which provides A to Z about programming 
 </footer> 
