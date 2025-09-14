@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.diworksdev.account.dto.ListDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class Delete_confirmAction extends ActionSupport implements SessionAware {
@@ -28,27 +29,31 @@ public class Delete_confirmAction extends ActionSupport implements SessionAware 
 
     @Override
     public String execute() {
-        if ("back".equals(back)) {
-            // セッションにフォーム情報を保存
-            Map<String,Object> formMap = new HashMap<>();
-            formMap.put("id", id);
-            formMap.put("familyName", familyName);
-            formMap.put("lastName", lastName);
-            formMap.put("familyNameKana", familyNameKana);
-            formMap.put("lastNameKana", lastNameKana);
-            formMap.put("mail", mail);
-            formMap.put("password", password);
-            formMap.put("gender", gender);
-            formMap.put("postalCode", postalCode);
-            formMap.put("prefecture", prefecture);
-            formMap.put("address_1", address_1);
-            formMap.put("address_2", address_2);
-            formMap.put("authority", authority);
-
-            session.put("deleteForm", formMap);
-
-            return "back";
-        }
+        	 if ("back".equals(back)) {
+        	        Map<String,Object> formMap = new HashMap<>();
+        	        formMap.put("id", id);
+        	        formMap.put("familyName", familyName);
+        	        formMap.put("lastName", lastName);
+        	        formMap.put("familyNameKana", familyNameKana);
+        	        formMap.put("lastNameKana", lastNameKana);
+        	        formMap.put("mail", mail);
+        	        formMap.put("password", password);
+        	        formMap.put("gender", gender);
+        	        formMap.put("postalCode", postalCode);
+        	        formMap.put("prefecture", prefecture);
+        	        formMap.put("address_1", address_1);
+        	        formMap.put("address_2", address_2);
+        	        formMap.put("authority", authority);
+        	        session.put("deleteForm", formMap);
+        	        return "back";
+        	    }
+        	 
+        ListDTO loginUser = (ListDTO) session.get("loginUser");
+	    if (loginUser == null || loginUser.getAuthority() != 1) {
+	        addActionError("権限がありません。");
+	        return ERROR;
+	    }
+	    
         return SUCCESS;
     }
 
