@@ -13,22 +13,24 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	    private String password;
 	    private Map<String, Object> session;
 
-	    @Override
 	    public String execute() {
-	        String ret = ERROR;
+	    	LoginDAO dao = new LoginDAO();
 	        try {
-	            LoginDAO dao = new LoginDAO();
 	            ListDTO dto = dao.select(mail, password);
 
-	            if (dto != null && mail.equals(dto.getMail()) && password.equals(dto.getPassword())) {
-	                // セッションにログイン情報を保存
+	            if (dto != null) {
+	              
 	                session.put("loginUser", dto);
-	                ret = SUCCESS;
-	            } 
+
+	                return SUCCESS; 
+	            } else {
+	                addActionError("エラーが発生したためログイン情報を取得できません。");
+	                return ERROR;
+	            }
 	        } catch (SQLException e) {
-	            addActionError("エラーが発生したためログイン情報を取得できません。");
+	            e.printStackTrace();
+	            return ERROR;
 	        }
-	        return ret;
 	    }
 
 	    // getter / setter
@@ -44,6 +46,8 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	    public void setPassword(String password) {
 	        this.password = password;
 	    }
+	    
+	    @Override
 	    public void setSession(Map<String, Object> session) {
 	        this.session = session;
 	    }

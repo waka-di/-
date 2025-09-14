@@ -19,6 +19,10 @@
             margin-top:82px 
         } 
         
+        ul.error {
+		    list-style-type: none;
+		}
+		
         .login-container { 
             align-items: center; 
             height: min-height; 
@@ -81,7 +85,7 @@
     
     <div class="login-container">
 			<s:form action = "login"> 
-				<s:actionerror cssStyle="color:red;" /> 
+				<s:actionerror class="error" cssStyle="color:red;" /> 
 				
 				<div class="form-display">
        				<label>メールアドレス</label>

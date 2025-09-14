@@ -3,6 +3,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.diworksdev.account.dto.ListDTO;
 import com.opensymphony.xwork2.ActionSupport;
 public class Regist_confirmAction extends ActionSupport implements SessionAware{
 	
@@ -68,7 +69,12 @@ public class Regist_confirmAction extends ActionSupport implements SessionAware{
 			return "back"; 
 			}
 		
-
+		 ListDTO loginUser = (ListDTO) session.get("loginUser");
+		    if (loginUser == null || loginUser.getAuthority() != 1) {
+		        addActionError("権限がありません。");
+		        return ERROR;
+		    }
+		    
 		if (familyName == null || familyName.trim().isEmpty()) {
             addFieldError("familyName", "名前（姓）が未入力です。");
         } else if (!familyName.matches("[\\p{IsHan}\\p{IsHiragana}]+")) {
@@ -131,7 +137,7 @@ public class Regist_confirmAction extends ActionSupport implements SessionAware{
             addFieldError("authority", "権限が未選択です。");
         }
         if (hasFieldErrors()) {
-        	return ERROR;
+        	return "input";
         }
 	
         // 正常処理
