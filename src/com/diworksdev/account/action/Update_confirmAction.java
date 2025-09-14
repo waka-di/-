@@ -3,6 +3,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.diworksdev.account.dto.ListDTO;
 import com.opensymphony.xwork2.ActionSupport;
 public class Update_confirmAction extends ActionSupport implements SessionAware{
 	private Integer id;
@@ -76,15 +77,21 @@ public class Update_confirmAction extends ActionSupport implements SessionAware{
             session.put("lastNameKana", lastNameKana);
             session.put("mail", mail);
             session.put("password", password);
-            session.put("gender", gender);
-            session.put("postalCode", postalCode);
+            session.put("gender", Integer.parseInt(gender));
+            session.put("postalCode", Integer.parseInt(postalCode));
             session.put("prefecture", prefecture);
             session.put("address_1", address_1);
             session.put("address_2", address_2);
-            session.put("authority", authority);
+            session.put("authority", Integer.parseInt(authority));
             return "back";
         }
 		
+		ListDTO loginUser = (ListDTO) session.get("loginUser");
+	    if (loginUser == null || loginUser.getAuthority() != 1) {
+	        addActionError("権限がありません。");
+	        return ERROR;
+	    }
+	    
 		if (familyName == null || familyName.trim().isEmpty()) {
             addFieldError("familyName", "名前（姓）が未入力です。");
         } else if (!familyName.matches("[\\p{IsHan}\\p{IsHiragana}]+")) {
@@ -147,7 +154,7 @@ public class Update_confirmAction extends ActionSupport implements SessionAware{
             addFieldError("authority", "権限が未選択です。");
         }
         if (hasFieldErrors()) {
-        	return ERROR;
+        	return "input";
         }
 		
         // 正常処理

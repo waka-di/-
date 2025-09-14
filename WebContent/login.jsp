@@ -90,13 +90,13 @@
 				<div class="form-display">
        				<label>メールアドレス</label>
 	      			<div class="form-input">
-							<s:textfield name = "mail" theme="simple"/>
+							<s:textfield name = "mail" maxlength="100" theme="simple"/>
 					</div>
 				</div>
 				<div class="form-display">
 					<label>パスワード</label>
 					<div class="form-input">
-						<s:password name="password" theme="simple"/>
+						<s:password name="password" maxlength="10" theme="simple"/>
 					</div>
 				</div>
 				<div class="form-submit">

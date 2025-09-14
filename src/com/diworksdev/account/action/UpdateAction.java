@@ -38,13 +38,38 @@ public class UpdateAction extends ActionSupport implements SessionAware {
     	        this.lastNameKana = (String) session.get("lastNameKana");
     	        this.mail = (String) session.get("mail");
     	        this.password = (String) session.get("password");
-    	        this.gender = Integer.parseInt((String) session.get("gender"));
-    	        this.postalCode = Integer.parseInt((String) session.get("postalCode"));
+    	        Object genderObj = session.get("gender");
+    	        if (genderObj != null) {
+    	            if (genderObj instanceof Integer) {
+    	                this.gender = (Integer) genderObj;
+    	            } else {
+    	                this.gender = Integer.parseInt(genderObj.toString());
+    	            }
+    	        }
+
+    	        Object postalObj = session.get("postalCode");
+    	        if (postalObj != null) {
+    	            if (postalObj instanceof Integer) {
+    	                this.postalCode = (Integer) postalObj;
+    	            } else {
+    	                this.postalCode = Integer.parseInt(postalObj.toString());
+    	            }
+    	        }
+
     	        this.prefecture = (String) session.get("prefecture");
     	        this.address_1 = (String) session.get("address_1");
     	        this.address_2 = (String) session.get("address_2");
-    	        this.authority = Integer.parseInt((String) session.get("authority"));
-    	    } else if(dto != null) {
+
+    	        Object authObj = session.get("authority");
+    	        if (authObj != null) {
+    	            if (authObj instanceof Integer) {
+    	                this.authority = (Integer) authObj;
+    	            } else {
+    	                this.authority = Integer.parseInt(authObj.toString());
+    	            }
+    	        }
+    	    } 
+    	 else if(dto != null) {
     	        this.familyName = dto.getFamilyName();
     	        this.lastName = dto.getLastName();
     	        this.familyNameKana = dto.getFamilyNameKana();
@@ -66,7 +91,7 @@ public class UpdateAction extends ActionSupport implements SessionAware {
     public String update() throws SQLException {
         UpdateDAO dao = new UpdateDAO();
         
-        // パスワードをハッシュ化（nullチェック）
+        // パスワードをハッシュ化
         String hashedPassword = null;
         if (password != null && !password.isEmpty()) {
             hashedPassword = PasswordUtil.hash(password);
