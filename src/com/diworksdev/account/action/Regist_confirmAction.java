@@ -38,21 +38,7 @@ public class Regist_confirmAction extends ActionSupport implements SessionAware{
 	@Override
     public String execute() {
 		
-		// セッションに値があればフォームにセット
-        if (session.get("familyName") != null) familyName = (String) session.get("familyName");
-        if (session.get("lastName") != null) lastName = (String) session.get("lastName");
-        if (session.get("familyNameKana") != null) familyNameKana = (String) session.get("familyNameKana");
-        if (session.get("lastNameKana") != null) lastNameKana = (String) session.get("lastNameKana");
-        if (session.get("mail") != null) mail = (String) session.get("mail");
-        if (session.get("password") != null) password = (String) session.get("password");
-        if (session.get("gender") != null) gender = String.valueOf(session.get("gender"));
-        if (session.get("postalCode") != null) postalCode = String.valueOf(session.get("postalCode"));
-        if (session.get("prefecture") != null) prefecture = (String) session.get("prefecture");
-        if (session.get("address_1") != null) address_1 = (String) session.get("address_1");
-        if (session.get("address_2") != null) address_2 = (String) session.get("address_2");
-        if (session.get("authority") != null) authority = String.valueOf(session.get("authority"));
-
-		// 「前に戻る」ボタンが押された場合
+		// 「前に戻る」
 		if (back != null) { 
 			session.put("familyName", familyName); 
 			session.put("lastName", lastName); 
@@ -66,14 +52,43 @@ public class Regist_confirmAction extends ActionSupport implements SessionAware{
 			session.put("address_1", address_1); 
 			session.put("address_2", address_2); 
 			session.put("authority", authority);
-			return "back"; 
-			}
+			return INPUT; 
+	
+		}
 		
-		 ListDTO loginUser = (ListDTO) session.get("loginUser");
-		    if (loginUser == null || loginUser.getAuthority() != 1) {
-		        addActionError("権限がありません。");
-		        return ERROR;
-		    }
+		//ログイン権限
+		ListDTO loginUser = (ListDTO) session.get("loginUser");
+	    if (loginUser == null || loginUser.getAuthority() != 1) {
+	        addActionError("権限がありません。");
+	        return ERROR;
+	    }
+	    
+	    // フォーム値が null の場合はセッションから補完
+        if (familyName == null && session.get("familyName") != null)
+            familyName = (String) session.get("familyName");
+        if (lastName == null && session.get("lastName") != null)
+            lastName = (String) session.get("lastName");
+        if (familyNameKana == null && session.get("familyNameKana") != null)
+            familyNameKana = (String) session.get("familyNameKana");
+        if (lastNameKana == null && session.get("lastNameKana") != null)
+            lastNameKana = (String) session.get("lastNameKana");
+        if (mail == null && session.get("mail") != null)
+            mail = (String) session.get("mail");
+        if (password == null && session.get("password") != null)
+            password = (String) session.get("password");
+        if (gender == null && session.get("gender") != null)
+            gender = String.valueOf(session.get("gender"));
+        if (postalCode == null && session.get("postalCode") != null)
+            postalCode = String.valueOf(session.get("postalCode"));
+        if (prefecture == null && session.get("prefecture") != null)
+            prefecture = (String) session.get("prefecture");
+        if (address_1 == null && session.get("address_1") != null)
+            address_1 = (String) session.get("address_1");
+        if (address_2 == null && session.get("address_2") != null)
+            address_2 = (String) session.get("address_2");
+        if (authority == null && session.get("authority") != null)
+            authority = String.valueOf(session.get("authority"));
+		 
 		    
 		if (familyName == null || familyName.trim().isEmpty()) {
             addFieldError("familyName", "名前（姓）が未入力です。");

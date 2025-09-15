@@ -21,8 +21,7 @@
 		<action name="regist_confirm" class="com.diworksdev.account.action.Regist_confirmAction" method="execute">
 			<result name="success">regist_confirm.jsp</result>
 			<result name="error">login.jsp</result>
-			<result name="input">regist_confirm.jsp</result>
-			<result name="back">regist.jsp</result> 
+			<result name="input">regist.jsp</result>
 		</action>
 		
 <!-- regist_completeAction -->

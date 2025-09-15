@@ -165,8 +165,10 @@
 				</s:form>
 			</table>
 				<s:form action="regist" cssClass="inline-form">
-    					<s:submit value="前に戻る"/>
-					</s:form>	
+				    <s:hidden name="back" value="true"/>
+				    <s:submit value="前に戻る"/>
+				</s:form>
+
 				  <s:form action="regist_complete" cssClass="inline-form">
 			            <s:hidden name="familyName" value="%{familyName}"/>
 			            <s:hidden name="lastName" value="%{lastName}"/>
