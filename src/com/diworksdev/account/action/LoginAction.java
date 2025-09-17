@@ -6,6 +6,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.diworksdev.account.dao.LoginDAO;
 import com.diworksdev.account.dto.ListDTO;
+import com.diworksdev.account.util.PasswordUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport implements SessionAware{
@@ -16,7 +17,10 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	    public String execute() {
 	    	LoginDAO dao = new LoginDAO();
 	        try {
-	            ListDTO dto = dao.select(mail, password);
+	        	// ハッシュ化
+	        	String hashedPassword = PasswordUtil.hash(password);
+	            // ハッシュでDAOに渡す
+	            ListDTO dto = dao.select(mail, hashedPassword);
 
 	            if (dto != null) {
 	              

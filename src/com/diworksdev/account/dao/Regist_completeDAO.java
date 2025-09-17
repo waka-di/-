@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import com.diworksdev.account.util.DBConnector;
 import com.diworksdev.account.util.DateUtil;
+import com.diworksdev.account.util.PasswordUtil;
 
 public class Regist_completeDAO {
 
@@ -25,7 +26,7 @@ public class Regist_completeDAO {
             preparedStatement.setString(3, familyNameKana); 
             preparedStatement.setString(4, lastNameKana);   
             preparedStatement.setString(5, mail);
-            preparedStatement.setString(6, password);
+            preparedStatement.setString(6, PasswordUtil.hash(password));
             preparedStatement.setInt(7, gender);
             preparedStatement.setInt(8, postalCode);
             preparedStatement.setString(9, prefecture);

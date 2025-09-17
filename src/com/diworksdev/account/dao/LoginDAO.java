@@ -10,7 +10,7 @@ import com.diworksdev.account.util.DBConnector;
 
 public class LoginDAO {
 
-    public ListDTO select(String mail, String password) throws SQLException {
+    public ListDTO select(String mail, String hashedPassword) throws SQLException {
         ListDTO dto = null;
 
         Connection con = DBConnector.getConnection();
@@ -19,7 +19,7 @@ public class LoginDAO {
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, mail);
-            ps.setString(2, password);
+            ps.setString(2, hashedPassword);
 
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {

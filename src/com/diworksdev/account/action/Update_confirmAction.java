@@ -31,67 +31,73 @@ public class Update_confirmAction extends ActionSupport implements SessionAware{
 		
 	@Override
     public String execute() {
-		
-		if ((familyName == null || familyName.trim().isEmpty()) && session.get("familyName") != null) {
-            familyName = (String) session.get("familyName");
-        }
-        if ((lastName == null || lastName.trim().isEmpty()) && session.get("lastName") != null) {
-            lastName = (String) session.get("lastName");
-        }
-        if ((familyNameKana == null || familyNameKana.trim().isEmpty()) && session.get("familyNameKana") != null) {
-            familyNameKana = (String) session.get("familyNameKana");
-        }
-        if ((lastNameKana == null || lastNameKana.trim().isEmpty()) && session.get("lastNameKana") != null) {
-            lastNameKana = (String) session.get("lastNameKana");
-        }
-        if ((mail == null || mail.trim().isEmpty()) && session.get("mail") != null) {
-            mail = (String) session.get("mail");
-        }
-        if ((password == null || password.trim().isEmpty()) && session.get("password") != null) {
-            password = (String) session.get("password");
-        }
-        if ((gender == null || gender.trim().isEmpty()) && session.get("gender") != null) {
-            gender = String.valueOf(session.get("gender"));
-        }
-        if ((postalCode == null || postalCode.trim().isEmpty()) && session.get("postalCode") != null) {
-            postalCode = String.valueOf(session.get("postalCode"));
-        }
-        if ((prefecture == null || prefecture.trim().isEmpty()) && session.get("prefecture") != null) {
-            prefecture = (String) session.get("prefecture");
-        }
-        if ((address_1 == null || address_1.trim().isEmpty()) && session.get("address_1") != null) {
-            address_1 = (String) session.get("address_1");
-        }
-        if ((address_2 == null || address_2.trim().isEmpty()) && session.get("address_2") != null) {
-            address_2 = (String) session.get("address_2");
-        }
-        if ((authority == null || authority.trim().isEmpty()) && session.get("authority") != null) {
-            authority = String.valueOf(session.get("authority"));
-        }
-        
-		// 「前に戻る」ボタンが押された場合
-		if ("true".equals(back)) {
-            session.put("familyName", familyName);
-            session.put("lastName", lastName);
-            session.put("familyNameKana", familyNameKana);
-            session.put("lastNameKana", lastNameKana);
-            session.put("mail", mail);
-            session.put("password", password);
-            session.put("gender", Integer.parseInt(gender));
-            session.put("postalCode", Integer.parseInt(postalCode));
-            session.put("prefecture", prefecture);
-            session.put("address_1", address_1);
-            session.put("address_2", address_2);
-            session.put("authority", Integer.parseInt(authority));
-            return "back";
-        }
-		
-		ListDTO loginUser = (ListDTO) session.get("loginUser");
-	    if (loginUser == null || loginUser.getAuthority() != 1) {
-	        addActionError("権限がありません。");
-	        return ERROR;
-	    }
+		Object loginUserObj = session.get("loginUser");
+		if (loginUserObj == null || !(loginUserObj instanceof ListDTO)) {
+		    addActionError("権限がありません");
+		    return ERROR;
+		}
+
+		// キャストして loginUser として使う
+		ListDTO loginUser = (ListDTO) loginUserObj;
+
+		// authority を int と比較
+		if (loginUser.getAuthority() != 1) {
+		    addActionError("権限がありません");
+		    return ERROR;
+		}
 	    
+	    // 「前に戻る」ボタンが押された場合
+ 		if ("true".equals(back)) {
+             session.put("familyName", familyName);
+             session.put("lastName", lastName);
+             session.put("familyNameKana", familyNameKana);
+             session.put("lastNameKana", lastNameKana);
+             session.put("mail", mail);
+             session.put("password", password);
+             session.put("gender", gender);
+             session.put("postalCode", postalCode);
+             session.put("prefecture", prefecture);
+             session.put("address_1", address_1);
+             session.put("address_2", address_2);
+             session.put("authority", authority);
+             
+             return "back";
+         }
+ 		
+ 	// セッションから直前入力値を上書き
+ 	    if (session.get("familyName") != null) {
+ 	    	familyName = (String) session.get("familyName");
+ 	        lastName = (String) session.get("lastName");
+ 	        familyNameKana = (String) session.get("familyNameKana");
+ 	        lastNameKana = (String) session.get("lastNameKana");
+ 	        mail = (String) session.get("mail");
+ 	       Object pwObj = session.get("password");
+ 	      if (pwObj != null) {
+ 	          password = pwObj.toString();
+ 	      }
+ 	        gender = (String) session.get("gender");
+ 	        postalCode = (String) session.get("postalCode");
+ 	        prefecture = (String) session.get("prefecture");
+ 	        address_1 = (String) session.get("address_1");
+ 	        address_2 = (String) session.get("address_2");
+ 	        authority = (String) session.get("authority");
+
+ 	    // 直前入力値だけ削除
+ 	        session.remove("familyName");
+ 	        session.remove("lastName");
+ 	        session.remove("familyNameKana");
+ 	        session.remove("lastNameKana");
+ 	        session.remove("mail");
+ 	        session.remove("password");
+ 	        session.remove("gender");
+ 	        session.remove("postalCode");
+ 	        session.remove("prefecture");
+ 	        session.remove("address_1");
+ 	        session.remove("address_2");
+ 	        session.remove("authority");
+ 	    }
+
+					    
 		if (familyName == null || familyName.trim().isEmpty()) {
             addFieldError("familyName", "名前（姓）が未入力です。");
         } else if (!familyName.matches("[\\p{IsHan}\\p{IsHiragana}]+")) {
@@ -122,10 +128,10 @@ public class Update_confirmAction extends ActionSupport implements SessionAware{
             addFieldError("mail", "メールアドレスは半角英数字、@、-のみ入力可能です。");
         }
 
-        if (password == null || password.trim().isEmpty()) {
-            addFieldError("password", "パスワードが未入力です。");
-        } else if (!password.matches("[a-zA-Z0-9]+")) {
-            addFieldError("password", "パスワードは半角英数字のみ入力可能です。");
+        if (password != null && !password.equals("●●●●●●●●")) {
+            if (!password.matches("[a-zA-Z0-9]+")) {
+                addFieldError("password", "パスワードは半角英数字のみ入力可能です。");
+            }
         }
 
         if (postalCode == null || postalCode.trim().isEmpty()) {
@@ -173,6 +179,7 @@ public class Update_confirmAction extends ActionSupport implements SessionAware{
         return SUCCESS; 
         }
 
+	
 	public Integer getId() { 
 		return id; 
 	}
@@ -209,20 +216,12 @@ public class Update_confirmAction extends ActionSupport implements SessionAware{
 	 public void setMail(String mail) { 
 		 this.mail = mail; 
 	}
-	 public String getPassword() {
-		 return password;
-	}
-	 public void setPassword(String password) { 
-		 this.password = password; 
-	}
 	 public String getPasswordMasked() {
-		    if (password == null) return "";
-		    StringBuilder sb = new StringBuilder();
-		    for(int i=0; i<password.length(); i++){
-		        sb.append("●");
+		    if (password == null || password.isEmpty()) {
+		        return "●●●●●●●●";
 		    }
-		    return sb.toString();
-	}
+		    return String.join("", java.util.Collections.nCopies(password.length(), "●"));
+		}
     public String getGender() { 
     	return gender; 
     }

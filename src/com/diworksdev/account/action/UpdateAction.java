@@ -25,63 +25,58 @@ public class UpdateAction extends ActionSupport implements SessionAware {
     private String address_1;
     private String address_2;
     private int authority;
+    
+    //ダミー
+    private static final String PASSWORD_MASK = "●●●●●●●●";
 
     // 表示用
     public String execute() throws SQLException {
     	 UpdateDAO dao = new UpdateDAO();
     	 ListDTO dto = dao.getAccountById(id);
 
-    	 if(session.get("familyName") != null) {
-    	        this.familyName = (String) session.get("familyName");
-    	        this.lastName = (String) session.get("lastName");
-    	        this.familyNameKana = (String) session.get("familyNameKana");
-    	        this.lastNameKana = (String) session.get("lastNameKana");
-    	        this.mail = (String) session.get("mail");
-    	        this.password = (String) session.get("password");
-    	        Object genderObj = session.get("gender");
-    	        if (genderObj != null) {
-    	            if (genderObj instanceof Integer) {
-    	                this.gender = (Integer) genderObj;
-    	            } else {
-    	                this.gender = Integer.parseInt(genderObj.toString());
-    	            }
-    	        }
-
-    	        Object postalObj = session.get("postalCode");
-    	        if (postalObj != null) {
-    	            if (postalObj instanceof Integer) {
-    	                this.postalCode = (Integer) postalObj;
-    	            } else {
-    	                this.postalCode = Integer.parseInt(postalObj.toString());
-    	            }
-    	        }
-
-    	        this.prefecture = (String) session.get("prefecture");
-    	        this.address_1 = (String) session.get("address_1");
-    	        this.address_2 = (String) session.get("address_2");
-
-    	        Object authObj = session.get("authority");
-    	        if (authObj != null) {
-    	            if (authObj instanceof Integer) {
-    	                this.authority = (Integer) authObj;
-    	            } else {
-    	                this.authority = Integer.parseInt(authObj.toString());
-    	            }
-    	        }
-    	    } 
-    	 else if(dto != null) {
+    	 if(dto != null) {
+    	        // DAO の情報を優先
     	        this.familyName = dto.getFamilyName();
     	        this.lastName = dto.getLastName();
     	        this.familyNameKana = dto.getFamilyNameKana();
     	        this.lastNameKana = dto.getLastNameKana();
     	        this.mail = dto.getMail();
-    	        this.password = dto.getPassword();
+    	        this.password = PASSWORD_MASK;
     	        this.gender = dto.getGender();
     	        this.postalCode = dto.getPostalCode();
     	        this.prefecture = dto.getPrefecture();
     	        this.address_1 = dto.getAddress_1();
     	        this.address_2 = dto.getAddress_2();
     	        this.authority = dto.getAuthority();
+    	    }
+
+    	    // セッションから直前入力値を上書き（バリデーションエラー再表示用）
+    	    if(session.get("familyName") != null) {
+    	        this.familyName = (String) session.get("familyName");
+    	        this.lastName = (String) session.get("lastName");
+    	        this.familyNameKana = (String) session.get("familyNameKana");
+    	        this.lastNameKana = (String) session.get("lastNameKana");
+    	        this.mail = (String) session.get("mail");
+    	        this.password = (String) session.get("password");
+    	        this.gender = Integer.parseInt(session.get("gender").toString());
+    	        this.postalCode = Integer.parseInt(session.get("postalCode").toString());
+    	        this.prefecture = (String) session.get("prefecture");
+    	        this.address_1 = (String) session.get("address_1");
+    	        this.address_2 = (String) session.get("address_2");
+    	        this.authority = Integer.parseInt(session.get("authority").toString());
+
+    	        session.remove("familyName");
+    	        session.remove("lastName");
+    	        session.remove("familyNameKana");
+    	        session.remove("lastNameKana");
+    	        session.remove("mail");
+    	        session.remove("password");
+    	        session.remove("gender");
+    	        session.remove("postalCode");
+    	        session.remove("prefecture");
+    	        session.remove("address_1");
+    	        session.remove("address_2");
+    	        session.remove("authority");
     	    }
 
     	    return SUCCESS;
@@ -93,7 +88,7 @@ public class UpdateAction extends ActionSupport implements SessionAware {
         
         // パスワードをハッシュ化
         String hashedPassword = null;
-        if (password != null && !password.isEmpty()) {
+        if (password != null && !password.isEmpty() && !PASSWORD_MASK.equals(password)) {
             hashedPassword = PasswordUtil.hash(password);
         }
         
@@ -187,7 +182,9 @@ public class UpdateAction extends ActionSupport implements SessionAware {
     public void setAuthority(int authority) { 
     	this.authority = authority; 
     }
-
+    public String getPasswordMasked() {
+        return "●●●●●●●●";
+    }
         @Override
     public void setSession(Map<String, Object> session) {
         this.session = session;

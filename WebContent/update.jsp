@@ -20,14 +20,79 @@
         } 
         
         .update-container { 
-            align-items: center; 
-            height: 1000px; 
-            text-align: center; 
+            max-width:800px;
+		    margin: 0 auto;
+		    padding: 20px;
         } 
-        .update-container table{ 
-            margin: 0 auto; 
-            text-align:left; 
-        } 
+        .form-group {
+		    display: flex;
+		    align-items: flex-start;
+		    margin-bottom: 20px;
+		}
+		
+		.form-group label {
+		    width: 200px;         
+		    font-weight: bold;
+		    margin-right: 10px;
+		    padding-top: 5px;    
+		}
+		
+		.input-wrapper {
+		    display: flex;
+		    flex-direction: column;
+		}
+		
+		.input-wrapper input,
+		.input-wrapper select,
+		.input-wrapper textarea {
+		    width: 250px; 
+		    padding: 5px;
+		}
+		.input-wrapper.small-input input,
+		.input-wrapper.small-input select {
+	   	 width: 150px;
+		}
+
+		.input-wrapper .radio,
+		.input-wrapper .checkbox {
+		    display: flex;
+		    gap: 10px;
+		    margin-top: 5px;
+		}
+		.input-wrapper_1{
+			flex-direction: row;
+		}
+		.input-wrapper .radio {
+		    display: flex;
+		    gap: 20px;
+		    align-items: center;
+		     width: 55px;
+		}
+		
+		.error {
+		    color: red;
+		    margin-top: 5px; 
+		}
+		
+
+		.form-actions {
+		    display: flex;
+		    justify-content: center;  
+		    margin-top: 40px;
+		    margin-right:50px;
+		}
+		
+		.form-actions input[type="submit"] {
+		    padding: 10px 30px;
+		    font-size: 1.1em;
+		    cursor: pointer;
+		}
+        footer {
+		    bottom: 0;
+		    left: 0;
+		    width: 100%;
+		    text-align: center;
+		}
     </style> 
 </head> 
 <body> 
@@ -55,68 +120,67 @@
         <p>アカウント更新画面</p> 
     </div> 
     <div class="update-container">
-        <table> 
             <s:form action="update_confirm" theme="simple">
   			  <s:hidden name="id" value="%{id}"/>
 
-    <tr>
-        <td><label>名前（姓）</label></td>
-        <td>
+    <div class="form-group">
+        <label>名前（姓）</label>
+        <div class="input-wrapper">
             <s:textfield name="familyName" value="%{familyName}" maxlength="10"/>
             <s:fielderror fieldName="familyName" cssStyle="color:red;"/>
-        </td>
-    </tr>
-    <tr>
-        <td><label>名前（名）</label></td>
-        <td>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>名前（名）</label>
+        <div class="input-wrapper">
             <s:textfield name="lastName" value="%{lastName}" maxlength="10"/>
             <s:fielderror fieldName="lastName" cssStyle="color:red;"/>
-        </td>
-    </tr>
-    <tr>
-        <td><label>カナ（姓）</label></td>
-        <td>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>カナ（姓）</label>
+        <div class="input-wrapper">
             <s:textfield name="familyNameKana" value="%{familyNameKana}" maxlength="10"/>
             <s:fielderror fieldName="familyNameKana" cssStyle="color:red;"/>
-        </td>
-    </tr>
-    <tr>
-        <td><label>カナ（名）</label></td>
-        <td>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>カナ（名）</label>
+        <div class="input-wrapper">
             <s:textfield name="lastNameKana" value="%{lastNameKana}" maxlength="10"/>
             <s:fielderror fieldName="lastNameKana" cssStyle="color:red;"/>
-        </td>
-    </tr>
-    <tr>
-        <td><label>メールアドレス</label></td>
-        <td>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>メールアドレス</label>
+        <div class="input-wrapper">
             <s:textfield name="mail" value="%{mail}" maxlength="100"/>
             <s:fielderror fieldName="mail" cssStyle="color:red;"/>
-        </td>
-    </tr>
-    <tr>
-        <td><label>パスワード</label></td>
-        <td>
-            <s:textfield name="password" value="%{password}" type="password" maxlength="10"/>
+        </div>
+    </div>
+    <div class="form-group">
+  		<label>パスワード</label>
+        <div class="input-wrapper">
+           <s:textfield name="password" value="%{passwordMasked}" maxlength="10"/>
             <s:fielderror fieldName="password" cssStyle="color:red;"/>
-        </td>
-    </tr>
-    <tr>
-        <td><label>性別</label></td>
-        <td>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>性別</label>
+        <div class="input-wrapper_1">
             <s:radio name="gender" list="#{'0':'男','1':'女'}" value="%{gender}"/>
-        </td>
-    </tr>
-    <tr>
-        <td><label>郵便番号</label></td>
-        <td>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>郵便番号</label>
+        <div class="input-wrapper small-input">
             <s:textfield name="postalCode" value="%{postalCode}" maxlength="7"/>
             <s:fielderror fieldName="postalCode" cssStyle="color:red;"/>
-        </td>
-    </tr>
-    <tr>
-        <td><label>住所（都道府県）</label></td>
-        <td>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>住所（都道府県）</label>
+         <div class="input-wrapper small-input">
             <s:select name="prefecture"
                       list="#{
                         '':'',
@@ -138,31 +202,32 @@
                         '宮崎県':'宮崎県','鹿児島県':'鹿児島県','沖縄県':'沖縄県'
                       }"
                       value="%{prefecture}"/>
-        </td>
-    </tr>
-    <tr>
-        <td><label>住所（市区町村）</label></td>
-        <td>
+                      <s:fielderror fieldName="prefecture" cssClass="error"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>住所（市区町村）</label>
+        <div class="input-wrapper">
             <s:textfield name="address_1" value="%{address_1}" maxlength="10"/>
-        </td>
-    </tr>
-    <tr>
-        <td><label>住所（番地）</label></td>
-        <td>
+            <s:fielderror fieldName="address_1" cssClass="error"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>住所（番地）</label>
+        <div class="input-wrapper">
             <s:textfield name="address_2" value="%{address_2}" maxlength="100"/>
-        </td>
-    </tr>
-    <tr>
-        <td><label>アカウント権限</label></td>
-        <td>
+            <s:fielderror fieldName="address_2" cssClass="error"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>アカウント権限</label>
+        <div class="input-wrapper small-input">
             <s:select name="authority" list="#{'0':'一般','1':'管理者'}" value="%{authority}"/>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2" style="text-align:center;">
-            <s:submit value="確認する"/>
-        </td>
-    </tr>
+        </div>
+    </div>
+    <div class="form-actions">
+         <s:submit value="確認する"/>
+     </div>
 </s:form>
         </table>
     </div> 

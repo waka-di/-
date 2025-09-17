@@ -67,7 +67,11 @@
             <tr><td>カナ（姓）</td><td><s:property value="familyNameKana"/></td></tr>
             <tr><td>カナ（名）</td><td><s:property value="lastNameKana"/></td></tr>
             <tr><td>メールアドレス</td><td><s:property value="mail"/></td></tr>
-            <tr><td>パスワード</td><td><s:property value="passwordMasked"/></td></tr>
+            <tr><td>パスワード</td>
+            	<td><s:property value="passwordMasked"/></td>
+            		<s:hidden name="password" value="%{password}"/>
+            	
+            </tr>
             <tr><td>性別</td><td>
                 <s:if test="gender == 0">男</s:if>
                 <s:if test="gender == 1">女</s:if>

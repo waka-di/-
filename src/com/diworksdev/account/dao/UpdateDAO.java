@@ -19,9 +19,16 @@ public class UpdateDAO {
             int authority) throws SQLException {
 
         int result = 0;
+        String sql;
 
-        String sql = "UPDATE account_data SET family_name=?, last_name=?, family_name_kana=?, last_name_kana=?, mail=?, password=?, gender=?, postal_code=?, prefecture=?, address_1=?, address_2=?, authority=? WHERE id=?";
-
+        if(password != null) {
+            // パスワードも更新する場合
+            sql = "UPDATE account_data SET family_name=?, last_name=?, family_name_kana=?, last_name_kana=?, mail=?, password=?, gender=?, postal_code=?, prefecture=?, address_1=?, address_2=?, authority=? WHERE id=?";
+        } else {
+            // パスワードはそのまま
+            sql = "UPDATE account_data SET family_name=?, last_name=?, family_name_kana=?, last_name_kana=?, mail=?, gender=?, postal_code=?, prefecture=?, address_1=?, address_2=?, authority=? WHERE id=?";
+        }
+        
         try (Connection con = new DBConnector().getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
@@ -30,14 +37,19 @@ public class UpdateDAO {
             ps.setString(3, familyNameKana);
             ps.setString(4, lastNameKana);
             ps.setString(5, mail);
-            ps.setString(6, password);
-            ps.setInt(7, gender);
-            ps.setInt(8, postalCode);
-            ps.setString(9, prefecture);
-            ps.setString(10, address1);
-            ps.setString(11, address2);
-            ps.setInt(12, authority);
-            ps.setInt(13, id);
+            int index = 6;
+
+            if(password != null) {
+                ps.setString(6, password);
+                index = 7;
+            }
+            ps.setInt(index++, gender);
+            ps.setInt(index++, postalCode);
+            ps.setString(index++, prefecture);
+            ps.setString(index++, address1);
+            ps.setString(index++, address2);
+            ps.setInt(index++, authority);
+            ps.setInt(index++, id);
 
             result = ps.executeUpdate();
         }

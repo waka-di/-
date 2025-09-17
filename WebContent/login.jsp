@@ -56,6 +56,13 @@
 		.login-container .form-submit {
 		  margin-top: 20px;
 		}
+		footer {
+		    position: fixed;
+		    bottom: 0;
+		    left: 0;
+		    width: 100%;
+		    text-align: center;
+		}
         
     </style> 
 </head> 
