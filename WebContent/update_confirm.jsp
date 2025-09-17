@@ -32,6 +32,13 @@
    			 display: inline-block; 
    			 margin: 0 10px;       
 		}
+		footer {
+		    position: fixed;
+		    bottom: 0;
+		    left: 0;
+		    width: 100%;
+		    text-align: center;
+		}
 	</style>
 </head>
 

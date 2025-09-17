@@ -20,7 +20,7 @@
 			margin-top:90px;
 		}
 		#list p{
-			padding-left:230px;
+			padding-left:50px;
 			font-size:25px;
 		}
 		.list-container{
@@ -30,16 +30,28 @@
 		 table {
             border-collapse: collapse;
             margin: 20px auto;
-            width: 80%;
+            width: 60%;
         }
         th, td {
             border: 1px solid #999;
-            padding: 8px 12px;
+            padding: 16px 12px;
             text-align: left;
         }
-
-        .action-btn {
-            margin: 10px;
+		.search-container input[type="text"],
+		.search-container input[type="email"],
+		.search-container select,
+		.search-container .s-radio {
+		    width: 100%;          
+		    box-sizing: border-box;
+		    padding: 8px;
+		}
+		
+		.action-btn {
+		   margin: 10px 0;
+		    padding: 12px 24px;   
+		    font-size: 18px;  
+		    cursor: pointer;   
+		    color: black;
         }
 		 .action-button {
 	        display: flex;
@@ -49,16 +61,16 @@
    		 }
 		
 
-		#regist{
-	    	margin-top:82px
-	    }
-		.regist-container {
-   			padding-top:100px;
-			height: 600px;
-			text-align: center;
-		}
 		.center-form{
 		margin:0 50% 0 50%;
+		}
+		
+		footer {
+			position: fixed;
+		    bottom: 0;
+		    left: 0;
+		    width: 100%;
+		    text-align: center;
 		}
 	</style>
 </head>
