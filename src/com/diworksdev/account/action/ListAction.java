@@ -46,7 +46,8 @@ public class ListAction extends ActionSupport implements SessionAware{
 	    public String execute() {
 			ListDTO loginUser = (ListDTO) session.get("loginUser");
 		    if (loginUser == null || loginUser.getAuthority() != 1) {
-		        return ERROR;
+		    	addActionError("権限がありません。");
+		    	return ERROR;
 		    }
 		    
 		    if (!isPost()) {
