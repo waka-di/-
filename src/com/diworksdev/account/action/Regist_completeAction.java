@@ -30,6 +30,18 @@ public class Regist_completeAction extends ActionSupport implements SessionAware
 		    int result = dao.createUser(familyName, lastName, familyNameKana,lastNameKana, mail, password,gender, postalCode, prefecture, address_1, address_2, authority);
 
 		    if (result > 0) {
+		    	 session.remove("familyName");
+		         session.remove("lastName");
+		         session.remove("familyNameKana");
+		         session.remove("lastNameKana");
+		         session.remove("mail");
+		         session.remove("password");
+		         session.remove("gender");
+		         session.remove("postalCode");
+		         session.remove("prefecture");
+		         session.remove("address_1");
+		         session.remove("address_2");
+		         session.remove("authority");
 		        return SUCCESS; // 登録完了画面へ
 		    } 
 		    else {

@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
     pageEncoding="UTF-8"%> 
 <%@ taglib prefix="s" uri="/struts-tags"%> 
@@ -85,6 +86,13 @@
 		    padding: 10px 30px;
 		    font-size: 1.1em;
 		    cursor: pointer;
+		}
+		footer {
+		    position: fixed;
+		    bottom: 0;
+		    left: 0;
+		    width: 100%;
+		    text-align: center;
 		}
 		
     </style> 
