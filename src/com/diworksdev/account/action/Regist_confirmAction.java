@@ -36,8 +36,14 @@ public class Regist_confirmAction extends ActionSupport implements SessionAware{
     }
 	
 	@Override
-    public String execute() {
-		
+    public String execute() {		
+		if (session == null || session.get("registConfirm") == null) {
+	        addActionError("不正な遷移です。");
+	        return ERROR;
+	    }
+	    
+	    session.remove("registConfirm");
+	    
 		// 「前に戻る」
 		if (back != null) { 
 			session.put("familyName", familyName); 
@@ -168,6 +174,8 @@ public class Regist_confirmAction extends ActionSupport implements SessionAware{
         session.put("address_1", address_1);
         session.put("address_2", address_2);
         session.put("authority", Integer.parseInt(authority));
+        
+        session.put("registConmplete", true);
         return SUCCESS; 
         }
 	

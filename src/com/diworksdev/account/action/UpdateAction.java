@@ -25,7 +25,13 @@ public class UpdateAction extends ActionSupport implements SessionAware {
     private String address_1;
     private String address_2;
     private int authority;
-    
+    private boolean back;
+    public boolean isBack() { 
+    	return back; 
+    }
+    public void setBack(boolean back) { 
+    	this.back = back; 
+    }
     //ダミー
     private static final String PASSWORD_MASK = "●●●●●●●●";
 

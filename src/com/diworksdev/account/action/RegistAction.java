@@ -22,12 +22,21 @@ public class RegistAction extends ActionSupport implements SessionAware {
     private String address_2;
     private String authority;
     
+    private boolean back;
+    public boolean isBack() { 
+    	return back; 
+    }
+    public void setBack(boolean back) { 
+    	this.back = back; 
+    }
+    
 	 @Override
 	    public void setSession(Map<String, Object> session) {
 	        this.session = session;
 	    }
 	 
 	public String execute() {
+		
 		 ListDTO loginUser = (ListDTO) session.get("loginUser");
 		 
 		 if (familyName == null && session.get("familyName") != null) {
@@ -75,7 +84,8 @@ public class RegistAction extends ActionSupport implements SessionAware {
 		        addActionError("権限がありません。");
 		        return ERROR;
 		    }
-		   
+		    session.put("registConfirm", true);
+		    
 		    return SUCCESS;
 	}
 	
