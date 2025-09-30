@@ -84,7 +84,7 @@ public class RegistAction extends ActionSupport implements SessionAware {
 		        addActionError("権限がありません。");
 		        return ERROR;
 		    }
-		    session.put("registConfirm", true);
+		    session.put("flg", 0);
 		    
 		    return SUCCESS;
 	}
