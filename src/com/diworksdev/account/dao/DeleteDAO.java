@@ -24,7 +24,7 @@ public class DeleteDAO {
 	                dto.setMail(rs.getString("mail"));
 	                dto.setPassword(rs.getString("password"));
 	                dto.setGender(rs.getInt("gender"));
-	                dto.setPostalCode(rs.getInt("postal_code"));
+	                dto.setPostalCode(rs.getString("postal_code"));
 	                dto.setPrefecture(rs.getString("prefecture"));
 	                dto.setAddress_1(rs.getString("address_1"));
 	                dto.setAddress_2(rs.getString("address_2"));

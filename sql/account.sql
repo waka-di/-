@@ -15,7 +15,7 @@ last_name_kana varchar(100),              /*カナ（名）*/
 mail varchar(255),                        /*メアド*/
 password varchar(255),                    /*パスワード*/
 gender int(1),                             /* 性別→ 0:男, 1:女*/
-postal_code int(7),                        /*郵便番号*/
+postal_code varchar(7),                        /*郵便番号*/
 prefecture varchar(100),                  /*住所（都道府県）*/
 address_1 varchar(100),                   /*住所（市区町村）*/
 address_2 varchar(255),                   /*住所（番地）*/

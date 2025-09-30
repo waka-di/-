@@ -1,12 +1,9 @@
 package com.diworksdev.account.action;
 import java.sql.SQLException;
-import java.util.Map;
-
-import org.apache.struts2.interceptor.SessionAware;
 
 import com.diworksdev.account.dao.Regist_completeDAO;
 import com.opensymphony.xwork2.ActionSupport;
-public class Regist_completeAction extends ActionSupport implements SessionAware{
+public class Regist_completeAction extends ActionSupport{
 	private String familyName;
 	private String lastName;
 	private String familyNameKana;
@@ -14,46 +11,31 @@ public class Regist_completeAction extends ActionSupport implements SessionAware
 	private String mail;
 	private String password;
 	private int gender;
-	private int postalCode;
+	private String postalCode;
 	private String prefecture;
 	private String address_1;
 	private String address_2;
 	private int authority;
 	
-	private Map<String,Object>session;
-	
-	 public String execute() {
-
+	public String execute() {
 		Regist_completeDAO dao = new Regist_completeDAO();
 
 		try {
-		    int result = dao.createUser(familyName, lastName, familyNameKana,lastNameKana, mail, password,gender, postalCode, prefecture, address_1, address_2, authority);
+		    int result = dao.createUser(familyName, lastName, familyNameKana, lastNameKana,
+		    		mail, password, gender, postalCode, prefecture, address_1, address_2, authority);
 
 		    if (result > 0) {
-		    	 session.remove("familyName");
-		         session.remove("lastName");
-		         session.remove("familyNameKana");
-		         session.remove("lastNameKana");
-		         session.remove("mail");
-		         session.remove("password");
-		         session.remove("gender");
-		         session.remove("postalCode");
-		         session.remove("prefecture");
-		         session.remove("address_1");
-		         session.remove("address_2");
-		         session.remove("authority");
 		        return SUCCESS; // 登録完了画面へ
-		    } 
-		    else {
+		    } else {
 		        addActionError("エラーが発生したためアカウント登録できません。");
 		        return ERROR; // 確認画面へ
 		    }
-		} 
-		catch (SQLException e) {
+		} catch (SQLException e) {
 		    addActionError("エラーが発生したためアカウント登録できません。");
 		    return ERROR;
 		}
 	}
+	
 	
 	public String getFamilyName() {
 		return familyName;
@@ -104,11 +86,11 @@ public class Regist_completeAction extends ActionSupport implements SessionAware
 		this.gender = gender;
 	}
 	
-	public int getPostalCode() {
-		return postalCode;
+	public String getPostalCode() { 
+		return postalCode; 
 	}
-	public void setPostalCode(int postalCode)	{
-		this.postalCode = postalCode;
+	public void setPostalCode(String postalCode) { 
+		this.postalCode = postalCode; 
 	}
 	
 	public String getPrefecture() {
@@ -137,13 +119,5 @@ public class Regist_completeAction extends ActionSupport implements SessionAware
 	}
 	public void setAuthority(int authority) {
 		this.authority = authority;
-	}
-	
-	public Map<String, Object> getSession() {
-		return session;
-	}
-	@Override
-	public void setSession(Map<String, Object> session){
-		this.session = session;
 	}
 }

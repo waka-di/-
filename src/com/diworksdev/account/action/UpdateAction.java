@@ -6,12 +6,12 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.diworksdev.account.dao.UpdateDAO;
-import com.diworksdev.account.dto.ListDTO;
 import com.diworksdev.account.util.PasswordUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UpdateAction extends ActionSupport implements SessionAware {
     private Map<String, Object> session;
+    
     private int id;
     private String familyName;
     private String lastName;
@@ -20,73 +20,30 @@ public class UpdateAction extends ActionSupport implements SessionAware {
     private String mail;
     private String password;
     private int gender;
-    private int 	postalCode;
+    private String	postalCode;
     private String prefecture;
     private String address_1;
     private String address_2;
     private int authority;
-    private boolean back;
-    public boolean isBack() { 
-    	return back; 
-    }
-    public void setBack(boolean back) { 
-    	this.back = back; 
-    }
-    //ダミー
+    
     private static final String PASSWORD_MASK = "●●●●●●●●";
 
-    // 表示用
+     // 表示用
     public String execute() throws SQLException {
-    	 UpdateDAO dao = new UpdateDAO();
-    	 ListDTO dto = dao.getAccountById(id);
+    	Integer loginAuthority = (Integer) session.get("authority");
+        if (loginAuthority == null || loginAuthority != 1) {
+            addActionError("管理者権限が必要です");
+            return ERROR;
+        }
 
-    	 if(dto != null) {
-    	        // DAO の情報を優先
-    	        this.familyName = dto.getFamilyName();
-    	        this.lastName = dto.getLastName();
-    	        this.familyNameKana = dto.getFamilyNameKana();
-    	        this.lastNameKana = dto.getLastNameKana();
-    	        this.mail = dto.getMail();
-    	        this.password = PASSWORD_MASK;
-    	        this.gender = dto.getGender();
-    	        this.postalCode = dto.getPostalCode();
-    	        this.prefecture = dto.getPrefecture();
-    	        this.address_1 = dto.getAddress_1();
-    	        this.address_2 = dto.getAddress_2();
-    	        this.authority = dto.getAuthority();
-    	    }
+        if (PASSWORD_MASK.equals(password)) {
+            password = ""; // 入力欄は空欄表示
+        }
 
-    	    // セッションから直前入力値を上書き（バリデーションエラー再表示用）
-    	    if(session.get("familyName") != null) {
-    	        this.familyName = (String) session.get("familyName");
-    	        this.lastName = (String) session.get("lastName");
-    	        this.familyNameKana = (String) session.get("familyNameKana");
-    	        this.lastNameKana = (String) session.get("lastNameKana");
-    	        this.mail = (String) session.get("mail");
-    	        this.password = (String) session.get("password");
-    	        this.gender = Integer.parseInt(session.get("gender").toString());
-    	        this.postalCode = Integer.parseInt(session.get("postalCode").toString());
-    	        this.prefecture = (String) session.get("prefecture");
-    	        this.address_1 = (String) session.get("address_1");
-    	        this.address_2 = (String) session.get("address_2");
-    	        this.authority = Integer.parseInt(session.get("authority").toString());
-
-    	        session.remove("familyName");
-    	        session.remove("lastName");
-    	        session.remove("familyNameKana");
-    	        session.remove("lastNameKana");
-    	        session.remove("mail");
-    	        session.remove("password");
-    	        session.remove("gender");
-    	        session.remove("postalCode");
-    	        session.remove("prefecture");
-    	        session.remove("address_1");
-    	        session.remove("address_2");
-    	        session.remove("authority");
-    	    }
-
-    	    return SUCCESS;
-    	}
+        return SUCCESS;
+      }
+    
+     
 
     // 更新用
     public String update() throws SQLException {
@@ -158,12 +115,13 @@ public class UpdateAction extends ActionSupport implements SessionAware {
     public void setGender(int gender) { 
     	this.gender = gender; 
     }
-    public int getPostalCode() { 
+    public String getPostalCode() { 
     	return postalCode; 
     }
-    public void setPostalCode(int postalCode) { 
+    public void setPostalCode(String postalCode) { 
     	this.postalCode = postalCode; 
     }
+
     public String getPrefecture() { 
     	return prefecture; 
     }
@@ -189,7 +147,7 @@ public class UpdateAction extends ActionSupport implements SessionAware {
     	this.authority = authority; 
     }
     public String getPasswordMasked() {
-        return "●●●●●●●●";
+        return PASSWORD_MASK;
     }
         @Override
     public void setSession(Map<String, Object> session) {

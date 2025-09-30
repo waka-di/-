@@ -22,72 +22,56 @@ public class RegistAction extends ActionSupport implements SessionAware {
     private String address_2;
     private String authority;
     
-    private boolean back;
-    public boolean isBack() { 
-    	return back; 
-    }
-    public void setBack(boolean back) { 
-    	this.back = back; 
-    }
+    private String mode;//URL直×
     
 	 @Override
 	    public void setSession(Map<String, Object> session) {
 	        this.session = session;
 	    }
+	 @Override
+	    public void validate() {
+	        // 未入力チェック
+	        if (isEmpty(familyName)) addFieldError("familyName", "姓を入力してください");
+	        if (isEmpty(lastName)) addFieldError("lastName", "名を入力してください");
+	        if (isEmpty(familyNameKana)) addFieldError("familyNameKana", "姓カナを入力してください");
+	        if (isEmpty(lastNameKana)) addFieldError("lastNameKana", "名カナを入力してください");
+	        if (isEmpty(mail)) addFieldError("mail", "メールアドレスを入力してください");
+	        if (isEmpty(password)) addFieldError("password", "パスワードを入力してください");
+	        if (isEmpty(postalCode)) addFieldError("postalCode", "郵便番号を入力してください");
+	        if (isEmpty(prefecture)) addFieldError("prefecture", "都道府県を入力してください");
+	        if (isEmpty(address_1)) addFieldError("address_1", "市区町村を入力してください");
+	        if (isEmpty(address_2)) addFieldError("address_2", "番地を入力してください");
+	        if (isEmpty(authority)) addFieldError("authority", "権限を選択してください");
+
+	        // 半角英数字チェック（例：郵便番号とパスワード）
+	        if (postalCode != null && !postalCode.matches("\\d{7}")) {
+	            addFieldError("postalCode", "郵便番号は7桁の半角数字で入力してください");
+	        }
+	        if (password != null && !password.matches("[a-zA-Z0-9]{6,12}")) {
+	            addFieldError("password", "パスワードは6〜12文字の半角英数字で入力してください");
+	        }
+	        if (gender == null) gender = "0";
+	 }
+
 	 
 	public String execute() {
 		
-		 ListDTO loginUser = (ListDTO) session.get("loginUser");
+		ListDTO loginUser = (ListDTO) session.get("loginUser");
+	      if (loginUser == null || loginUser.getAuthority() != 1) {
+	            addActionError("権限がありません。");
+	            return ERROR;
+	        }
 		 
-		 if (familyName == null && session.get("familyName") != null) {
-			 familyName = String.valueOf(session.get("familyName"));
-		}
-		if (lastName == null && session.get("lastName") != null) {
-			 lastName = String.valueOf(session.get("lastName"));
-		}
-		if (familyNameKana == null && session.get("familyNameKana") != null) {
-			  familyNameKana = String.valueOf(session.get("familyNameKana"));
-		}
-		if (lastNameKana == null && session.get("lastNameKana") != null) {
-		    lastNameKana = String.valueOf(session.get("lastNameKana"));
-		}
-		if (mail == null && session.get("mail") != null) {
-		    mail = String.valueOf(session.get("mail"));
-		}
-		if (password == null && session.get("password") != null) {
-		    password = String.valueOf(session.get("password"));
-		}
-		if (gender == null && session.get("gender") != null) {
-		    gender = String.valueOf(session.get("gender"));
-		} else if (gender == null) {
-		    gender = "0"; // 初期値
-		}
-		if (postalCode == null && session.get("postalCode") != null) {
-		    postalCode = String.valueOf(session.get("postalCode"));
-		}
-		if (prefecture == null && session.get("prefecture") != null) {
-		    prefecture = String.valueOf(session.get("prefecture"));
-		}
-		if (address_1 == null && session.get("address_1") != null) {
-		    address_1 = String.valueOf(session.get("address_1"));
-		}
-		if (address_2 == null && session.get("address_2") != null) {
-		    address_2 = String.valueOf(session.get("address_2"));
-		}
-		if (authority == null && session.get("authority") != null) {
-		    authority = String.valueOf(session.get("authority"));
-		}
-
-
-		 // 権限不足
-		    if (loginUser.getAuthority() != 1) {
-		        addActionError("権限がありません。");
-		        return ERROR;
-		    }
-		    session.put("flg", 0);
-		    
+	      if (!"registInput".equals(mode)) {
+	            addActionError("不正な遷移です");
+	            return ERROR;
+	        }
+    
 		    return SUCCESS;
 	}
+	private boolean isEmpty(String s) {   //文字列が空かどうか
+        return s == null || s.trim().isEmpty();
+    }
 	
 	// Getter/Setter 
     public String getFamilyName() { 

@@ -61,109 +61,109 @@
 				<p>アカウント登録確認画面</p>
 			</div>
 			<div class="regist-container">
-			<table>
 				<s:form action="regist_complete">
 				<s:actionerror cssStyle="color:red;"/>
-					<tr>
-						<td>
-							<label>名前（姓）</label>
-						</td>
-						<td>
-							<s:property value="familyName"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>名前（名）</label>	
-						</td>
-						<td>
-							<s:property value="lastName"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>カナ（姓）</label>
-						</td>
-						<td>
-							<s:property value="familyNameKana"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>カナ（名）</label>
-						</td>
-						<td>
-							<s:property value="lastNameKana"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>メールアドレス</label>	
-						</td>
-						<td>
-							<s:property value="mail"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>パスワード</label>
-						</td>
-						<td>
-							<s:property value="passwordMasked"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>性別</label>
-						</td>
-						<td>
-							<s:if test="gender == 0">男</s:if>
-							<s:if test="gender == 1">女</s:if>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>郵便番号</label>	
-						</td>
-						<td>
-							<s:property value="postalCode"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>住所（都道府県）</label>
-						</td>
-						<td>
-							<s:property value="prefecture"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>住所（市区町村）</label>
-						</td>
-						<td>
-							<s:property value="address_1"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>住所（番地）</label>	
-						</td>
-						<td>
-							<s:property value="address_2"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>アカウント権限</label>
-						</td>
-						<td>
-							<s:if test="authority == 0">一般</s:if>
-       						 <s:elseif test="authority == 1">管理者</s:elseif>
-						</td>
-					</tr>
-				</s:form>
-			</table>
+					<table>
+							<tr>
+								<td>
+									<label>名前（姓）</label>
+								</td>
+								<td>
+									<s:property value="familyName"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label>名前（名）</label>	
+								</td>
+								<td>
+									<s:property value="lastName"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label>カナ（姓）</label>
+								</td>
+								<td>
+									<s:property value="familyNameKana"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label>カナ（名）</label>
+								</td>
+								<td>
+									<s:property value="lastNameKana"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label>メールアドレス</label>	
+								</td>
+								<td>
+									<s:property value="mail"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label>パスワード</label>
+								</td>
+								<td>
+									<s:property value="passwordMasked"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label>性別</label>
+								</td>
+								<td>
+									<s:if test="gender == 0">男</s:if>
+									<s:if test="gender == 1">女</s:if>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label>郵便番号</label>	
+								</td>
+								<td>
+									<s:property value="postalCode"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label>住所（都道府県）</label>
+								</td>
+								<td>
+									<s:property value="prefecture"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label>住所（市区町村）</label>
+								</td>
+								<td>
+									<s:property value="address_1"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label>住所（番地）</label>	
+								</td>
+								<td>
+									<s:property value="address_2"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label>アカウント権限</label>
+								</td>
+								<td>
+									<s:if test="authority == 0">一般</s:if>
+		       						 <s:elseif test="authority == 1">管理者</s:elseif>
+								</td>
+							</tr>
+						</table>
+											
 				<s:form action="regist" cssClass="inline-form">
 				    <s:hidden name="back" value="true"/>
 				    <s:submit value="前に戻る"/>
@@ -183,7 +183,8 @@
 			            <s:hidden name="address_2" value="%{address_2}"/>
 			            <s:hidden name="authority" value="%{authority}"/>
 			            <s:submit value="登録する"/>
-			        </s:form>			        
+			        </s:form>		
+			     </table>	        
 		</div>
 	</main>
     <footer>

@@ -123,7 +123,8 @@
     </div> 
     <div class="regist-container">
         <s:form action="regist_confirm" theme="simple"> 
-
+		<s:hidden name="mode" value="registInput"/>
+		
             <div class="form-group">
                 <label>名前（姓）</label>
                 <div class="input-wrapper">

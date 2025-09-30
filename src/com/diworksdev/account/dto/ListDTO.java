@@ -11,7 +11,7 @@ public class ListDTO {
     private String mail;
     private String password;
     private int gender;
-    private int postalCode;
+    private String postalCode;
     private String prefecture;
     private String address_1;
     private String address_2;
@@ -76,10 +76,10 @@ public class ListDTO {
     	this.gender = gender; 
     }
 
-    public int getPostalCode() { 
+    public String getPostalCode() { 
     	return postalCode; 
     }
-    public void setPostalCode(int postalCode) { 
+    public void setPostalCode(String postalCode) { 
     	this.postalCode = postalCode; 
     }
 

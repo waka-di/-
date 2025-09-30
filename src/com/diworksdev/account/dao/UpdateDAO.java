@@ -14,7 +14,7 @@ public class UpdateDAO {
     public int updateAccount(int id, String familyName, String lastName,
             String familyNameKana, String lastNameKana,
             String mail, String password, int gender,
-            int postalCode, String prefecture,
+            String postalCode, String prefecture,
             String address1, String address2,
             int authority) throws SQLException {
 
@@ -44,7 +44,7 @@ public class UpdateDAO {
                 index = 7;
             }
             ps.setInt(index++, gender);
-            ps.setInt(index++, postalCode);
+            ps.setString(index++, postalCode);
             ps.setString(index++, prefecture);
             ps.setString(index++, address1);
             ps.setString(index++, address2);
@@ -79,7 +79,7 @@ public class UpdateDAO {
                     dto.setPassword(rs.getString("password"));
                     dto.setGender(rs.getInt("gender"));
 
-                    dto.setPostalCode(rs.getInt("postal_code"));
+                    dto.setPostalCode(rs.getString("postal_code"));
                     dto.setPrefecture(rs.getString("prefecture"));
                     dto.setAddress_1(rs.getString("address_1"));
                     dto.setAddress_2(rs.getString("address_2"));

@@ -162,7 +162,8 @@
     <div class="form-group">
   		<label>パスワード</label>
         <div class="input-wrapper">
-           <s:textfield name="password" value="%{passwordMasked}" maxlength="10"/>
+           <s:password name="password" value="%{passwordMasked}" maxlength="10"/>
+           <p>※変更する場合のみ入力してください</p>
             <s:fielderror fieldName="password" cssStyle="color:red;"/>
         </div>
     </div>
