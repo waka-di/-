@@ -58,24 +58,25 @@ public class ListAction extends ActionSupport implements SessionAware{
 		    ListDAO dao = new ListDAO();
 		    
 		    boolean allDefault = isEmpty(familyName) &&
-			                         isEmpty(lastName) &&
-			                         isEmpty(familyNameKana) &&
-			                         isEmpty(lastNameKana) &&
-			                         isEmpty(mail) &&
-			                         "0".equals(gender) &&
-			                         "0".equals(authority);
+                    isEmpty(lastName) &&
+                    isEmpty(familyNameKana) &&
+                    isEmpty(lastNameKana) &&
+                    isEmpty(mail) &&
+                    isEmpty(gender) &&
+                    isEmpty(authority);
 
-		    if (allDefault) {
-		        accountList = dao.getAccountList();
-		    } else {
-		        accountList = dao.searchAccounts(
-		            isEmpty(familyName) ? null : familyName,
-		            isEmpty(lastName) ? null : lastName,
-		            isEmpty(familyNameKana) ? null : familyNameKana,
-		            isEmpty(lastNameKana) ? null : lastNameKana,
-		            isEmpty(mail) ? null : mail,
-		            (gender != null && !gender.isEmpty()) ? gender : null,
-		            (authority != null && !authority.isEmpty()) ? authority : null
+			if (allDefault) {
+			   accountList = dao.getAccountList();   // 全件取得
+			} 
+			else {
+				accountList = dao.searchAccounts(
+			    isEmpty(familyName) ? null : familyName,
+			    isEmpty(lastName) ? null : lastName,
+			    isEmpty(familyNameKana) ? null : familyNameKana,
+			    isEmpty(lastNameKana) ? null : lastNameKana,
+			    isEmpty(mail) ? null : mail,
+			    isEmpty(gender) ? null : gender,
+			     isEmpty(authority) ? null : authority
 		        );
 		    }
 		        return SUCCESS;

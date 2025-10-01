@@ -120,13 +120,13 @@
 		                <td><s:textfield name="mail" style="width:100%;"/></td>
 		                <td>性別</td>
 		                <td>
-		                    <s:radio name="gender" list="genderList" value="0" theme="simple"/>
+		                    <s:radio name="gender" list="#{'': '選択してください', '0':'男','1':'女'}" value="" theme="simple"/>
 		                </td>
 		            </tr>
 		            <tr>
 		                <td>アカウント権限</td>
 		                <td colspan="3">
-		                    <s:select name="authority" list="authorityList" value="0" style="width:20%;"/>
+		                    <s:select name="authority" list="authorityList" headerKey="" value="" style="width:20%;"/>
 		                </td>
 		            </tr>
 		        </table>
