@@ -15,45 +15,19 @@ public class RegistAction extends ActionSupport implements SessionAware {
     private String lastNameKana;
     private String mail;
     private String password;
-    private String gender;
+    private String gender = "0";
     private String postalCode;
     private String prefecture;
     private String address_1;
     private String address_2;
     private String authority;
     
-    private String mode;//URL直×
     
 	 @Override
 	    public void setSession(Map<String, Object> session) {
 	        this.session = session;
 	    }
-	 @Override
-	    public void validate() {
-	        // 未入力チェック
-	        if (isEmpty(familyName)) addFieldError("familyName", "姓を入力してください");
-	        if (isEmpty(lastName)) addFieldError("lastName", "名を入力してください");
-	        if (isEmpty(familyNameKana)) addFieldError("familyNameKana", "姓カナを入力してください");
-	        if (isEmpty(lastNameKana)) addFieldError("lastNameKana", "名カナを入力してください");
-	        if (isEmpty(mail)) addFieldError("mail", "メールアドレスを入力してください");
-	        if (isEmpty(password)) addFieldError("password", "パスワードを入力してください");
-	        if (isEmpty(postalCode)) addFieldError("postalCode", "郵便番号を入力してください");
-	        if (isEmpty(prefecture)) addFieldError("prefecture", "都道府県を入力してください");
-	        if (isEmpty(address_1)) addFieldError("address_1", "市区町村を入力してください");
-	        if (isEmpty(address_2)) addFieldError("address_2", "番地を入力してください");
-	        if (isEmpty(authority)) addFieldError("authority", "権限を選択してください");
-
-	        // 半角英数字チェック（例：郵便番号とパスワード）
-	        if (postalCode != null && !postalCode.matches("\\d{7}")) {
-	            addFieldError("postalCode", "郵便番号は7桁の半角数字で入力してください");
-	        }
-	        if (password != null && !password.matches("[a-zA-Z0-9]{6,12}")) {
-	            addFieldError("password", "パスワードは6〜12文字の半角英数字で入力してください");
-	        }
-	        if (gender == null) gender = "0";
-	 }
-
-	 
+	 	 
 	public String execute() {
 		
 		ListDTO loginUser = (ListDTO) session.get("loginUser");
@@ -61,17 +35,9 @@ public class RegistAction extends ActionSupport implements SessionAware {
 	            addActionError("権限がありません。");
 	            return ERROR;
 	        }
-		 
-	      if (!"registInput".equals(mode)) {
-	            addActionError("不正な遷移です");
-	            return ERROR;
-	        }
     
 		    return SUCCESS;
 	}
-	private boolean isEmpty(String s) {   //文字列が空かどうか
-        return s == null || s.trim().isEmpty();
-    }
 	
 	// Getter/Setter 
     public String getFamilyName() { 
@@ -116,11 +82,11 @@ public class RegistAction extends ActionSupport implements SessionAware {
     	this.password = password; 
     }
     
-    public String getGender() { 
-    	return gender; 
+    public String getGender() {
+        return gender;
     }
-    public void setGender(String gender) { 
-    	this.gender = gender; 
+    public void setGender(String gender) {
+        this.gender = gender;
     }
     
     public String getPostalCode() { 
@@ -154,5 +120,7 @@ public class RegistAction extends ActionSupport implements SessionAware {
     public String getAuthority() { 
     	return authority; 
     }
-    public void setAuthority(String authority) { this.authority = authority; }
+    public void setAuthority(String authority) { 
+    	this.authority = authority; 
+    }
 }

@@ -61,7 +61,6 @@
 				<p>アカウント登録確認画面</p>
 			</div>
 			<div class="regist-container">
-				<s:form action="regist_complete">
 				<s:actionerror cssStyle="color:red;"/>
 					<table>
 							<tr>
@@ -165,6 +164,18 @@
 						</table>
 											
 				<s:form action="regist" cssClass="inline-form">
+				    <s:hidden name="familyName" value="%{familyName}"/>
+				    <s:hidden name="lastName" value="%{lastName}"/>
+				    <s:hidden name="familyNameKana" value="%{familyNameKana}"/>
+				    <s:hidden name="lastNameKana" value="%{lastNameKana}"/>
+				    <s:hidden name="mail" value="%{mail}"/>
+				    <s:hidden name="password" value="%{password}"/>
+				    <s:hidden name="gender" value="%{gender}"/>
+				    <s:hidden name="postalCode" value="%{postalCode}"/>
+				    <s:hidden name="prefecture" value="%{prefecture}"/>
+				    <s:hidden name="address_1" value="%{address_1}"/>
+				    <s:hidden name="address_2" value="%{address_2}"/>
+				    <s:hidden name="authority" value="%{authority}"/>
 				    <s:hidden name="back" value="true"/>
 				    <s:submit value="前に戻る"/>
 				</s:form>
@@ -183,8 +194,9 @@
 			            <s:hidden name="address_2" value="%{address_2}"/>
 			            <s:hidden name="authority" value="%{authority}"/>
 			            <s:submit value="登録する"/>
+			         
 			        </s:form>		
-			     </table>	        
+			             
 		</div>
 	</main>
     <footer>
