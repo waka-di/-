@@ -126,7 +126,7 @@
 		            <tr>
 		                <td>アカウント権限</td>
 		                <td colspan="3">
-		                    <s:select name="authority" list="authorityList" headerKey="" value="" style="width:20%;"/>
+		                    <s:select name="authority" list="authorityList" headerKey="" headerValue="選択してください" value="" style="width:20%;"/>
 		                </td>
 		            </tr>
 		        </table>

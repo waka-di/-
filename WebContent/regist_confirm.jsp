@@ -183,8 +183,8 @@
 				  <s:form action="regist_complete" cssClass="inline-form">
 			            <s:hidden name="familyName" value="%{familyName}"/>
 			            <s:hidden name="lastName" value="%{lastName}"/>
-			            <s:hidden name="familyNameKana" value="%{#session.familyNameKana}"/>
-			            <s:hidden name="lastNameKana" value="%{#session.lastNameKana}"/>
+			            <s:hidden name="familyNameKana" value="%{familyNameKana}"/>
+			            <s:hidden name="lastNameKana" value="%{lastNameKana}"/>
 			            <s:hidden name="mail" value="%{mail}"/>
 			            <s:hidden name="password" value="%{password}"/>
 			            <s:hidden name="gender" value="%{gender}"/>

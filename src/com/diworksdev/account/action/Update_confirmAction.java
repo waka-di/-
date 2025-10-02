@@ -37,66 +37,17 @@ public class Update_confirmAction extends ActionSupport implements SessionAware{
 		    return ERROR;
 		}
 
-		// キャストして loginUser として使う
 		ListDTO loginUser = (ListDTO) loginUserObj;
 
-		// authority を int と比較
 		if (loginUser.getAuthority() != 1) {
 		    addActionError("権限がありません");
 		    return ERROR;
 		}
 	    
-	    // 「前に戻る」ボタンが押された場合
- 		if ("true".equals(back)) {
-             session.put("familyName", familyName);
-             session.put("lastName", lastName);
-             session.put("familyNameKana", familyNameKana);
-             session.put("lastNameKana", lastNameKana);
-             session.put("mail", mail);
-             session.put("password", password);
-             session.put("gender", gender);
-             session.put("postalCode", postalCode);
-             session.put("prefecture", prefecture);
-             session.put("address_1", address_1);
-             session.put("address_2", address_2);
-             session.put("authority", authority);
-             
-             return "back";
-         }
+		if ("true".equals(back)) {
+		    return "back";  
+		}
  		
- 	// セッションから直前入力値を上書き
- 	    if (session.get("familyName") != null) {
- 	    	familyName = (String) session.get("familyName");
- 	        lastName = (String) session.get("lastName");
- 	        familyNameKana = (String) session.get("familyNameKana");
- 	        lastNameKana = (String) session.get("lastNameKana");
- 	        mail = (String) session.get("mail");
- 	       Object pwObj = session.get("password");
- 	      if (pwObj != null) {
- 	          password = pwObj.toString();
- 	      }
- 	        gender = (String) session.get("gender");
- 	        postalCode = (String) session.get("postalCode");
- 	        prefecture = (String) session.get("prefecture");
- 	        address_1 = (String) session.get("address_1");
- 	        address_2 = (String) session.get("address_2");
- 	        authority = (String) session.get("authority");
-
- 	    // 直前入力値だけ削除
- 	        session.remove("familyName");
- 	        session.remove("lastName");
- 	        session.remove("familyNameKana");
- 	        session.remove("lastNameKana");
- 	        session.remove("mail");
- 	        session.remove("password");
- 	        session.remove("gender");
- 	        session.remove("postalCode");
- 	        session.remove("prefecture");
- 	        session.remove("address_1");
- 	        session.remove("address_2");
- 	        session.remove("authority");
- 	    }
-
 					    
 		if (familyName == null || familyName.trim().isEmpty()) {
             addFieldError("familyName", "名前（姓）が未入力です。");

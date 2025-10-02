@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.diworksdev.account.dao.UpdateDAO;
+import com.diworksdev.account.dto.ListDTO;
 import com.diworksdev.account.util.PasswordUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -25,17 +26,51 @@ public class UpdateAction extends ActionSupport implements SessionAware {
     private String address_1;
     private String address_2;
     private int authority;
+    private boolean back;
     
     private static final String PASSWORD_MASK = "●●●●●●●●";
 
-     // 表示用
     public String execute() throws SQLException {
-    	Integer loginAuthority = (Integer) session.get("authority");
-        if (loginAuthority == null || loginAuthority != 1) {
-            addActionError("管理者権限が必要です");
-            return ERROR;
-        }
+    	 if (back) {
+    		 return SUCCESS;
+    	    }
+    	 
+    	 Object authorityObj = session.get("authority");
+    	 Integer loginAuthority = null;
 
+    	 if (authorityObj != null) {
+    	     if (authorityObj instanceof Integer) {
+    	         loginAuthority = (Integer) authorityObj;
+    	     } else if (authorityObj instanceof String) {
+    	         try {
+    	             loginAuthority = Integer.valueOf((String) authorityObj);
+    	         } catch (NumberFormatException e) {
+    	             loginAuthority = null; // 数値変換できなければ null
+    	         }
+    	     }
+    	 }
+
+
+    	 if (loginAuthority != null && loginAuthority != 1) {
+    	        addActionError("管理者権限が必要です");
+    	        return ERROR;
+    	    }
+    	
+        UpdateDAO dao = new UpdateDAO();
+        ListDTO account = dao.getAccountById(id);
+        
+        this.familyName = account.getFamilyName();
+        this.lastName = account.getLastName();
+        this.familyNameKana = account.getFamilyNameKana();
+        this.lastNameKana = account.getLastNameKana();
+        this.mail = account.getMail();
+        this.gender = account.getGender();
+        this.postalCode = account.getPostalCode();
+        this.prefecture = account.getPrefecture();
+        this.address_1 = account.getAddress_1();
+        this.address_2 = account.getAddress_2();
+        this.authority = account.getAuthority();
+        
         if (PASSWORD_MASK.equals(password)) {
             password = ""; // 入力欄は空欄表示
         }
@@ -153,4 +188,11 @@ public class UpdateAction extends ActionSupport implements SessionAware {
     public void setSession(Map<String, Object> session) {
         this.session = session;
     }
+    public boolean isBack() {
+        return back;
+    }
+
+    public void setBack(boolean back) {
+        this.back = back;
+     }
 }

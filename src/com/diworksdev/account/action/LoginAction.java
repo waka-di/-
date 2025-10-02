@@ -10,7 +10,7 @@ import com.diworksdev.account.util.PasswordUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport implements SessionAware{
-	 private String mail;       // JSPから受け取る
+	    private String mail;      
 	    private String password;
 	    private Map<String, Object> session;
 
@@ -23,9 +23,8 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	            ListDTO dto = dao.select(mail, hashedPassword);
 
 	            if (dto != null) {
-	              
 	                session.put("loginUser", dto);
-
+	                session.put("authority", Integer.valueOf(dto.getAuthority()));
 	                return SUCCESS; 
 	            } else {
 	                addActionError("エラーが発生したためログイン情報を取得できません。");

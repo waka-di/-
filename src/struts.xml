@@ -59,6 +59,7 @@
 <!-- UpdateAction -->
 		<action name="update" class="com.diworksdev.account.action.UpdateAction" method="execute"> 
 			<result name="success">update.jsp</result> 
+			<result name="error">login.jsp</result>
 		</action>
 		
 <!-- Update_confirmAction -->
