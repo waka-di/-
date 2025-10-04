@@ -22,11 +22,10 @@ public class UpdateDAO {
         String sql;
 
         if(password != null) {
-            // パスワードも更新する場合
-            sql = "UPDATE account_data SET family_name=?, last_name=?, family_name_kana=?, last_name_kana=?, mail=?, password=?, gender=?, postal_code=?, prefecture=?, address_1=?, address_2=?, authority=? WHERE id=?";
-        } else {
-            // パスワードはそのまま
-            sql = "UPDATE account_data SET family_name=?, last_name=?, family_name_kana=?, last_name_kana=?, mail=?, gender=?, postal_code=?, prefecture=?, address_1=?, address_2=?, authority=? WHERE id=?";
+        	//パスワードも更新
+            sql = "UPDATE account_data SET family_name=?, last_name=?, family_name_kana=?, last_name_kana=?, mail=?, password=?, gender=?, postal_code=?, prefecture=?, address_1=?, address_2=?, authority=?, update_time=CURRENT_TIMESTAMP WHERE id=?";
+        } else {//パスワード更新なし
+            sql = "UPDATE account_data SET family_name=?, last_name=?, family_name_kana=?, last_name_kana=?, mail=?, gender=?, postal_code=?, prefecture=?, address_1=?, address_2=?, authority=?, update_time=CURRENT_TIMESTAMP WHERE id=?";
         }
         
         try (Connection con = new DBConnector().getConnection();

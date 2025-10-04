@@ -1,11 +1,16 @@
 package com.diworksdev.account.action;
 import java.sql.SQLException;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.diworksdev.account.dao.UpdateDAO;
 import com.diworksdev.account.util.PasswordUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class Update_completeAction extends ActionSupport{		
+public class Update_completeAction extends ActionSupport implements SessionAware{		
+		private Map<String, Object> session;
+		
 		private Integer id;
 	    private String familyName;
 	    private String lastName;
@@ -24,13 +29,17 @@ public class Update_completeAction extends ActionSupport{
 	    	System.out.println("password = " + password);//チェック用
 	    	UpdateDAO dao = new UpdateDAO();
 	        try {
-	            // パスワード未入力なら DB の既存パスワードを取得
-	            String hashedPassword = password != null && !password.isEmpty()
-	                    ? PasswordUtil.hash(password)
+	        	String tempPassword = (String) session.get("passwordTemp");
+	        	System.out.println("tempPassword = " + tempPassword); //チェック用
+	        	
+	            String hashedPassword = tempPassword != null && !tempPassword.isEmpty()
+	                    ? PasswordUtil.hash(tempPassword)
 	                    : dao.getAccountById(id).getPassword();
 	            int result = dao.updateAccount(id, familyName, lastName, familyNameKana,
 	                    lastNameKana, mail, hashedPassword, gender, postalCode, prefecture,
 	                    address_1, address_2, authority);
+	            
+	            session.remove("passwordTemp");
 	            
 	            return result > 0 ? SUCCESS : ERROR;
 	        } 
@@ -39,6 +48,11 @@ public class Update_completeAction extends ActionSupport{
 	            return ERROR;
 	        }
 	    }
+	    @Override
+	    public void setSession(Map<String, Object> session) {
+	        this.session = session;
+	    }
+	    
 	    public Integer getId() { 
 	    	return id; 
 	    }

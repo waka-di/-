@@ -47,8 +47,7 @@ public class Update_confirmAction extends ActionSupport implements SessionAware{
 	    
 		if ("true".equals(back)) {
 		    return "back";  
-		}
- 		
+		}	
 					    
 		if (familyName == null || familyName.trim().isEmpty()) {
             addFieldError("familyName", "名前（姓）が未入力です。");
@@ -114,7 +113,9 @@ public class Update_confirmAction extends ActionSupport implements SessionAware{
         if (hasFieldErrors()) {
         	return "input";
         }
-        
+        if (password != null && !password.isEmpty()) {
+            session.put("passwordTemp", password);
+        } 	
         return SUCCESS;
 	}
 

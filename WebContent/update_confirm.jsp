@@ -150,7 +150,6 @@
             <s:hidden name="familyNameKana" value="%{familyNameKana}"/>
             <s:hidden name="lastNameKana" value="%{lastNameKana}"/>
             <s:hidden name="mail" value="%{mail}"/>
-            <s:hidden name="password" value="%{password}"/>
             <s:hidden name="gender" value="%{gender}"/>
             <s:hidden name="postalCode" value="%{postalCode}"/>
             <s:hidden name="prefecture" value="%{prefecture}"/>
