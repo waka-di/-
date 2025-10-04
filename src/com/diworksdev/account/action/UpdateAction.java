@@ -27,8 +27,6 @@ public class UpdateAction extends ActionSupport implements SessionAware {
     private String address_2;
     private int authority;
     private boolean back;
-    
-    private static final String PASSWORD_MASK = "●●●●●●●●";
 
     public String execute() throws SQLException {
     	 if (back) {
@@ -49,8 +47,6 @@ public class UpdateAction extends ActionSupport implements SessionAware {
     	         }
     	     }
     	 }
-
-
     	 if (loginAuthority != null && loginAuthority != 1) {
     	        addActionError("管理者権限が必要です");
     	        return ERROR;
@@ -70,10 +66,6 @@ public class UpdateAction extends ActionSupport implements SessionAware {
         this.address_1 = account.getAddress_1();
         this.address_2 = account.getAddress_2();
         this.authority = account.getAuthority();
-        
-        if (PASSWORD_MASK.equals(password)) {
-            password = ""; // 入力欄は空欄表示
-        }
 
         return SUCCESS;
       }
@@ -86,7 +78,7 @@ public class UpdateAction extends ActionSupport implements SessionAware {
         
         // パスワードをハッシュ化
         String hashedPassword = null;
-        if (password != null && !password.isEmpty() && !PASSWORD_MASK.equals(password)) {
+        if (password != null && !password.isEmpty()) {
             hashedPassword = PasswordUtil.hash(password);
         }
         
@@ -181,9 +173,7 @@ public class UpdateAction extends ActionSupport implements SessionAware {
     public void setAuthority(int authority) { 
     	this.authority = authority; 
     }
-    public String getPasswordMasked() {
-        return PASSWORD_MASK;
-    }
+
         @Override
     public void setSession(Map<String, Object> session) {
         this.session = session;

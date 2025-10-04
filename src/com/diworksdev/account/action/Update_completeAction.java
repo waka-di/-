@@ -21,14 +21,20 @@ public class Update_completeAction extends ActionSupport{
 	    private int authority;
 
 	    public String execute() {
-	    	String hashedPassword = PasswordUtil.hash(password);// パスワードをハッシュ化 
-	        UpdateDAO dao = new UpdateDAO();
+	    	System.out.println("password = " + password);//チェック用
+	    	UpdateDAO dao = new UpdateDAO();
 	        try {
+	            // パスワード未入力なら DB の既存パスワードを取得
+	            String hashedPassword = password != null && !password.isEmpty()
+	                    ? PasswordUtil.hash(password)
+	                    : dao.getAccountById(id).getPassword();
 	            int result = dao.updateAccount(id, familyName, lastName, familyNameKana,
 	                    lastNameKana, mail, hashedPassword, gender, postalCode, prefecture,
 	                    address_1, address_2, authority);
+	            
 	            return result > 0 ? SUCCESS : ERROR;
-	        } catch (SQLException e) {
+	        } 
+	        catch (SQLException e) {
 	            addActionError("エラーが発生したためアカウント更新できません。");
 	            return ERROR;
 	        }

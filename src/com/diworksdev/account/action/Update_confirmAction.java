@@ -31,6 +31,7 @@ public class Update_confirmAction extends ActionSupport implements SessionAware{
 		
 	@Override
     public String execute() {
+		System.out.println("password = " + password);//チェック用
 		Object loginUserObj = session.get("loginUser");
 		if (loginUserObj == null || !(loginUserObj instanceof ListDTO)) {
 		    addActionError("権限がありません");
@@ -79,7 +80,7 @@ public class Update_confirmAction extends ActionSupport implements SessionAware{
             addFieldError("mail", "メールアドレスは半角英数字、@、-のみ入力可能です。");
         }
 
-        if (password != null && !password.equals("●●●●●●●●")) {
+        if (password != null && !password.equals("")) {
             if (!password.matches("[a-zA-Z0-9]+")) {
                 addFieldError("password", "パスワードは半角英数字のみ入力可能です。");
             }
@@ -113,22 +114,9 @@ public class Update_confirmAction extends ActionSupport implements SessionAware{
         if (hasFieldErrors()) {
         	return "input";
         }
-		
-        // 正常処理
-        session.put("familyName", familyName);
-        session.put("lastName", lastName);
-        session.put("familyNameKana", familyNameKana);
-        session.put("lastNameKana", lastNameKana);
-        session.put("mail", mail);
-        session.put("password", password);
-        session.put("gender", gender);
-        session.put("postalCode", postalCode);
-        session.put("prefecture", prefecture);
-        session.put("address_1", address_1);
-        session.put("address_2", address_2);
-        session.put("authority", authority);
-        return SUCCESS; 
-        }
+        
+        return SUCCESS;
+	}
 
 	
 	public Integer getId() { 
@@ -167,12 +155,17 @@ public class Update_confirmAction extends ActionSupport implements SessionAware{
 	 public void setMail(String mail) { 
 		 this.mail = mail; 
 	}
+	 public void setPassword(String password) { 
+		 this.password = password; 
+	}
 	 public String getPasswordMasked() {
-		    if (password == null || password.isEmpty()) {
-		        return "●●●●●●●●";
+		    if (password == null) return "";
+		    StringBuilder sb = new StringBuilder();
+		    for(int i=0; i<password.length(); i++){
+		        sb.append("●");
 		    }
-		    return String.join("", java.util.Collections.nCopies(password.length(), "●"));
-		}
+		    return sb.toString();
+	}
     public String getGender() { 
     	return gender; 
     }

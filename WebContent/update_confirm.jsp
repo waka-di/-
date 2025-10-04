@@ -69,28 +69,58 @@
 			</div>
 			<div class="update-confirm-container">
 			 <table>
-            <tr><td>名前（姓）</td><td><s:property value="familyName"/></td></tr>
-            <tr><td>名前（名）</td><td><s:property value="lastName"/></td></tr>
-            <tr><td>カナ（姓）</td><td><s:property value="familyNameKana"/></td></tr>
-            <tr><td>カナ（名）</td><td><s:property value="lastNameKana"/></td></tr>
-            <tr><td>メールアドレス</td><td><s:property value="mail"/></td></tr>
-            <tr><td>パスワード</td>
-            	<td><s:property value="passwordMasked"/></td>
-            		<s:hidden name="password" value="%{password}"/>
-            	
+            <tr>
+            	<td>名前（姓）</td>
+            	<td><s:property value="familyName"/></td>
             </tr>
-            <tr><td>性別</td><td>
-                <s:if test="gender == 0">男</s:if>
-                <s:if test="gender == 1">女</s:if>
-            </td></tr>
-            <tr><td>郵便番号</td><td><s:property value="postalCode"/></td></tr>
-            <tr><td>住所（都道府県）</td><td><s:property value="prefecture"/></td></tr>
-            <tr><td>住所（市区町村）</td><td><s:property value="address_1"/></td></tr>
-            <tr><td>住所（番地）</td><td><s:property value="address_2"/></td></tr>
-            <tr><td>アカウント権限</td><td>
-                <s:if test="authority == 0">一般</s:if>
-                <s:if test="authority == 1">管理者</s:if>
-            </td></tr>
+            <tr>
+            	<td>名前（名）</td>
+            	<td><s:property value="lastName"/></td>
+            </tr>
+            <tr>
+            	<td>カナ（姓）</td>
+            	<td><s:property value="familyNameKana"/></td>
+            </tr>
+            <tr>
+            	<td>カナ（名）</td>
+            	<td><s:property value="lastNameKana"/></td>
+            </tr>
+            <tr><td>メールアドレス</td>
+            	<td><s:property value="mail"/></td>
+            </tr>
+            <tr>
+            	<td>パスワード</td>
+            	<td><s:property value="passwordMasked"/></td>
+            </tr>
+            <tr><td>性別</td>
+            	<td>
+	                <s:if test="gender == 0">男</s:if>
+	                <s:if test="gender == 1">女</s:if>
+            	</td>
+            </tr>
+            <tr>
+            	<td>郵便番号</td>
+            	<td><s:property value="postalCode"/></td>
+            </tr>
+            <tr>
+            	<td>住所（都道府県）</td>
+            	<td><s:property value="prefecture"/></td>
+            </tr>
+            <tr>
+            	<td>住所（市区町村）</td>
+           		<td><s:property value="address_1"/></td>
+           	</tr>
+            <tr>
+            	<td>住所（番地）</td>
+            	<td><s:property value="address_2"/></td>
+            </tr>
+            <tr>
+            	<td>アカウント権限</td>
+            	<td>
+	                <s:if test="authority == 0">一般</s:if>
+	                <s:if test="authority == 1">管理者</s:if>
+          		</td>
+          	</tr>
         </table>
 
         <!-- 前に戻るフォーム -->

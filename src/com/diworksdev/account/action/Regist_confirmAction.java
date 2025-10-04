@@ -59,7 +59,6 @@ public class Regist_confirmAction extends ActionSupport implements SessionAware{
 		
 		return SUCCESS;
 	}   
-		//ログイン権限
 		
 	    
 	private void validateFields() {	    
