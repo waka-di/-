@@ -34,12 +34,11 @@ public class Update_confirmAction extends ActionSupport implements SessionAware{
 
 		Object loginUserObj = session.get("loginUser");
 		
+		ListDTO loginUser = (ListDTO) loginUserObj;
 		if (loginUserObj == null || !(loginUserObj instanceof ListDTO)) {
 		    addActionError("権限がありません");
 		    return ERROR;
 		}
-
-		ListDTO loginUser = (ListDTO) loginUserObj;
 
 		if (loginUser.getAuthority() != 1) {
 		    addActionError("権限がありません");

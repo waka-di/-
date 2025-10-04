@@ -30,8 +30,13 @@ public class UpdateAction extends ActionSupport implements SessionAware {
 
     public String execute() throws SQLException {
     	 if (back) {
+    		 Object tempPassword = session.get("passwordTemp");
+    	        if (tempPassword != null) {
+    	            this.password = (String) tempPassword;
+    	        }
     		 return SUCCESS;
     	    }
+    	 
     	 
     	 Object authorityObj = session.get("authority");
     	 Integer loginAuthority = null;
@@ -72,8 +77,8 @@ public class UpdateAction extends ActionSupport implements SessionAware {
     
      
 
-    // 更新用
-    public String update() throws SQLException {
+    	// 更新用
+    	public String update() throws SQLException {
         UpdateDAO dao = new UpdateDAO();
         
         // パスワードをハッシュ化
