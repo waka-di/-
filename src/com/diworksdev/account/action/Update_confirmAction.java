@@ -31,8 +31,9 @@ public class Update_confirmAction extends ActionSupport implements SessionAware{
 		
 	@Override
     public String execute() {
-		System.out.println("password = " + password);//チェック用
+
 		Object loginUserObj = session.get("loginUser");
+		
 		if (loginUserObj == null || !(loginUserObj instanceof ListDTO)) {
 		    addActionError("権限がありません");
 		    return ERROR;

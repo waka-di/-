@@ -26,12 +26,9 @@ public class Update_completeAction extends ActionSupport implements SessionAware
 	    private int authority;
 
 	    public String execute() {
-	    	System.out.println("password = " + password);//チェック用
 	    	UpdateDAO dao = new UpdateDAO();
 	        try {
-	        	String tempPassword = (String) session.get("passwordTemp");
-	        	System.out.println("tempPassword = " + tempPassword); //チェック用
-	        	
+	        	String tempPassword = (String) session.get("passwordTemp");	        	
 	            String hashedPassword = tempPassword != null && !tempPassword.isEmpty()
 	                    ? PasswordUtil.hash(tempPassword)
 	                    : dao.getAccountById(id).getPassword();
