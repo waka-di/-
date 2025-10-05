@@ -40,6 +40,7 @@ public class Update_completeAction extends ActionSupport implements SessionAware
 	            
 	            return result > 0 ? SUCCESS : ERROR;
 	        } 
+	        
 	        catch (SQLException e) {
 	            addActionError("エラーが発生したためアカウント更新できません。");
 	            return ERROR;

@@ -68,6 +68,7 @@
 				<p>アカウント更新確認画面</p>
 			</div>
 			<div class="update-confirm-container">
+			<s:actionerror cssStyle="color:red;"/>
 			 <table>
             <tr>
             	<td>名前（姓）</td>
